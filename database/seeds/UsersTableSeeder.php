@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token'=> str_random(10)
             ],
             [
-                'name'=> 'nattawut',
+                'name'=> 'nattawutw',
                 'email'=>'nattawut1613@gmail.com',
                 'password'=> Hash::make('12345678'),
                 'remember_token'=> str_random(10)
