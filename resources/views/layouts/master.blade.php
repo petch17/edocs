@@ -70,9 +70,6 @@
               <a class="nav-link" id="inbox" href="{{ route('inbox.index') }}">
                 <i class="nav-icon fa fa-inbox"></i> Inbox
                 <span class="badge badge-danger">3
-                  {{-- @foreach($edocs as $index=>$item)
-                    {{$index+1}}
-                  @endforeach --}}
                 </span>
               </a>
             </li>
