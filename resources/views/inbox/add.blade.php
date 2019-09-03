@@ -23,33 +23,33 @@
                         <div class="card-body">
                             {!! Form::open(['route' => 'addstore', 'method' => 'post', 'files'=>true]) !!}
 
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label class="col-md-2 col-form-label" for="text-input">เลขที่หนังสือ</label>
                                     <div class="col-md-10">
                                         {!! Form::text('booknum',null,['class'=>'form-control','placeholder'=>'กรุณากรอกเลขที่หนังสือ']); !!}
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label class="col-md-2 col-form-label" for="date-input">วันที่</label>
                                     <div class="col-md-10">
                                         {!! Form::date('date', null, ['class' => 'form-control datetimepicker','id' => '','placeholder' => '-- เลือกวันที่ --']) !!}
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label class="col-md-2 col-form-label" for="date-input">เรียน</label>
                                     <div class="col-md-10">
                                         {!! Form::text('position',null,['class'=>'form-control','placeholder'=>'กรุณากรอกตำแหน่ง']); !!}
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label class="col-md-2 col-form-label" for="text-input">วัตถุประสงค์</label>
                                     <div class="col-md-10">
                                         {!! Form::select('objective_id', $goals->pluck('name','id'), null, ['class'=>'form-control','placeholder' => '-- เลือกวัตถุประสงค์ --']); !!}
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 {{-- <div class="form-group row">
                                     <label class="col-md-2 col-form-label" for="textarea-input">รายละเอียด</label>
@@ -85,12 +85,12 @@
                                     </script>
                                 </div> --}}
 
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label class="col-md-2 col-form-label" for="textarea-input">เรื่อง</label>
                                     <div class="col-md-10">
                                         {!! Form::textarea('topic', null, ['class'=>'form-control','placeholder'=>'กรุณากรอกหัวข้อ']) !!}
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group row">
                                     <label class="col-md-2 col-form-label" for="file-input">อัพโหลดไฟล์</label>
