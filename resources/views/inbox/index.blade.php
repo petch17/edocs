@@ -6,7 +6,7 @@
 
 @section('content')
 <!-- begin:: Content -->
-<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+<div class="kt-subheader kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">รายการเอกสาร</h3>
@@ -28,8 +28,7 @@
                 <div class="kt-portlet__head-wrapper">
                     <div class="kt-portlet__head-actions">
                         <a href="{{ route('addcreate') }}" class="btn btn-brand btn-elevate btn-icon-sm">
-                            <i class="la la-plus"></i>
-                            อัพโหลดเอกสาร
+                            <i class="la la-plus"></i> อัพโหลดเอกสาร
                         </a>
                     </div>	
                 </div>
@@ -54,7 +53,7 @@
                 <tbody>
                     <tr>
                         <td>{{$index+1}}</td>
-                        <td>ประชุม</td>
+                        <td>{{$item->file}}</td>
                         <td>
                             <a href="{{ route('inbox.show' , ['id' => $item->id]) }}" data-toggle="kt-tooltip"  title="ส่งต่อ">
                                 <i class="fa fa-share-square"></i>
@@ -75,7 +74,8 @@
 
             </table>
         </div>
-    </div>	</div>
+    </div>
+</div>
 <!-- end:: Content -->
 
 @endsection
@@ -87,9 +87,7 @@
 
 <script>
 $(document).ready(function () {
-    // document.getElementById('inbox').classList.add('active');
     document.getElementById('inbox').classList.add('kt-menu__item--open');
-
     
     $('#table1').DataTable();
 
@@ -97,7 +95,7 @@ $(document).ready(function () {
 </script>
 @endsection
 
-<?php
+@php
 
 function show_tdate($date_in) {
     $month_arr = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
@@ -124,5 +122,5 @@ function show_tdate($date_in) {
 
     return $t_date;
 }
-?>
+@endphp
 

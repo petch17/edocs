@@ -234,64 +234,16 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- end:: Aside -->							
                             <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
-                                <!-- begin:: Subheader -->
-                                {{-- <div class="kt-subheader   kt-grid__item" id="kt_subheader">
-                                    <div class="kt-container  kt-container--fluid ">
-                                        <div class="kt-subheader__main">
-                                            <h3 class="kt-subheader__title">Dashboard</h3>
-                                            <span class="kt-subheader__separator kt-hidden"></span>
-                                            <div class="kt-subheader__breadcrumbs">
-                                                <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
-                                                <span class="kt-subheader__breadcrumbs-separator"></span>
-                                                <a href="" class="kt-subheader__breadcrumbs-link">Application</a>
-                                                <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
-                                <!-- end:: Subheader -->
-
-                                <!-- begin:: Content -->
-                                {{-- <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid"> --}}
-
-                                    @yield('content')
-                                    
-                                {{-- </div> --}}
-                                <!-- end:: Content -->
-
+                                @yield('content')
+                                 
                             </div>
                         </div>
                     </div>
-
-                    <!-- begin:: Footer -->
-                    <div class="kt-footer kt-grid__item" id="kt_footer">	
-                        <div class="kt-container  kt-container--fluid ">
-                            <div class="kt-footer__wrapper">
-                                <div class="kt-footer__copyright">
-                                    2019&nbsp;&copy;&nbsp;<a href="http://keenthemes.com/metronic" target="_blank" class="kt-link">Keenthemes</a>
-                                </div>
-                                <div class="kt-footer__menu">
-                                    <a href="http://keenthemes.com/metronic" target="_blank" class="kt-link">About</a>
-                                    <a href="http://keenthemes.com/metronic" target="_blank" class="kt-link">Team</a>
-                                    <a href="http://keenthemes.com/metronic" target="_blank" class="kt-link">Contact</a>
-                                </div>
-                            </div>
-                        </div>		
-                    </div>
-                    <!-- end:: Footer -->
                 </div>
             </div>
         </div>
-
         <!-- end:: Page -->
 
-        <!-- begin::Scrolltop -->
-        <div id="kt_scrolltop" class="kt-scrolltop">
-            <i class="fa fa-arrow-up"></i>
-        </div>
-        <!-- end::Scrolltop -->
-
-        
         <!-- begin::Global Config(global config for global JS sciprts) -->
         <script>
             var KTAppOptions = {"colors": {"state": {"brand": "#5d78ff", "light": "#ffffff", "dark": "#282a3c", "primary": "#5867dd", "success": "#34bfa3", "info": "#36a3f7", "warning": "#ffb822", "danger": "#fd3995"}, "base": {"label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"], "shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]}}};
@@ -379,9 +331,6 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="{{asset('assets/vendors/custom/gmaps/gmaps.js')}}" type="text/javascript"></script>
         <!--end::Page Vendors -->
 
-        <!--begin::Page Scripts(used by this page) -->
-        <script src="{{asset('assets/js/demo11/pages/dashboard.js')}}" type="text/javascript"></script>
-        <!--end::Page Scripts -->
         @yield('js')
     </body>
     <!-- end::Body -->
