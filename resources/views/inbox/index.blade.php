@@ -7,23 +7,18 @@
 <!-- begin:: Content -->
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
     <div class="alert alert-light alert-elevate" role="alert">
-        <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
         <div class="alert-text">
-            DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, based upon the foundations of progressive enhancement, and will add advanced interaction controls to any HTML table.
-            <br>For more info see <a class="kt-link kt-font-bold" href="https://datatables.net/" target="_blank">the official home</a> of the plugin.
+            <i class="fa fa-circle" style="color:red;"></i> ด่วนที่สุด &nbsp;
+            <i class="fa fa-circle" style="color:orange"></i> ด่วนมาก &nbsp;
+            <i class="fa fa-circle" style="color:yellow"></i> ด่วน &nbsp;
+            <i class="fa fa-circle" style="color:green"></i> ปกติ &nbsp;
+            <i class="fa fa-circle" style="color:black"></i> ลับ <br><br>
         </div>
     </div>
 
     <div class="kt-portlet kt-portlet--mobile">
         <div class="kt-portlet__head kt-portlet__head--lg">
-            <div class="kt-portlet__head-label">
-                <span class="kt-portlet__head-icon">
-                    <i class="kt-font-brand flaticon2-line-chart"></i>
-                </span>
-                <h3 class="kt-portlet__head-title">
-                    Basic
-                </h3>
-            </div>
+            <div class="kt-portlet__head-label"></div>
             <div class="kt-portlet__head-toolbar">
                 <div class="kt-portlet__head-wrapper">
                     <div class="kt-portlet__head-actions">
