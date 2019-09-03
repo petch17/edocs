@@ -86,7 +86,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed " >
             <div class="kt-header-mobile__logo">
                 <a href="{{ route('home') }}">
-                    <img alt="Logo" src="{{asset('img/TOT_LOGO.png')}}" height="15%" width="15%" />
+                    <img alt="Logo" src="{{asset('img/ed2.png')}}" height="30%" width="30%" />
                 </a>
             </div>
             <div class="kt-header-mobile__toolbar">
@@ -106,7 +106,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="kt-header__brand " id="kt_header_brand">
                                 <div class="kt-header__brand-logo">
                                     <a href="{{ route('home') }}">
-                                        <img alt="Logo" src="{{asset('img/TOT_LOGO.png')}}" height="15%" width="15%" />	
+                                        <img alt="Logo" src="{{asset('img/ed2.png')}}" height="30%" width="30%" />	
                                     </a>		
                                 </div> 
                                 <div class="kt-header__brand-nav">
@@ -212,11 +212,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                         >		
 
                                         <ul class="kt-menu__nav ">
-                                            <li class="kt-menu__section kt-menu__section--first">
-                                                <h4 class="kt-menu__section-text">รายการ</h4>
-                                                <i class="kt-menu__section-icon flaticon-more-v2"></i>
-                                            </li>
-                                            <li class="kt-menu__item " aria-haspopup="true" >
+                                        
+                                            <li id="inbox" class="kt-menu__item" aria-haspopup="true">
                                                 <a  href="{{ route('inbox.index') }}" class="kt-menu__link ">
                                                     <i class="kt-menu__link-icon flaticon-suitcase"></i>
                                                     <span class="kt-menu__link-text" >Inbox</span>
@@ -228,6 +225,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <span class="kt-menu__link-text">Inbox</span>
                                                 </a>
                                             </li>
+                                    
                                     </div>
                                 </div>
                                 <!-- end:: Aside Menu -->
