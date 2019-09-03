@@ -88,6 +88,7 @@
 <script>
 $(document).ready(function () {
     // document.getElementById('inbox').classList.add('active');
+    document.getElementById('inbox').classList.add('kt-menu__item--open');
 
     
     $('#table1').DataTable();
