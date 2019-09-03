@@ -11880,7 +11880,7 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  color: #646c9a; }
+  color: #1dc9b7; }
 
 router-outlet {
   display: none; }
@@ -33470,7 +33470,8 @@ body {
     transition: height 0.3s ease;
     -webkit-box-shadow: 0px 4px 30px -4px rgba(0, 51, 90, 0.1);
     box-shadow: 0px 4px 30px -4px rgba(0, 51, 90, 0.1);
-    background-color: #1e1e2d; }
+    background-color:#3CAEFF; /*สีของ header*/
+   }
     .kt-header .kt-container {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -33885,7 +33886,7 @@ body {
 
 .kt-aside {
   width: 255px;
-  background-color: #fff;
+  background-color: #3CAEFF;/*สีแถบเมนู*/
   -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.08);
   box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.08); }
   .kt-aside .kt-aside-menu {
