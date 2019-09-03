@@ -1,12 +1,12 @@
 <?php
 
-// Route::get('inbox/add', 'InboxController@addcreate')->name('addcreate');
+Route::get('inbox/add', 'InboxController@addcreate')->name('addcreate');
 
-// Route::post('inbox/addstore', [
-//     'as' => 'addstore',
-//     'uses' => 'InboxController@addstore'
-// ]);
-// Route::resource('addstore', 'InboxController' , ['except' => 'addstore']);
+Route::post('inbox/addstore', [
+    'as' => 'addstore',
+    'uses' => 'InboxController@addstore'
+]);
+Route::resource('addstore', 'InboxController' , ['except' => 'addstore']);
 
 Route::resource('inbox','InboxController');
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Objective;
+use App\Edoc;
 use File;
 use PDF;
 // use Imagick;
