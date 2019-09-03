@@ -230,12 +230,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                             </div>
+                            <div class="crad-block">
+                                <h1> Hello </h1>
                             </div>
-                            
-                            <div class="crad">
-                                <div class="crad-block">
-                                    <h1> Hello </h1>
-                                </div>
                     </div>
 
                     <!-- begin:: Footer -->
