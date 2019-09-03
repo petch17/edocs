@@ -13,12 +13,8 @@ class InboxController extends Controller
 {
     public function index()
     {
-        // $imagick = new Imagick();
-        // $imagick->readImage('pdf/59310094.pdf');
-        // $imagick->writeImage('output.jpg');
-
-        // $edocs = Edoc::with('tbobjective')->get();
-        return view('inbox.index');
+        $edocs = Edoc::with('tbobjective')->get();
+        return view('inbox.index',['edocs' => $edocs]);
     }
 
     public function create()

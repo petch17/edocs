@@ -29,31 +29,34 @@
 
                         <th>#</th>
                         <th>ชื่อไฟล์</th>
-                        <th>#</th>
+                        <th><i class="fa fa-cog"></i></th> 
 
                     </tr>
 
                 </thead>
+
+                @foreach($edocs as $index=>$item)
                 <tbody>
                     <tr>
-                        <td>1</td>
+                        <td>{{$index+1}}</td>
                         <td>ประชุม</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>ประชุมลับ</td>
-                        <td></td>
-                    </tr>
+                        <td>
+                            <a href="{{ route('inbox.show' , ['id' => $item->id]) }}">
+                                <i class="fa fa-share-square"></i>
+                            </a>
+                        </td>
 
-                    <tr>
-                        <td>123</td>
-                        <td>ประชุมลับมาก</td>
-                        <td></td>
+                        {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
+                        {{-- @php 
+                            $date_in = $item->date; 
+                            $date1 = show_tdate($date_in) ;  
+                            echo $date1 ;
+                        @endphp --}}
+
+
                     </tr>
                 </tbody>
-
-
+                @endforeach
 
             </table>
         </div>
