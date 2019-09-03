@@ -225,7 +225,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <span class="kt-menu__link-text">Inbox</span>
                                                 </a>
                                             </li>
-                                    
+                                            
+                                        </ul>
                                     </div>
                                 </div>
                                 <!-- end:: Aside Menu -->
@@ -234,7 +235,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
                                 <!-- begin:: Subheader -->
-                                <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+                                {{-- <div class="kt-subheader   kt-grid__item" id="kt_subheader">
                                     <div class="kt-container  kt-container--fluid ">
                                         <div class="kt-subheader__main">
                                             <h3 class="kt-subheader__title">Dashboard</h3>
@@ -247,15 +248,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- end:: Subheader -->
 
                                 <!-- begin:: Content -->
-                                <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+                                {{-- <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid"> --}}
 
                                     @yield('content')
                                     
-                                </div>
+                                {{-- </div> --}}
                                 <!-- end:: Content -->
 
                             </div>
