@@ -285,7 +285,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <!-- begin:: Content -->
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-	<h3>Hello!</h3>
+	<h3>Hello! Guy</h3>
 </div>
 <!-- end:: Content -->
 
@@ -1030,6 +1030,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         Hey there, we’re just writing to let you know that you’ve<br> been subscribed to a repository on GitHub.
                                     </div>
                                 </div>
+<<<<<<< HEAD
                                 <div class="kt-chat__message kt-chat__message--success">
                                     <div class="kt-chat__user">
                                         <span class="kt-media kt-media--circle kt-media--sm"> 
@@ -1090,6 +1091,20 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="kt-chat__text">
                                         Discover what students who viewed Learn <br>Figma - UI/UX Design Essential Training also viewed
                                     </div>
+=======
+                            </div>
+                            <div class="crad-block">
+                                <h1> Hello </h1>
+                            </div>
+                    </div>
+
+                    <!-- begin:: Footer -->
+                    <div class="kt-footer kt-grid__item" id="kt_footer">	
+                        <div class="kt-container  kt-container--fluid ">
+                            <div class="kt-footer__wrapper">
+                                <div class="kt-footer__copyright">
+                                    2019&nbsp;&copy;&nbsp;<a href="http://keenthemes.com/metronic" target="_blank" class="kt-link">Keenthemes</a>
+>>>>>>> 07cd67b80abf4fef3362a8af7e23b92628e8bbad
                                 </div>
                                 <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
                                     <div class="kt-chat__user">                                
