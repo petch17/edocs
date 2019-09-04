@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('css')
-<link href="./assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/vendors/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -53,7 +53,7 @@
                 <tbody>
                     <tr>
                         <td>{{$index+1}}</td>
-                        <td>{{$item->file}}</td>
+                        <td>{{$item->real_filename}}</td>
                         <td>
                             <a href="{{ route('inbox.show' , ['id' => $item->id]) }}" data-toggle="kt-tooltip"  title="ส่งต่อ">
                                 <i class="fa fa-share-square"></i>
@@ -81,9 +81,9 @@
 @endsection
 
 @section('js')
-<script src="./assets/js/demo11/scripts.bundle.js" type="text/javascript"></script>
-<script src="./assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
-<script src="./assets/js/demo11/pages/crud/datatables/basic/basic.js" type="text/javascript"></script>
+<script src="{{asset('assets/js/demo11/scripts.bundle.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/demo11/pages/crud/datatables/basic/basic.js')}}" type="text/javascript"></script>
 
 <script>
 $(document).ready(function () {

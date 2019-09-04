@@ -73,12 +73,15 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end::Layout Skins -->
 
         <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+
+        <link href="https://fonts.googleapis.com/css?family=Sarabun:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap&subset=latin-ext,thai,vietnamese" rel="stylesheet">
+
         @yield('css')
     </head>
     <!-- end::Head -->
 
     <!-- begin::Body -->
-    <body  class="kt-page-content-white kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-aside--enabled kt-aside--fixed kt-page--loading"  >
+    <body style="font-family: 'Sarabun', sans-serif;"  class="kt-page-content-white kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-aside--enabled kt-aside--fixed kt-page--loading"  >
 
 
         <!-- begin:: Page -->
@@ -233,11 +236,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <!-- end:: Aside -->							
                             <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-                                <div></div><div></div><div></div>
-                                <div class="crad-block" align="center"> 
-                                    <h4> ฝนตกก็กางร่ม หนาวก็ใส่เสื้อ เมื้อเป็นหวัดใช้ทิฟฟี่ แผงสีเขียวทิฟฟี่ </h4>
-                                    <h6> คำเตือน : ควรอ่านฉลากก่อนใช้ยา !!! </h6>
-                                </div>
+
                                 @yield('content')
                                  
                             </div>

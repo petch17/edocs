@@ -39,16 +39,20 @@ class InboxController extends Controller
         // $edoc->topic = $request->topic;
 
         if ($request->hasFile('file')){
-            File::delete(base_path().'\\public\\edocfiles\\'.$edoc->file);
-            // $file = str_random(10).'.'.$request->file('file')->getClientOriginalExtension();
-            // $file = $request->file('file')->getClientOriginalExtension();
-            $file = $request->file('file')->getClientOriginalName();
+            // File::delete(base_path().'\\public\\edocfiles\\'.$edoc->file);
+            $file = str_random(10).'.'.$request->file('file')->getClientOriginalExtension();
+            $real_filename = $request->file('file')->getClientOriginalName();
             $request->file('file')->move(base_path().'/public/edocfiles/',$file);
             $edoc->file = $file;
+            $edoc->real_filename = $real_filename;
         }
 
         $edoc->save();
 
+        // return $edoc->id;
+        $pdf_to_img = "http://127.0.0.1/pdftoimage/".$edoc->id;
+        return $pdf_to_img;
+        
         return redirect()->route('inbox.index');
     }
     // serve นะจะ begin

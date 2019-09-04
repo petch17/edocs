@@ -33,6 +33,7 @@ class CreateEdocsTable extends Migration
             $table->dateTime('end')->nullable(); //วันที่สิ้นสุด
             $table->text('detail')->nullable();
             $table->string('file')->nullable();
+            $table->string('real_filename')->nullable();
             $table->string('retirement')->nullable();
             $table->string('position')->nullable();
             $table->string('important')->nullable();
