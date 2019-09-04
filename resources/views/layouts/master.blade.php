@@ -124,7 +124,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
                                         <span class="kt-header__topbar-welcome kt-visible-desktop">Hi,</span>
                                         <span class="kt-header__topbar-username kt-visible-desktop">Nick</span>
-                                        <img alt="Pic" src="./assets/media/users/300_21.jpg"/>
+                                        <img alt="Pic" src="{{asset('assets/media/users/300_21.jpg')}}"/>
                                         <span class="kt-header__topbar-icon kt-bg-brand kt-hidden"><b>S</b></span>
                                     </div>
                                     <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">

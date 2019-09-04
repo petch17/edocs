@@ -8,6 +8,8 @@ Route::post('inbox/addstore', [
 ]);
 Route::resource('addstore', 'InboxController' , ['except' => 'addstore']);
 
+Route::resource('receiver','ReceiverController');
+
 Route::resource('inbox','InboxController');
 
 Route::get('/', function () {
