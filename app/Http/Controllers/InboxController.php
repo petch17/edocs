@@ -110,7 +110,11 @@ class InboxController extends Controller
     }
 
     public function marksignaturestore(Request $request, $id){
-       return $request;
+       
+        $edoc = Edoc::find($id);
+        $edoc->getx = $request->getx;
+        $edoc->gety = $request->gety;
+        $edoc->save();
 
        return redirect()->route('inbox.index');
     }
