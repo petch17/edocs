@@ -5,7 +5,7 @@
 <input id="getx" name="getx" type="hidden" value="" />
 <input id="gety" name="gety" type="hidden" value="" />
 
-<img src="http://203.113.14.20:3000/output/{{$data->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />/>
+<img src="http://203.113.14.20:3000/output/{{$data->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
 
     <button style="position: absolute; top: 20px; right: 180px;" type="submit" class="btn btn-outline-primary">Submit</button>
     <button style="position: absolute; top: 20px; right: 100px;" type="reset" class="btn btn-outline-danger" onclick="window.history.back();">Cancel</button>
@@ -16,7 +16,7 @@ function clickHotspotImage(event) {
         var xCoordinate = event.offsetX;
         var yCoordinate = event.offsetY;
         // alert(xCoordinate)
-        // alert(yCoordinate) 
+        // alert(yCoordinate)
         document.getElementById("getx").value = xCoordinate;
         document.getElementById("gety").value = yCoordinate;
         var circlelist = new Array()
