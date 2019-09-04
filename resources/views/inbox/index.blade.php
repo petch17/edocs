@@ -7,19 +7,19 @@
 @section('content')
 <!-- begin:: Content -->
 <div class="kt-subheader kt-grid__item" id="kt_subheader">
-        <div class="kt-container  kt-container--fluid ">
-            <div class="kt-subheader__main">
-                <h3 class="kt-subheader__title">รายการเอกสาร</h3>
-                {{-- <span class="kt-subheader__separator kt-hidden"></span>
+    <div class="kt-container  kt-container--fluid ">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title">รายการเอกสาร</h3>
+            {{-- <span class="kt-subheader__separator kt-hidden"></span>
                 <div class="kt-subheader__breadcrumbs">
                     <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
                     <span class="kt-subheader__breadcrumbs-separator"></span>
                     <a href="" class="kt-subheader__breadcrumbs-link">Application</a>
                     <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
                 </div> --}}
-            </div>
         </div>
     </div>
+</div>
 
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
     <div class="kt-portlet kt-portlet--mobile">
@@ -30,7 +30,7 @@
                         <a href="{{ route('addcreate') }}" class="btn btn-brand btn-elevate btn-icon-sm">
                             <i class="la la-plus"></i> อัพโหลดเอกสาร
                         </a>
-                    </div>	
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
 
                         <th>#</th>
                         <th>ชื่อไฟล์</th>
-                        <th><i class="fa fa-cog"></i></th> 
+                        <th><i class="fa fa-cog"></i></th>
 
                     </tr>
 
@@ -55,7 +55,8 @@
                         <td>{{$index+1}}</td>
                         <td>{{$item->real_filename}}</td>
                         <td>
-                            <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip"  title="ส่งต่อ">
+                            <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip"
+                                title="ส่งต่อ">
                                 <i class="fa fa-share-square"></i>
                             </a>
                         </td>
@@ -86,41 +87,33 @@
 <script src="{{asset('assets/js/demo11/pages/crud/datatables/basic/basic.js')}}" type="text/javascript"></script>
 
 <script>
-$(document).ready(function () {
-    document.getElementById('inbox').classList.add('kt-menu__item--open');
-    
-    $('#table1').DataTable();
+    $(document).ready(function () {
+        document.getElementById('inbox').classList.add('kt-menu__item--open');
 
-});
+        $('#table1').DataTable();
+
+    });
 </script>
 @endsection
 
 @php
 
 function show_tdate($date_in) {
-    $month_arr = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
+$month_arr = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน",
+"ตุลาคม", "พฤศจิกายน", "ธันวาคม");
 
-    $tok = strtok($date_in, "-");
-    $year = $tok;
+$tok = strtok($date_in, "-");
+$year = $tok;
 
-    $tok = strtok("-");
-    $month = $tok;
+$tok = strtok("-");
+$month = $tok;
 
-    $tok = strtok("-");
-    $day = $tok;
+$tok = strtok("-");
+$day = $tok;
 
-    $year_out = $year + 543;
-    $cnt = $month - 1;
-    $month_out = $month_arr[$cnt];
+$year_out = $year + 543;
+$cnt = $month - 1;
+$month_out = $month_arr[$cnt];
 
-    if ($day < 10)
-        $day_out = "" . $day;
-    else
-        $day_out = $day;
-
-    $t_date = $day_out . " " . $month_out . " " . $year_out;
-
-    return $t_date;
-}
-@endphp
-
+if ($day < 10) $day_out="" . $day; else $day_out=$day; $t_date=$day_out . " " . $month_out . " " . $year_out; return
+    $t_date; } @endphp

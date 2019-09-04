@@ -28,16 +28,18 @@
                         </div>
                     </div> --}}
                 <!--begin::Form-->
-                {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'class' => 'kt-form kt-form--label-right']) !!}
+                {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'class' => 'kt-form
+                kt-form--label-right']) !!}
                 <div class="kt-portlet__body">
 
-                <input name="edoc_id" type="hidden" value="{{$edoc_id}}" />
+                    <input name="edoc_id" type="hidden" value="{{$edoc_id}}" />
                     {{-- {!! Form::text('edoc_id',null,['class'=>'form-control','type'=>'hidden']); !!} --}}
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลขที่รับส่วนงาน :</label>
                         <div class="col-lg-6">
-                            {!! Form::text('part_id',null,['class'=>'form-control','placeholder'=>'เลขที่รับส่วนงาน']); !!}
+                            {!! Form::text('part_id',null,['class'=>'form-control','placeholder'=>'เลขที่รับส่วนงาน']);
+                            !!}
                         </div>
                     </div>
 
@@ -76,8 +78,9 @@
                         <div class="row">
                             <div class="col-lg-3"></div>
                             <div class="col-lg-6">
-                                <button type="submit" class="btn btn-outline-primary">Submit</button>
-                                <button type="reset" class="btn btn-outline-danger" onclick="window.history.back();">Cancel</button>
+                                <button type="submit" class="btn btn-outline-primary">เข้าสู่ระบบ</button>
+                                <button type="reset" class="btn btn-outline-danger"
+                                    onclick="window.history.back();">ยกเลิก</button>
                             </div>
                         </div>
                     </div>
