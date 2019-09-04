@@ -233,7 +233,11 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <!-- end:: Aside -->							
                             <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-
+                                <div></div><div></div><div></div>
+                                <div class="crad-block" align="center"> 
+                                    <h4> ฝนตกก็กางร่ม หนาวก็ใส่เสื้อ เมื้อเป็นหวัดใช้ทิฟฟี่ แผงสีเขียวทิฟฟี่ </h4>
+                                    <h6> คำเตือน : ควรอ่านฉลากก่อนใช้ยา !!! </h6>
+                                </div>
                                 @yield('content')
                                  
                             </div>
