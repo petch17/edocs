@@ -54,12 +54,10 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">ประเภทเอกสาร :</label>
                         <div class="col-lg-6">
-                            <select name="edoc_type" class="form-control" placeholder=" -- เลือกประเภทเอกสาร -- ">
-                                <option value="แจ้งเพื่อทราบ"> แจ้งเพื่อทราบ </option>
-                                <option value="แจ้งเพื่อดำเนินการ"> แจ้งเพื่อดำเนินการ </option>
-                                <option value="แจ้งอบรม_ประชุม_สัมมนา"> แจ้งอบรม/ประชุม/สัมมนา </option>
-                            </select>
-                            {{-- {!! Form::select('objective_id', null, ['class'=>'form-control','placeholder' => '-- เลือกประเภทเอกสาร --']); !!} --}}
+                            {!! Form::select('edoc_type',
+                            array('แจ้งเพื่อทราบ' => 'แจ้งเพื่อทราบ', 'แจ้งเพื่อดำเนินการ' => 'แจ้งเพื่อดำเนินการ',
+                            'แจ้งอบรม_ประชุม_สัมมนา' => 'แจ้งอบรม_ประชุม_สัมมนา') , '-- เลือกประเภทเอกสาร --',
+                            ['class'=>'form-control' ] ); !!}
                         </div>
                     </div>
 
@@ -78,7 +76,7 @@
                         <div class="row">
                             <div class="col-lg-3"></div>
                             <div class="col-lg-6">
-                                <button type="submit" class="btn btn-outline-primary">เข้าสู่ระบบ</button>
+                                <button type="submit" class="btn btn-outline-primary">ยืนยัน</button>
                                 <button type="reset" class="btn btn-outline-danger"
                                     onclick="window.history.back();">ยกเลิก</button>
                             </div>
