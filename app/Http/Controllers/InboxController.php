@@ -42,7 +42,8 @@ class InboxController extends Controller
             // File::delete(base_path().'\\public\\edocfiles\\'.$edoc->file);
             $file = str_random(10).'.'.$request->file('file')->getClientOriginalExtension();
             $real_filename = $request->file('file')->getClientOriginalName();
-            $request->file('file')->move(base_path().'/public/edocfiles/',$file);
+            $request->file('file')->move('D://'.'nodeapi'.'/'.'uploads'.'/'.'pdffile'.'/', $file);
+            // $request->file('file')->move(base_path().'/public/edocfiles/',$file);
             $edoc->file = $file;
             $edoc->real_filename = $real_filename;
         }
@@ -50,9 +51,11 @@ class InboxController extends Controller
         $edoc->save();
 
         // return $edoc->id;
-        $pdf_to_img = "http://127.0.0.1/pdftoimage/".$edoc->id;
-        return $pdf_to_img;
-        
+        $client = new \GuzzleHttp\Client();
+        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id;
+        $pdf_to_img2 = $client->get($pdf_to_img);
+        // return $pdf_to_img;
+        return redirect()->route('marksignature',['id' => $edoc->id]);
         return redirect()->route('inbox.index');
     }
     // serve นะจะ begin
@@ -97,5 +100,15 @@ class InboxController extends Controller
         $pdf = PDF::loadView('myPDF', $data2);
 
         return $pdf->stream();
+    }
+    public function marksignature($id){
+
+        $data = Edoc::find($id);
+        // $data = Edoc::select('signature')->find($id);
+        return view('inbox.marksignature',['data' => $data]);
+    }
+
+    public function marksignaturestore(Request $request, $id){
+       return $request;
     }
 }

@@ -14,6 +14,19 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('marksignature/{id}', [
+    'as' => 'marksignature',
+    'uses' => 'InboxController@marksignature'
+]);
+Route::resource('marksignature', 'InboxController' , ['except' => 'marksignature']);
+
+
+Route::post('marksignaturestore/{id}', [
+    'as' => 'marksignaturestore',
+    'uses' => 'InboxController@marksignaturestore'
+]);
+Route::resource('marksignaturestore', 'InboxController' , ['except' => 'marksignaturestore']);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -40,6 +40,11 @@ class CreateEdocsTable extends Migration
             $table->string('from')->nullable();
             $table->string('created_by')->nullable();
             $table->string('status')->nullable();
+            $table->string('signature')->nullable();
+            $table->integer('width')->nullable();
+            $table->integer('height')->nullable();  
+            $table->integer('getx')->nullable(); 
+            $table->integer('gety')->nullable();  
             // $table->integer('objective_id')->unsigned();
             // $table->foreign('objective_id')->references('id')->on('objective')->onDelete('cascade');
 
