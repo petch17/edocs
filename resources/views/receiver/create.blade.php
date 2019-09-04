@@ -10,7 +10,7 @@
 <div class="kt-subheader kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
         <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title">อัพโหลดเอกสาร</h3>
+            <h3 class="kt-subheader__title">ส่งต่อเอกสาร</h3>
         </div>
     </div>
 </div>
@@ -28,10 +28,10 @@
                         </div>
                     </div> --}}
                 <!--begin::Form-->
-                {!! Form::open(['route' => 'receivestore', 'method' => 'post', 'class' => 'kt-form kt-form--label-right']) !!}
+                {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'class' => 'kt-form kt-form--label-right']) !!}
                 <div class="kt-portlet__body">
 
-                    <input id="edoc_id" name="edoc_id" type="hidden" value="" />
+                <input name="edoc_id" type="hidden" value="{{$edoc_id}}" />
                     {{-- {!! Form::text('edoc_id',null,['class'=>'form-control','type'=>'hidden']); !!} --}}
 
                     <div class="form-group row">
@@ -52,7 +52,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">ประเภทเอกสาร :</label>
                         <div class="col-lg-6">
-                            <select name="type" id="type" class="form-control" placeholder=" -- เลือกประเภทเอกสาร -- ">
+                            <select name="edoc_type" class="form-control" placeholder=" -- เลือกประเภทเอกสาร -- ">
                                 <option value="แจ้งเพื่อทราบ"> แจ้งเพื่อทราบ </option>
                                 <option value="แจ้งเพื่อดำเนินการ"> แจ้งเพื่อดำเนินการ </option>
                                 <option value="แจ้งอบรม_ประชุม_สัมมนา"> แจ้งอบรม/ประชุม/สัมมนา </option>
@@ -61,8 +61,8 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label">เกษียนหนังสือ :</label>
+                    <div class="row">
+                        <label class="col-lg-3 col-form-label text-right">เกษียนหนังสือ :</label>
                         <div class="col-lg-6">
                             {!!
                             Form::textarea('retirement',null,['class'=>'form-control','placeholder'=>'เรียน']);

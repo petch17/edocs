@@ -10,6 +10,12 @@ Route::resource('addstore', 'InboxController' , ['except' => 'addstore']);
 
 Route::resource('receiver','ReceiverController');
 
+Route::get('create/{id}', [
+    'as' => 'receivercreate',
+    'uses' => 'ReceiverController@create'
+]);
+Route::resource('create', 'ReceiverController' , ['except' => 'create']);
+
 Route::resource('inbox','InboxController');
 
 Route::get('/', function () {
@@ -30,11 +36,6 @@ Route::post('marksignaturestore/{id}', [
 Route::resource('marksignaturestore', 'InboxController' , ['except' => 'marksignaturestore']);
 
 
-Route::post('create/{id}', [
-    'as' => 'create',
-    'uses' => 'ReceiverController@create'
-]);
-Route::resource('create', 'ReceiverController' , ['except' => 'create']);
 
 
 Auth::routes();
