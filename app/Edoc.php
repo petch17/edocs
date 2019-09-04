@@ -11,4 +11,8 @@ class Edoc extends Model
     public function tbobjective(){
         return $this->belongsTo(Objective::class, 'objective_id');
     }
+
+    public function tbreceiver(){
+        return $this->hasMany(Edoc::class);
+    }
 }
