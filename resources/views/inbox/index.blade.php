@@ -55,7 +55,7 @@
                         <td>{{$index+1}}</td>
                         <td>{{$item->real_filename}}</td>
                         <td>
-                            <a href="{{ route('inbox.show' , ['id' => $item->id]) }}" data-toggle="kt-tooltip"  title="ส่งต่อ">
+                            <a href="{{ route('receiver.create' , ['id' => $item->id]) }}" data-toggle="kt-tooltip"  title="ส่งต่อ">
                                 <i class="fa fa-share-square"></i>
                             </a>
                         </td>

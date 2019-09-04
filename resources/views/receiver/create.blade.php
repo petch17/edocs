@@ -28,15 +28,16 @@
                         </div>
                     </div> --}}
                 <!--begin::Form-->
-                {!! Form::open(['route' => 'addstore', 'method' => 'post', 'files'=>true, 'class' => 'kt-form
-                kt-form--label-right']) !!}
+                {!! Form::open(['route' => 'receivestore', 'method' => 'post', 'class' => 'kt-form kt-form--label-right']) !!}
                 <div class="kt-portlet__body">
+
+                    <input id="edoc_id" name="edoc_id" type="hidden" value="" />
+                    {{-- {!! Form::text('edoc_id',null,['class'=>'form-control','type'=>'hidden']); !!} --}}
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลขที่รับส่วนงาน :</label>
                         <div class="col-lg-6">
-                            {!! Form::text('booknum',null,['class'=>'form-control','placeholder'=>'เลขที่รับส่วนงาน']);
-                            !!}
+                            {!! Form::text('part_id',null,['class'=>'form-control','placeholder'=>'เลขที่รับส่วนงาน']); !!}
                         </div>
                     </div>
 
@@ -64,11 +65,10 @@
                         <label class="col-lg-3 col-form-label">เกษียนหนังสือ :</label>
                         <div class="col-lg-6">
                             {!!
-                            Form::textarea('booknum',null,['class'=>'form-control','placeholder'=>'เกษียนหนังสือ']);
+                            Form::textarea('retirement',null,['class'=>'form-control','placeholder'=>'เรียน']);
                             !!}
                         </div>
                     </div>
-
 
                 </div>
                 <div class="kt-portlet__foot">

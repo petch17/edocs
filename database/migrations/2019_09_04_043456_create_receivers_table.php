@@ -23,7 +23,7 @@ class CreateReceiversTable extends Migration
              $table->dateTime('start')->nullable(); //วันทีเริ่ม
              $table->dateTime('end')->nullable(); //วันที่สิ้นสุด
             //  $table->text('detail')->nullable();
-             $table->string('retirement')->nullable();
+             $table->string('retirement')->nullable(); //เกษียนหนังสือ
             // $table->string('position')->nullable();
             // $table->string('important')->nullable();
             // $table->string('from')->nullable();

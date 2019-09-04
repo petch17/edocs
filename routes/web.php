@@ -29,6 +29,14 @@ Route::post('marksignaturestore/{id}', [
 ]);
 Route::resource('marksignaturestore', 'InboxController' , ['except' => 'marksignaturestore']);
 
+
+Route::post('create/{id}', [
+    'as' => 'create',
+    'uses' => 'ReceiverController@create'
+]);
+Route::resource('create', 'ReceiverController' , ['except' => 'create']);
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
