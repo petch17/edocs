@@ -67,44 +67,63 @@
         </div>
         {!! Form::close() !!}
 
-        {{-- </div>
+       {{-- </div>
     <div class="kt-login__signup">
         <div class="kt-login__head">
             <h3 class="kt-login__title">เข้าสู่ระบบ</h3>
-            <div class="kt-login__desc">Enter your details to create your account:</div>
+            <div class="kt-login__desc">กรอกรายละเอียดของคุณเพื่อสร้างบัญชีของคุณ:</div>
         </div>
-        <form class="kt-form" action="">
+            {!! Form::open(['route' => 'register', 'method' => 'post', 'class' => 'kt-form']) !!}
+            @csrf
             <div class="input-group">
-                <input class="form-control" type="text" placeholder="Fullname" name="fullname">
+                <input type="text" placeholder="ชื่อ-นามสกุล" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus >
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+            </div>
+
+            <div class="input-group">
+                <input id="email" type="email" placeholder="อีเมล์"
+                class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
+                required autocomplete="email" autofocus>
+
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
             </div>
             <div class="input-group">
-                <input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+                    <input id="password" type="password" placeholder="รหัสผ่าน"
+                    class="form-control @error('password') is-invalid @enderror" name="password" required
+                    autocomplete="current-password">
+                @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
             <div class="input-group">
-                <input class="form-control" type="password" placeholder="Password" name="password">
-            </div>
-            <div class="input-group">
-                <input class="form-control" type="password" placeholder="Confirm Password" name="rpassword">
+                <input id="password-confirm" class="form-control" type="password" placeholder="ยืนยันรหัสผ่าน" name="password_confirmation"  required autocomplete="new-password">
             </div>
             <div class="row kt-login__extra">
                 <div class="col kt-align-left">
                     <label class="kt-checkbox">
-                        <input type="checkbox" name="agree">I Agree the <a href="#"
-                            class="kt-link kt-login__link kt-font-bold">terms and conditions</a>.
+                        <input type="checkbox" name="agree">ฉันยอมรับ ข้อกำหนดและเงื่อนไข.
                         <span></span>
                     </label>
                     <span class="form-text text-muted"></span>
                 </div>
             </div>
             <div class="kt-login__actions">
-                <button id="kt_login_signup_submit" class="btn btn-brand btn-elevate kt-login__btn-primary">Sign
-                    Up</button>&nbsp;&nbsp;
-                <button id="kt_login_signup_cancel"
-                    class="btn btn-light btn-elevate kt-login__btn-secondary">Cancel</button>
+                <button type="submit" class="btn btn-outline-primary">ตกลง</button>
+                <button type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ยกเลิก</button>
             </div>
-        </form>
-
-    </div>
+            {!! Form::close() !!}
+  
+   </div>
     <div class="kt-login__forgot">
         <div class="kt-login__head">
             <h3 class="kt-login__title">Forgotten Password ?</h3>
@@ -130,7 +149,7 @@
         &nbsp;&nbsp;
         <a href="javascript:;" id="kt_login_signup" class="kt-login__account-link"> คลิกเพื่อสร้างบัญชี !</a>
     </div>
-</div> --}}
+</div>  --}}
         @endsection
 
         @section('js')
