@@ -16,7 +16,6 @@ class CreateReceiversTable extends Migration
         Schema::create('receivers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date')->nullable();
-            // $table->text('topic')->nullable();
              $table->string('part_id'); //เลขที่รับส่วนงาน
             //  $table->string('booknum')->nullable();
              $table->string('edoc_type')->nullable(); //ประเภทเอกสาร
@@ -28,7 +27,6 @@ class CreateReceiversTable extends Migration
             // $table->string('important')->nullable();
             // $table->string('from')->nullable();
             // $table->string('created_by')->nullable();
-            // $table->string('status')->nullable();
             $table->integer('edoc_id')->unsigned();
             $table->foreign('edoc_id')->references('id')->on('edocs')->onDelete('cascade');
 

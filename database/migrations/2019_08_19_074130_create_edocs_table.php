@@ -32,6 +32,7 @@ class CreateEdocsTable extends Migration
             $table->integer('gety')->nullable();  
             $table->integer('pagelength')->nullable(); 
             $table->string('approveimage')->nullable(); 
+            $table->string('status')->nullable(); 
             // $table->integer('objective_id')->unsigned();
             // $table->foreign('objective_id')->references('id')->on('objective')->onDelete('cascade');
 
