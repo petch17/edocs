@@ -91,7 +91,7 @@ class InboxController extends Controller
     {
         // $data = Edoc::find($id);
         $data = Edoc::with('tbobjective')->find($id);
-        $data2 = [  'booknum' => $data->booknum,
+        $data2 = [  'booknum' => $data->booknum, 
                     'date' => $data->date,
                     'topic' => $data->topic,
                     'position' => $data->position,
