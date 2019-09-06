@@ -35,7 +35,6 @@
                                 <label class="col-lg-3 col-form-label">เรื่อง :</label>
                                 <div class="col-lg-6">
                                 {!! Form::text('topic',null,['class'=>'form-control','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!}
-                                        <!-- {!! Form::file('file' , ['accept' => ',.pdf']); !!} -->
                                 </div>
                             </div>
 
@@ -70,8 +69,8 @@
 
 @section('js')
 <!--begin::Page Scripts(used by this page) -->
-<script src="assets/vendors/custom/uppy/uppy.bundle.js" type="text/javascript"></script>
-<script src="./assets/js/demo11/pages/crud/file-upload/uppy.js" type="text/javascript"></script>
+{{-- <script src="assets/vendors/custom/uppy/uppy.bundle.js" type="text/javascript"></script>
+<script src="./assets/js/demo11/pages/crud/file-upload/uppy.js" type="text/javascript"></script> --}}
 <!--end::Page Scripts -->
 
 <script>

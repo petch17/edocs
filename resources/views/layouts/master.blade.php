@@ -222,12 +222,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                     <span class="kt-menu__link-text" >Inbox</span>
                                                 </a>
                                             </li>
-                                            <li id="inbox" class="kt-menu__item " aria-haspopup="true" >
+                                            {{-- <li id="inbox" class="kt-menu__item " aria-haspopup="true" >
                                                 <a   href="{{ route('receiver.create') }}" class="kt-menu__link ">
                                                     <i class="kt-menu__link-icon flaticon-suitcase"></i>
                                                     <span class="kt-menu__link-text">Receiver</span>
                                                 </a>
-                                            </li>
+                                            </li> --}}
 
                                         </ul>
                                     </div>

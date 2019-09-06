@@ -53,7 +53,7 @@
                         <td>{{$index+1}}</td>
                         <td>{{$item->topic}}</td>
                         <td>
-                            <a href="{{ route('inbox.show' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
+                            <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
                                 <i class="fa fa-share-square"></i>
                             </a>
                         </td>
