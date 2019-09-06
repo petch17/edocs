@@ -47,7 +47,7 @@ class InboxController extends Controller
             $edoc->file = $file;
             $edoc->real_filename = $real_filename;
         }
-
+        $edoc->topic = $request->topic;
         $edoc->save();
 
         // return $edoc->id;
