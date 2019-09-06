@@ -40,38 +40,33 @@
             <table id="table1" class="table table-striped- table-bordered table-hover">
                 <thead>
                     <tr>
-
                         <th>#</th>
                         <th>ชื่อไฟล์</th>
                         <th><i class="fa fa-cog"></i></th>
-
                     </tr>
-
                 </thead>
 
-                @foreach($edocs as $index=>$item)
+               
                 <tbody>
+                @foreach($edocs as $index=>$item)
                     <tr>
                         <td>{{$index+1}}</td>
-                        <td>{{$item->real_filename}}</td>
+                        <td>{{$item->topic}}</td>
                         <td>
-                            <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip"
-                                title="ส่งต่อ">
+                            <a href="{{ route('inbox.show' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
                                 <i class="fa fa-share-square"></i>
                             </a>
                         </td>
-
                         {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
-                        {{-- @php 
-                            $date_in = $item->date; 
-                            $date1 = show_tdate($date_in) ;  
+                        {{-- @php
+                            $date_in = $item->date;
+                            $date1 = show_tdate($date_in) ;
                             echo $date1 ;
                         @endphp --}}
-
-
                     </tr>
+                    @endforeach
                 </tbody>
-                @endforeach
+               
 
             </table>
         </div>
@@ -87,7 +82,7 @@
 <script src="{{asset('assets/js/demo11/pages/crud/datatables/basic/basic.js')}}" type="text/javascript"></script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         document.getElementById('inbox').classList.add('kt-menu__item--open');
 
         $('#table1').DataTable();
@@ -99,8 +94,7 @@
 @php
 
 function show_tdate($date_in) {
-$month_arr = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน",
-"ตุลาคม", "พฤศจิกายน", "ธันวาคม");
+$month_arr = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
 
 $tok = strtok($date_in, "-");
 $year = $tok;
@@ -115,5 +109,4 @@ $year_out = $year + 543;
 $cnt = $month - 1;
 $month_out = $month_arr[$cnt];
 
-if ($day < 10) $day_out="" . $day; else $day_out=$day; $t_date=$day_out . " " . $month_out . " " . $year_out; return
-    $t_date; } @endphp
+if ($day < 10) $day_out="" . $day; else $day_out=$day; $t_date=$day_out . " " . $month_out . " " . $year_out; return $t_date; } @endphp

@@ -79,7 +79,7 @@
                                 <button type="submit" class="btn btn-outline-primary">ยืนยัน</button>
                                 <button type="reset" class="btn btn-outline-danger"
                                     onclick="window.history.back();">ยกเลิก</button>
-                            </div>
+                               </div>
                         </div>
                     </div>
                 </div>

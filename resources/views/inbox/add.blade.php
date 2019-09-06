@@ -27,12 +27,20 @@
                             </h3>
                         </div>
                     </div> --}}
-                    <!--begin::Form-->                        
+                    <!--begin::Form-->
                             {!! Form::open(['route' => 'addstore', 'method' => 'post', 'files'=>true, 'class' => 'kt-form kt-form--label-right']) !!}
                         <div class="kt-portlet__body">
 
+                        <div class="form-group row">
+                                <label class="col-lg-3 col-form-label">เรื่อง :</label>
+                                <div class="col-lg-6">
+                                {!! Form::text('topic',null,['class'=>'form-control','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!}
+                                        <!-- {!! Form::file('file' , ['accept' => ',.pdf']); !!} -->
+                                </div>
+                            </div>
+
                             <div class="row">
-                                <label class="col-lg-3 col-form-label">อัพโหลด :</label>
+                                <label class="col-lg-3 col-form-label text-right">อัพโหลด :</label>
                                 <div class="col-lg-6">
                                         {!! Form::file('file' , ['accept' => ',.pdf']); !!}
                                 </div>

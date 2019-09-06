@@ -22,14 +22,30 @@ class CreateEdocsTable extends Migration
 
         Schema::create('edocs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('number')->nullable();
+            $table->date('date')->nullable();
+            $table->text('topic')->nullable();
+
+            // $table->string('part_id'); //เลขที่รับส่วนงาน
+            $table->string('booknum')->nullable();
+            $table->string('edoc_type')->nullable();
+            $table->dateTime('start')->nullable(); //วันทีเริ่ม
+            $table->dateTime('end')->nullable(); //วันที่สิ้นสุด
+            $table->text('detail')->nullable();
             $table->string('file')->nullable();
             $table->string('real_filename')->nullable();
+            $table->string('retirement')->nullable();
+            $table->string('position')->nullable();
+            $table->string('important')->nullable();
+            $table->string('from')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('status')->nullable();
             $table->string('signature')->nullable();
             $table->integer('width')->nullable();
             $table->integer('height')->nullable();  
             $table->integer('getx')->nullable(); 
-            $table->integer('gety')->nullable(); 
-            $table->string('approveimage')->nullable();  
+            $table->integer('gety')->nullable();  
+            $table->integer('pagelength')->nullable(); 
             // $table->integer('objective_id')->unsigned();
             // $table->foreign('objective_id')->references('id')->on('objective')->onDelete('cascade');
 
