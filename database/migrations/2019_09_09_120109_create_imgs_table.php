@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReceiversTable extends Migration
+class CreateImgsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateReceiversTable extends Migration
      */
     public function up()
     {
-        Schema::create('receivers', function (Blueprint $table) {
+        Schema::create('imgs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date')->nullable();
             $table->string('part_id')->nullable(); //เลขที่รับส่วนงาน
             //  $table->string('booknum')->nullable();
              $table->string('edoc_type')->nullable(); //ประเภทเอกสาร
-             $table->dateTime('start')->nullable(); //วันทีเริ่ม
-             $table->dateTime('end')->nullable(); //วันที่สิ้นสุด
+             $table->string('start')->nullable(); //วันทีเริ่ม
+             $table->string('end')->nullable(); //วันที่สิ้นสุด
             //  $table->text('detail')->nullable();
              $table->string('retirement')->nullable(); //เกษียนหนังสือ
             // $table->string('position')->nullable();
@@ -42,6 +42,6 @@ class CreateReceiversTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receivers');
+        Schema::dropIfExists('imgs');
     }
 }
