@@ -1,7 +1,15 @@
+
+
 @extends('layouts.master')
 
 @section('css')
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<style> canvas{
+    border: 1px black solid;
+}
+.text{
+    display: none;
+} </style>
 @endsection
 
 @section('content')
@@ -28,22 +36,26 @@
                         </div>
                     </div> --}}
                 <!--begin::Form-->
-                {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'class' => 'kt-form
+                {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'file'=>true, 'onsubmit'=>'return validateForm()', 'class' => 'kt-form
                 kt-form--label-right']) !!}
-                <div class="kt-portlet__body">
+                
 
                     <input name="edoc_id" type="hidden" value="{{$edoc_id}}" />
-                    {{-- {!! Form::text('edoc_id',null,['class'=>'form-control','type'=>'hidden']); !!} --}}
+                    {{-- {!! Form::text('edoc_id',null,['class'=>'form-control','type'=>'hidden']); !!}  --}}
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลขที่รับส่วนงาน :</label>
                         <div class="col-lg-6">
-                            {!! Form::text('part_id',null,['class'=>'form-control','placeholder'=>'เลขที่รับส่วนงาน']);
+                                <div class="kt-portlet__body">
+                                        <canvas id='textCanvas' class='text' height=20></canvas>
+                                        <img id='image'>
+                                        <br>
+                            {!! Form::text('part_id',null,['class'=>'form-control', 'id'=>'text' ,'placeholder'=>'เลขที่รับส่วนงาน']);
                             !!}
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <label class="col-lg-3 col-form-label">วันที่ :</label>
                         <div class="col-lg-6">
                             {!! Form::date('date', null, ['class' => 'form-control datetimepicker','id' =>
@@ -59,13 +71,16 @@
                             'แจ้งอบรม_ประชุม_สัมมนา' => 'แจ้งอบรม_ประชุม_สัมมนา') , '-- เลือกประเภทเอกสาร --',
                             ['class'=>'form-control' ] ); !!}
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="row">
                         <label class="col-lg-3 col-form-label text-right">เกษียนหนังสือ :</label>
                         <div class="col-lg-6">
+                                <canvas id='textCanvas2' class='text' height=20></canvas>
+                                <img id='image2'>
+                                <br>
                             {!!
-                            Form::textarea('retirement',null,['class'=>'form-control','placeholder'=>'เรียน']);
+                            Form::textarea('retirement',null,['class'=>'form-control',  'id'=>'text2' ,'placeholder'=>'เรียน']);
                             !!}
                         </div>
                     </div>
@@ -83,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                {!! Form::close() !!} 
                 <!--end::Form-->
             </div>
         </div>
@@ -102,5 +117,54 @@
     $(document).ready(function () {
         document.getElementById('inbox').classList.add('kt-menu__item--open');
     });
+
+    var tCtx = document.getElementById('textCanvas').getContext('2d'),
+    imageElem = document.getElementById('image');
+
+    document.getElementById('text').addEventListener('keyup', function (){
+    tCtx.canvas.width = tCtx.measureText(this.value).width;
+    tCtx.font = "30px Arial";
+    tCtx.fillText(this.value, 0, 10);
+    imageElem.src = tCtx.canvas.toDataURL();
+    }, false);
+
+    var tCtx2 = document.getElementById('textCanvas2').getContext('2d'),
+    imageElem2 = document.getElementById('image2');
+
+    document.getElementById('text2').addEventListener('keyup', function (){
+    tCtx2.canvas.width = tCtx2.measureText(this.value).width;
+    tCtx2.font = "30px Arial";
+    tCtx2.fillText(this.value, 0, 10);
+    imageElem2.src = tCtx2.canvas.toDataURL();
+    }, false);
+
+    // var tCtx3 = document.getElementById('textCanvas3').getContext('2d'),
+    // imageElem3 = document.getElementById('image3');
+
+    // document.getElementById('text3').addEventListener('keyup', function (){
+    // tCtx3.canvas.width = tCtx3.measureText(this.value).width;
+    // tCtx3.font = "30px Arial";
+    // tCtx3.fillText(this.value, 0, 10);
+    // imageElem3.src = tCtx3.canvas.toDataURL();
+    // }, false);
 </script>
 @endsection
+
+@php
+        if (isset($_POST['submit'])) {
+            
+            $img = imagecreate(500, 100);
+            
+            // $textbgcolor = imagecolorallocate($img, 173, 230, 181);
+            // $textcolor = imagecolorallocate($img, 0, 192, 255);
+            
+            if ($_POST['txt_input'] != '') {
+                $txt = $_POST['txt_input'];
+                imagestring($img, 5, 5, 5, $txt, $textcolor);
+                ob_start();
+                imagepng($img);
+                printf('<img src="data:image/png;base64,%s"/ width="100">', base64_encode(ob_get_clean()));
+            }
+        }
+        @endphp
+

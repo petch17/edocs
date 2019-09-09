@@ -16,7 +16,7 @@ class CreateReceiversTable extends Migration
         Schema::create('receivers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date')->nullable();
-             $table->string('part_id'); //เลขที่รับส่วนงาน
+             $table->string('part_id')->nullable(); //เลขที่รับส่วนงาน
             //  $table->string('booknum')->nullable();
              $table->string('edoc_type')->nullable(); //ประเภทเอกสาร
              $table->dateTime('start')->nullable(); //วันทีเริ่ม

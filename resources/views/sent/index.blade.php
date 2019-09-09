@@ -48,12 +48,12 @@
 
                
                 <tbody>
-                @foreach($edocs as $index=>$item)
+                @foreach($edocs2 as $index=>$item)
                     <tr>
                         <td>{{$index+1}}</td>
                         <td>{{$item->topic}}</td>
                         <td>
-                            <a href="{{ route('sent.create' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
+                            <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
                                 <i class="fa fa-share-square"></i>
                             </a>
                         </td>

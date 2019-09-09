@@ -28,12 +28,12 @@
                         </div>
                     </div> --}}
                 <!--begin::Form-->
-                {{-- {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'class' => 'kt-form
+                {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'class' => 'kt-form
                 kt-form--label-right']) !!}
                 <div class="kt-portlet__body">
 
                     <input name="edoc_id" type="hidden" value="{{$edoc_id}}" />
-                    {!! Form::text('edoc_id',null,['class'=>'form-control','type'=>'hidden']); !!} 
+                    {{-- {!! Form::text('edoc_id',null,['class'=>'form-control','type'=>'hidden']); !!}  --}}
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลขที่รับส่วนงาน :</label>
@@ -83,10 +83,10 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!} --}}
+                {!! Form::close() !!} 
                 <!--end::Form-->
 
-                <form name="form" id="form" method="post" action="#"
+                {{-- <form name="form" id="form" method="post" action="#"
                 enctype="multipart/form-data" onsubmit="return validateForm();">
             <div class="form-row">
         
@@ -117,7 +117,7 @@
                 printf('<img src="data:image/png;base64,%s"/ width="100">', base64_encode(ob_get_clean()));
             }
         }
-        @endphp
+        @endphp --}}
             </div>
         </div>
     </div>
