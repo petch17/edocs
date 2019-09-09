@@ -54,7 +54,7 @@ class InboxController extends Controller
 
         // return $edoc->id;
         $client = new \GuzzleHttp\Client();
-        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id;
+        $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
         $pdf_to_img2 = $client->get($pdf_to_img);
         // return $pdf_to_img;
         return redirect()->route('marksignature',['id' => $edoc->id]);
