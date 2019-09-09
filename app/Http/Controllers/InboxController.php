@@ -120,4 +120,10 @@ class InboxController extends Controller
 
        return redirect()->route('inbox.index');
     }
+
+    public function destroy($id) {
+
+        Edoc::destroy($id);
+        return back();
+    }
 }
