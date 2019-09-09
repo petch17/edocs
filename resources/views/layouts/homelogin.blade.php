@@ -107,7 +107,7 @@ License: You must have a valid license purchased only from themeforest(the above
   <div class="kt-grid kt-grid--ver kt-grid--root kt-page">
     <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v3 kt-login--signin" id="kt_login">
       <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
-        style="background-image: url(./assets/media//bg/bg-3.jpg);">
+        style="background-image: url({{aseet('assets/media//bg/bg-3.jpg')}});">
         <div class="kt-grid__item kt-grid__item--fluid kt-login__wrapper">
 
 
