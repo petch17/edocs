@@ -11,7 +11,7 @@ class SentController extends Controller
 {
     public function index()
     {
-        $edocs = Edoc::with('tbobjective')->where('status' , 'เอกสารที่อนุมัติแล้ว')->get();
+        $edocs = Edoc::with('tbobjective')->where('status' , 'เอกสารที่ยังไม่ผ่านการอนุมัติ')->get();
         // $edocs = Edoc::with('tbobjective')->get();
         return view('sent.index',['edocs2' => $edocs]);
     }
