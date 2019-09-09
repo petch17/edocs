@@ -13,7 +13,8 @@ class InboxController extends Controller
 {
     public function index()
     {
-        $edocs = Edoc::with('tbobjective')->get();
+        $edocs = Edoc::with('tbobjective')->where('status', 'เอกสารที่ยังไม่ผ่านการอนุมัติ')->get();
+        // $edocs = Edoc::with('tbobjective')->get();
         return view('inbox.index',['edocs' => $edocs]);
     }
 
@@ -48,6 +49,7 @@ class InboxController extends Controller
             $edoc->real_filename = $real_filename;
         }
         $edoc->topic = $request->topic;
+        $edoc->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
         $edoc->save();
 
         // return $edoc->id;
