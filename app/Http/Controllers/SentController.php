@@ -14,4 +14,9 @@ class SentController extends Controller
         $edocs = Edoc::with('tbobjective')->get();
         return view('sent.index',['edocs' => $edocs]);
     }
+
+    public function create()
+    {
+        return view('sent.create');
+    }
 }

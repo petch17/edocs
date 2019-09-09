@@ -2,6 +2,13 @@
 
 Route::resource('sent','SentController');
 
+Route::get('create/{id}', [
+    'as' => 'sentcreate',
+    'uses' => 'SentController@create'
+]);
+Route::resource('create', 'SentController' , ['except' => 'create']);
+
+
 Route::get('inbox/add', 'InboxController@addcreate')->name('addcreate');
 
 Route::post('inbox/addstore', [
