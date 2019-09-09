@@ -1,15 +1,16 @@
-
-
 @extends('layouts.master')
 
 @section('css')
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
-<style> canvas{
-    border: 1px black solid;
-}
-.text{
-    display: none;
-} </style>
+<style>
+    canvas {
+        border: 1px black solid;
+    }
+
+    .text {
+        display: none;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -36,21 +37,23 @@
                         </div>
                     </div> --}}
                 <!--begin::Form-->
-                {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'file'=>true, 'onsubmit'=>'return validateForm()', 'class' => 'kt-form
+                {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'file'=>true, 'onsubmit'=>'return
+                validateForm()', 'class' => 'kt-form
                 kt-form--label-right']) !!}
-                
+                <div class="kt-portlet__body">
 
-                    <input name="edoc_id" type="hidden" value="{{$edoc_id}}" />
-                    {{-- {!! Form::text('edoc_id',null,['class'=>'form-control','type'=>'hidden']); !!}  --}}
+                <input id="getimg" name="getimg" type="hidden" value="" />
+                <input name="edoc_id" type="hidden" value="{{$edoc_id}}" />
+                {{-- {!! Form::text('edoc_id',null,['class'=>'form-control','type'=>'hidden']); !!}  --}}
 
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label">เลขที่รับส่วนงาน :</label>
-                        <div class="col-lg-6">
-                                <div class="kt-portlet__body">
-                                        <canvas id='textCanvas' class='text' height=20></canvas>
-                                        <img id='image'>
-                                        <br>
-                            {!! Form::text('part_id',null,['class'=>'form-control', 'id'=>'text' ,'placeholder'=>'เลขที่รับส่วนงาน']);
+                <div class="form-group row">
+
+                    <label class="col-lg-3 col-form-label">เลขที่รับส่วนงาน :</label>
+                    <div class="col-lg-6">
+
+
+                            {!! Form::text('part_id',null,['class'=>'form-control', 'id'=>'text'
+                            ,'placeholder'=>'เลขที่รับส่วนงาน']);
                             !!}
                         </div>
                     </div>
@@ -74,13 +77,14 @@
                     </div> --}}
 
                     <div class="row">
+                        {{-- <canvas id='textCanvas2' class='text' height=30></canvas>
+                                <img id='image2'>
+                                <br> --}}
                         <label class="col-lg-3 col-form-label text-right">เกษียนหนังสือ :</label>
                         <div class="col-lg-6">
-                                <canvas id='textCanvas2' class='text' height=20></canvas>
-                                <img id='image2'>
-                                <br>
                             {!!
-                            Form::textarea('retirement',null,['class'=>'form-control',  'id'=>'text2' ,'placeholder'=>'เรียน']);
+                            Form::textarea('retirement',null,['class'=>'form-control', 'id'=>'text2'
+                            ,'placeholder'=>'เรียน']);
                             !!}
                         </div>
                     </div>
@@ -94,16 +98,24 @@
                                 <button type="submit" class="btn btn-outline-primary">ยืนยัน</button>
                                 <button type="reset" class="btn btn-outline-danger"
                                     onclick="window.history.back();">ยกเลิก</button>
-                               </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!} 
+                {!! Form::close() !!}
                 <!--end::Form-->
             </div>
         </div>
     </div>
 </div>
+<br>
+<div style="width:200px">
+
+
+    <canvas id='textCanvas' class='text' height='50' width="20%"></canvas>
+    <img id='image'>
+</div>
+<br>
 <!-- end:: Content -->
 @endsection
 
@@ -119,24 +131,29 @@
     });
 
     var tCtx = document.getElementById('textCanvas').getContext('2d'),
-    imageElem = document.getElementById('image');
+        imageElem = document.getElementById('image');
 
-    document.getElementById('text').addEventListener('keyup', function (){
-    tCtx.canvas.width = tCtx.measureText(this.value).width;
-    tCtx.font = "30px Arial";
-    tCtx.fillText(this.value, 0, 10);
-    imageElem.src = tCtx.canvas.toDataURL();
+    document.getElementById('text').addEventListener('keyup', function () {
+        tCtx.canvas.width = tCtx.measureText(this.value).width;
+        tCtx.font = "18px THSarabunNew";
+        tCtx.fillText(this.value, 0, 25);
+        imageElem.src = tCtx.canvas.toDataURL();
+        // console.log(imageElem.src);
+        // alert(imageElem.src);
+        document.getElementById("getimg").value = imageElem.src;
     }, false);
+    // alert(imageElem.src);
+    // document.getElementById("getimg").value = imageElem.src;
 
-    var tCtx2 = document.getElementById('textCanvas2').getContext('2d'),
-    imageElem2 = document.getElementById('image2');
+    // var tCtx2 = document.getElementById('textCanvas2').getContext('2d'),
+    // imageElem2 = document.getElementById('image2');
 
-    document.getElementById('text2').addEventListener('keyup', function (){
-    tCtx2.canvas.width = tCtx2.measureText(this.value).width;
-    tCtx2.font = "30px Arial";
-    tCtx2.fillText(this.value, 0, 10);
-    imageElem2.src = tCtx2.canvas.toDataURL();
-    }, false);
+    // document.getElementById('text2').addEventListener('keyup', function (){
+    // tCtx2.canvas.width = tCtx2.measureText(this.value).width;
+    // tCtx2.font = "10px Arial";
+    // tCtx2.fillText(this.value, 0, 14);
+    // imageElem2.src = tCtx2.canvas.toDataURL();
+    // }, false);
 
     // var tCtx3 = document.getElementById('textCanvas3').getContext('2d'),
     // imageElem3 = document.getElementById('image3');
@@ -151,20 +168,19 @@
 @endsection
 
 @php
-        if (isset($_POST['submit'])) {
-            
-            $img = imagecreate(500, 100);
-            
-            // $textbgcolor = imagecolorallocate($img, 173, 230, 181);
-            // $textcolor = imagecolorallocate($img, 0, 192, 255);
-            
-            if ($_POST['txt_input'] != '') {
-                $txt = $_POST['txt_input'];
-                imagestring($img, 5, 5, 5, $txt, $textcolor);
-                ob_start();
-                imagepng($img);
-                printf('<img src="data:image/png;base64,%s"/ width="100">', base64_encode(ob_get_clean()));
-            }
-        }
-        @endphp
+if (isset($_POST['submit'])) {
 
+$img = imagecreate(500, 100);
+
+// $textbgcolor = imagecolorallocate($img, 173, 230, 181);
+// $textcolor = imagecolorallocate($img, 0, 192, 255);
+
+if ($_POST['txt_input'] != '') {
+$txt = $_POST['txt_input'];
+imagestring($img, 5, 5, 5, $txt, $textcolor);
+ob_start();
+imagepng($img);
+printf('<img src="data:image/png;base64,%s"/ width="100">', base64_encode(ob_get_clean()));
+}
+}
+@endphp
