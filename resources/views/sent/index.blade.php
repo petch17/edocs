@@ -9,7 +9,7 @@
 <div class="kt-subheader kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
         <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title">รายการเอกสารที่ยังไม่ผ่านการอนุมัติ</h3>
+            <h3 class="kt-subheader__title">รายการเอกสารที่อนุมัติแล้ว</h3>
             {{-- <span class="kt-subheader__separator kt-hidden"></span>
                 <div class="kt-subheader__breadcrumbs">
                     <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
@@ -48,14 +48,14 @@
 
                
                 <tbody>
-                @foreach($edocs as $index=>$item)
+                @foreach($edocs2 as $index=>$item)
                     <tr>
                         <td>{{$index+1}}</td>
                         <td>{{$item->topic}}</td>
                         <td>
-                            {{-- <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
+                            <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
                                 <i class="fa fa-share-square"></i>
-                            </a> --}}
+                            </a>
                         </td>
                         {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
                         {{-- @php
@@ -83,7 +83,7 @@
 
 <script>
     $(document).ready(function() {
-        document.getElementById('inbox').classList.add('kt-menu__item--open');
+        document.getElementById('sent').classList.add('kt-menu__item--open');
 
         $('#table1').DataTable();
 

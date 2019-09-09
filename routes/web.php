@@ -1,5 +1,7 @@
 <?php
 
+Route::resource('sent','SentController');
+
 Route::get('inbox/add', 'InboxController@addcreate')->name('addcreate');
 
 Route::post('inbox/addstore', [
@@ -10,7 +12,13 @@ Route::resource('addstore', 'InboxController' , ['except' => 'addstore']);
 
 Route::resource('receiver','ReceiverController');
 
-Route::get('create/{id}', [
+// Route::get('456/create/{id}', [
+//     'as' => 'sentcreate',
+//     'uses' => 'SentController@create'
+// ]);
+// Route::resource('create', 'SentController' , ['except' => 'create']);
+
+Route::get('receive/create/{id}', [
     'as' => 'receivercreate',
     'uses' => 'ReceiverController@create'
 ]);
