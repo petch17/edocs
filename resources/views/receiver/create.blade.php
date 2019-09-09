@@ -112,7 +112,7 @@
 <div style="width:200px">
 
 
-    <canvas id='textCanvas' class='text' height='50' width="20%"></canvas>
+    <canvas id='textCanvas' class='text' height='50' width="100%"></canvas>
     <img id='image'>
 </div>
 <br>
