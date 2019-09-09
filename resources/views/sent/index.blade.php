@@ -83,7 +83,7 @@
 
 <script>
     $(document).ready(function() {
-        document.getElementById('inbox').classList.add('kt-menu__item--open');
+        document.getElementById('sent').classList.add('kt-menu__item--open');
 
         $('#table1').DataTable();
 
