@@ -34,12 +34,12 @@ class ReceiverController extends Controller
         $receive->save();
 
         $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://203.113.14.20:3000/senddoc/".$edoc->id;
+        $text_to_img = "http://203.113.14.20:3000/senddoc/".$receive->id;
         $text_to_img2 = $client->get($text_to_img);
         // return $text_to_img;
 
         return redirect()->route('inbox.index');
-    } 
+    }
     public function show($id)
     {
         //
