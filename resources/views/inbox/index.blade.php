@@ -53,6 +53,9 @@
                         <td>{{$index+1}}</td>
                         <td>{{$item->topic}}</td>
                         <td>
+                                <a target="_blank" href="D://nodeapi/uploads/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ลบ">
+                                    <i class="fa fa-search"></i>
+                                </a>
                                 <a href="{{ url('destroy/'.$item->id) }}" data-toggle="kt-tooltip" title="ลบ">
                                     <i class="fa fa-trash-alt"></i>
                                 </a>
