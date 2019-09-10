@@ -40,22 +40,25 @@
             <table id="table1" class="table table-striped- table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>ชื่อไฟล์</th>
-                        <th><i class="fa fa-cog"></i></th>
+                        <th width="20%">#</th>
+                        <th width="60%">ชื่อไฟล์</th>
+                        <th width="20%"><i class="fa fa-cog"></i></th>
                     </tr>
                 </thead>
 
-               
                 <tbody>
                 @foreach($edocs2 as $index=>$item)
                     <tr>
                         <td>{{$index+1}}</td>
                         <td>{{$item->topic}}</td>
                         <td>
+                                <a target="_blank" data-toggle="kt-tooltip" title="ดูรายละเอียด">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                                &nbsp; &nbsp;
                                 <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
-                                        <i class="fa fa-share-square"></i>
-                                    </a>
+                                    <i class="fa fa-share-square"></i>
+                                </a>
                         </td>
                         {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
                         {{-- @php
@@ -66,7 +69,7 @@
                     </tr>
                     @endforeach
                 </tbody>
-               
+
 
             </table>
         </div>
