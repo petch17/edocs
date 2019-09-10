@@ -62,8 +62,8 @@
 
 @section('js')
 <!--begin::Page Scripts(used by this page) -->
-<script src="assets/vendors/custom/uppy/uppy.bundle.js" type="text/javascript"></script>
-<script src="./assets/js/demo11/pages/crud/file-upload/uppy.js" type="text/javascript"></script>
+{{-- <script src="assets/vendors/custom/uppy/uppy.bundle.js" type="text/javascript"></script>
+<script src="./assets/js/demo11/pages/crud/file-upload/uppy.js" type="text/javascript"></script> --}}
 <!--end::Page Scripts -->
 
 <script>

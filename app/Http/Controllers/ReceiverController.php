@@ -31,17 +31,12 @@ class ReceiverController extends Controller
         $receive->retirement = $request->retirement;
         $receive->edoc_id = $request->edoc_id;
 
-        
-        // $image = $request->image;
-        // $data2 = str_replace('data:image/png;base64,', '',$image);
-        // $data2 = str_replace(' ', '+', $data2);
-        // $data2 = base64_decode($data2);
-        // $filename3 =  uniqid().'.png';
-
-        // file_put_contents('X://'.'/upload'.'/'.'imageverify'.'/'.$filename3, $data2);
-        // file_put_contents('Y://'.'/upload'.'/'.'imageverify'.'/'.$filename3, $data2);
-
         $receive->save();
+
+        $client = new \GuzzleHttp\Client();
+        $text_to_img = "http://203.113.14.20:3000/senddoc/".$edoc->id;
+        $text_to_img2 = $client->get($text_to_img);
+        // return $text_to_img;
 
         return redirect()->route('inbox.index');
     } 

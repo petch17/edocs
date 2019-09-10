@@ -33,11 +33,6 @@ class InboxController extends Controller
     {
 
         $edoc = new Edoc;
-        // $edoc->booknum = $request->booknum;
-        // $edoc->date = $request->date;
-        // $edoc->position = $request->position;
-        // $edoc->objective_id = $request->objective_id;
-        // $edoc->topic = $request->topic;
 
         if ($request->hasFile('file')){
             // File::delete(base_path().'\\public\\edocfiles\\'.$edoc->file);
