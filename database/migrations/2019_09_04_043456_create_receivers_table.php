@@ -22,13 +22,18 @@ class CreateReceiversTable extends Migration
              $table->dateTime('start')->nullable(); //วันทีเริ่ม
              $table->dateTime('end')->nullable(); //วันที่สิ้นสุด
             //  $table->text('detail')->nullable();
-             $table->string('retirement')->nullable(); //เกษียนหนังสือ
+            $table->string('retirement')->nullable(); //เกษียนหนังสือ
             // $table->string('position')->nullable();
             // $table->string('important')->nullable();
             // $table->string('from')->nullable();
             // $table->string('created_by')->nullable();
             $table->integer('edoc_id')->unsigned();
             $table->foreign('edoc_id')->references('id')->on('edocs')->onDelete('cascade');
+            $table->string('getx')->nullable();
+            $table->string('gety')->nullable();
+            $table->string('path')->nullable();
+            $table->string('signnature')->nullable();
+            $table->string('status')->nullable();
 
 
             $table->timestamps();
