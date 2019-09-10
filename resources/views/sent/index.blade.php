@@ -9,7 +9,7 @@
 <div class="kt-subheader kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
         <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title">รายการเอกสารที่ยังไม่ผ่านการอนุมัติ</h3>
+            <h3 class="kt-subheader__title">รายการเอกสารที่อนุมัติแล้ว</h3>
             {{-- <span class="kt-subheader__separator kt-hidden"></span>
                 <div class="kt-subheader__breadcrumbs">
                     <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
@@ -23,7 +23,7 @@
 
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
     <div class="kt-portlet kt-portlet--mobile">
-        <div class="kt-portlet__head kt-portlet__head--lg">
+        {{-- <div class="kt-portlet__head kt-portlet__head--lg">
             <div class="kt-portlet__head-toolbar">
                 <div class="kt-portlet__head-wrapper">
                     <div class="kt-portlet__head-actions">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="kt-portlet__body">
             <!--begin: Datatable -->
@@ -53,9 +53,9 @@
                         <td>{{$index+1}}</td>
                         <td>{{$item->topic}}</td>
                         <td>
-                            <a href="{{ url('destroy/'.$item->id) }}" data-toggle="kt-tooltip" title="ลบ">
-                                <i class="fa fa-trash-alt"></i>
-                            </a>
+                                <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
+                                        <i class="fa fa-share-square"></i>
+                                    </a>
                         </td>
                         {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
                         {{-- @php
