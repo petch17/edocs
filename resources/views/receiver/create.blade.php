@@ -42,16 +42,17 @@
                 kt-form--label-right']) !!}
                 <div class="kt-portlet__body">
 
-                <input id="getimg" name="getimg" type="hidden" value="" />
-                <input name="edoc_id" type="hidden" value="{{$edoc_id}}" />
-                {{-- {!! Form::text('edoc_id',null,['class'=>'form-control','type'=>'hidden']); !!}  --}}
+                    <!--get_image-->
+                    <input id="getimg" name="getimg" type="hidden" value="" />
+                    <input id="getimg2" name="getimg2" type="hidden" value="" />
+                    <!--end get_image-->
 
-                <div class="form-group row">
+                    <input name="edoc_id" type="hidden" value="{{$edoc_id}}" />
 
-                    <label class="col-lg-3 col-form-label">เลขที่รับส่วนงาน :</label>
-                    <div class="col-lg-6">
+                    <div class="form-group row">
 
-
+                        <label class="col-lg-3 col-form-label">เลขที่รับส่วนงาน :</label>
+                        <div class="col-lg-6">
                             {!! Form::text('part_id',null,['class'=>'form-control', 'id'=>'text'
                             ,'placeholder'=>'เลขที่รับส่วนงาน']);
                             !!}
@@ -76,10 +77,9 @@
                         </div>
                     </div> --}}
 
+
                     <div class="row">
-                        {{-- <canvas id='textCanvas2' class='text' height=30></canvas>
-                                <img id='image2'>
-                                <br> --}}
+
                         <label class="col-lg-3 col-form-label text-right">เกษียนหนังสือ :</label>
                         <div class="col-lg-6">
                             {!!
@@ -114,6 +114,11 @@
 
     <canvas id='textCanvas' class='text' height='50' width="100%"></canvas>
     <img id='image' type="hidden">
+    <br>
+
+    <canvas id='textCanvas2' class='text' height='50' width="100%"></canvas>
+    <img id='image2'>
+
 </div>
 <br>
 <!-- end:: Content -->
@@ -143,15 +148,16 @@
         document.getElementById("getimg").value = imageElem.src;
     }, false);
 
-    // var tCtx2 = document.getElementById('textCanvas2').getContext('2d'),
-    // imageElem2 = document.getElementById('image2');
+    var tCtx2 = document.getElementById('textCanvas2').getContext('2d'),
+        imageElem2 = document.getElementById('image2');
 
-    // document.getElementById('text2').addEventListener('keyup', function (){
-    // tCtx2.canvas.width = tCtx2.measureText(this.value).width;
-    // tCtx2.font = "10px Arial";
-    // tCtx2.fillText(this.value, 0, 14);
-    // imageElem2.src = tCtx2.canvas.toDataURL();
-    // }, false);
+    document.getElementById('text2').addEventListener('keyup', function () {
+        tCtx2.canvas.width = tCtx2.measureText(this.value).width;
+        tCtx2.font = "18px THSarabunNew";
+        tCtx2.fillText(this.value, 0, 25);
+        imageElem2.src = tCtx2.canvas.toDataURL();
+        document.getElementById("getimg2").value = imageElem.src;
+    }, false);
 
     // var tCtx3 = document.getElementById('textCanvas3').getContext('2d'),
     // imageElem3 = document.getElementById('image3');
