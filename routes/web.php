@@ -10,7 +10,7 @@ Route::post('inbox/addstore', [
 ]);
 Route::resource('addstore', 'InboxController' , ['except' => 'addstore']);
 
-// Route::get('destroy/{id}','InboxController@destroy');
+Route::get('destroy/{id}','InboxController@destroy');
 
 Route::resource('receiver','ReceiverController');
 
@@ -32,18 +32,33 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('marksignature/{id}', [
+Route::get('inbox/marksignature/{id}', [
     'as' => 'marksignature',
     'uses' => 'InboxController@marksignature'
 ]);
 Route::resource('marksignature', 'InboxController' , ['except' => 'marksignature']);
 
 
-Route::post('marksignaturestore/{id}', [
+Route::post('inbox/marksignaturestore/{id}', [
     'as' => 'marksignaturestore',
     'uses' => 'InboxController@marksignaturestore'
 ]);
 Route::resource('marksignaturestore', 'InboxController' , ['except' => 'marksignaturestore']);
+
+/*----------------------------------------*/
+
+Route::get('receiver/marksignature/{id}', [
+    'as' => 'receivermarksignature',
+    'uses' => 'ReceiverController@marksignature'
+]);
+Route::resource('marksignature', 'ReceiverController' , ['except' => 'marksignature']);
+
+
+Route::post('receiver/marksignaturestore/{id}', [
+    'as' => 'receivermarksignaturestore',
+    'uses' => 'ReceiverController@marksignaturestore'
+]);
+Route::resource('marksignaturestore', 'ReceiverController' , ['except' => 'marksignaturestore']);
 
 
 

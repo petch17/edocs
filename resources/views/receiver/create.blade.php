@@ -130,7 +130,7 @@
 
 <script>
     $(document).ready(function () {
-        document.getElementById('inbox').classList.add('kt-menu__item--open');
+        document.getElementById('sent').classList.add('kt-menu__item--open');
     });
 
     // var tCtx = document.getElementById('textCanvas').getContext('2d'),
@@ -156,6 +156,6 @@
     //     imageElem2.src = tCtx2.canvas.toDataURL();
     //     document.getElementById("getimg2").value = imageElem.src;
     // }, false);
-    
+
 </script>
 @endsection
