@@ -10,7 +10,7 @@ Route::post('inbox/addstore', [
 ]);
 Route::resource('addstore', 'InboxController' , ['except' => 'addstore']);
 
-Route::get('destroy/{id}','InboxController@destroy');
+// Route::get('destroy/{id}','InboxController@destroy');
 
 Route::resource('receiver','ReceiverController');
 

@@ -53,8 +53,8 @@
                         <td>{{$index+1}}</td>
                         <td>{{$item->topic}}</td>
                         <td>
-                            <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
-                                <i class="fa fa-share-square"></i>
+                            <a href="{{ url('destroy/'.$item->id) }}" data-toggle="kt-tooltip" title="ลบ">
+                                <i class="fa fa-trash-alt"></i>
                             </a>
                         </td>
                         {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
