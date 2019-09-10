@@ -113,7 +113,7 @@
 
 
     <canvas id='textCanvas' class='text' height='50' width="100%"></canvas>
-    <img id='image'>
+    <img id='image' type="hidden">
 </div>
 <br>
 <!-- end:: Content -->
@@ -142,8 +142,6 @@
         // alert(imageElem.src);
         document.getElementById("getimg").value = imageElem.src;
     }, false);
-    // alert(imageElem.src);
-    // document.getElementById("getimg").value = imageElem.src;
 
     // var tCtx2 = document.getElementById('textCanvas2').getContext('2d'),
     // imageElem2 = document.getElementById('image2');
