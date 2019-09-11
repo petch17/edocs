@@ -72,7 +72,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--begin::Layout Skins(used by all pages) -->
         <!--end::Layout Skins -->
 
-        <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+        <link rel="shortcut icon" href="{{asset('img/e.png')}}" />
 
         <link href="https://fonts.googleapis.com/css?family=Sarabun:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap&subset=latin-ext,thai,vietnamese" rel="stylesheet">
 
