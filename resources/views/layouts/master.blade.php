@@ -89,7 +89,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed " >
             <div class="kt-header-mobile__logo">
                 <a href="{{ route('home') }}">
-                    <img alt="Logo" src="{{asset('img/ed2.png')}}" height="30%" width="30%" />
+                    <img alt="Logo" src="{{asset('img/edocsbook.png')}}" height="30%" width="30%" />
                 </a>
             </div>
             <div class="kt-header-mobile__toolbar">
@@ -109,7 +109,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="kt-header__brand " id="kt_header_brand">
                                 <div class="kt-header__brand-logo">
                                     <a href="{{ route('home') }}">
-                                        <img alt="Logo" src="{{asset('img/ed2.png')}}" height="30%" width="30%" />
+                                        <img alt="Logo" src="{{asset('img/edocsbook.png')}}" height="40%" width="100%" />
                                     </a>
                                 </div>
                                 <div class="kt-header__brand-nav">
