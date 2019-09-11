@@ -1,5 +1,9 @@
 <?php
 
+// Route::group(['middleware' => ['web']], function () {
+//     Route::post('web-login', ['as'=>'web-login','uses'=>'Auth\LoginController@webLoginPost']);
+// });
+
 Route::resource('sent','SentController');
 
 Route::get('inbox/add', 'InboxController@addcreate')->name('addcreate');

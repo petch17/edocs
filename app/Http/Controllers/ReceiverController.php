@@ -8,6 +8,11 @@ use App\Edoc;
 
 class ReceiverController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         // $receive = Receiver::with('tbedoc')->get();
@@ -66,11 +71,15 @@ class ReceiverController extends Controller
         $receive->save();
 
     //    return redirect()->route('receiver.marksignature');
+    $client = new \GuzzleHttp\Client();
+    $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
+    $text_to_img2 = $client->get($text_to_img);
+
 
         $receive2 = Receiver::find($id);
         $edoc3 = Edoc::find($receive2->edoc_id);
         return view('receiver.marksignature',['edoc3' => $edoc3
-                                                ,'receive2' => $receive2]);
+        ,'receive2' => $receive2]);
 
     }
 
@@ -89,6 +98,9 @@ class ReceiverController extends Controller
         $receive = Receiver::find($id);
         $receive->getx = $request->getx;
         $receive->gety = $request->gety;
+
+        $receive->status = 'ยังไม่ทราบ';
+
         $receive->save();
 
        return redirect()->route('sent.index');

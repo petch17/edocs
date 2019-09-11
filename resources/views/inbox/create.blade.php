@@ -27,7 +27,7 @@
                             </h3>
                         </div>
                     </div> --}}
-                    <!--begin::Form-->                        
+                    <!--begin::Form-->
                             {!! Form::open(['route' => 'addstore', 'method' => 'post', 'files'=>true, 'class' => 'kt-form kt-form--label-right']) !!}
                         <div class="kt-portlet__body">
 
@@ -45,8 +45,8 @@
                                 <div class="row">
                                     <div class="col-lg-3"></div>
                                     <div class="col-lg-6">
-                                        <button type="submit" class="btn btn-outline-primary">Submit</button>
-                                        <button type="reset" class="btn btn-outline-danger" onclick="window.history.back();">Cancel</button>
+                                        <button type="submit" class="btn btn-outline-primary">ยืนยัน</button>
+                                        <button type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ยกเลิก</button>
                                     </div>
                                 </div>
                             </div>

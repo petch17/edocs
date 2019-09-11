@@ -12,6 +12,10 @@
 <!-- </div> -->
 {!! Form::close() !!}
 <script>
+    window.nu = 0;
+    let coor = [];
+    let count = 0;
+
 function clickHotspotImage(event) {
         var xCoordinate = event.offsetX;
         var yCoordinate = event.offsetY;
@@ -19,17 +23,55 @@ function clickHotspotImage(event) {
         // alert(yCoordinate)
         document.getElementById("getx").value = xCoordinate;
         document.getElementById("gety").value = yCoordinate;
-        var circlelist = new Array()
+        check(xCoordinate,yCoordinate);
+        //console.log(xCoordinate + ',' + yCoordinate)
+    }
+
+    function check(x,y){
+        // alert(nu);
+        // window.nu = 0;
+        if(nu == 0){
+            // alert(nu);
+            //clickHotspotImage(event);
+            photoclick(x,y);
+
+            if (count < 2) {
+                count++;
+                coor.push({'x': x, 'y': y});
+            }
+
+
+            if (count == 2) {
+                console.log(coor);
+                count = 0;
+                coor = [];
+            }
+        }
+        else{
+            //alert(x);
+
+            nu = 0;
+
+        }
+    }
+
+    function photoclick(x,y){
+        // alert(nu);
+        // var circlelist = new Array();
         c1 = document.createElement("img");
         c1.src = "{{asset('marksignature/5.png')}}";
         c1.style.position = "absolute";
-        c1.style.left = xCoordinate+"px";
-        c1.style.top = yCoordinate+"px";
+        c1.style.left = x+"px";
+        c1.style.top = y+"px";
         c1.style.width = "20px";
         c1.style.height = "20px";
         document.body.appendChild(c1);
-        circlelist.push(c1);
-}</script>
+        //circlelist.push(c1);
+
+        nu++;
+        //alert(nu);
+    }
+</script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

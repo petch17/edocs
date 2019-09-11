@@ -11,6 +11,11 @@ use PDF;
 
 class InboxController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $edocs = Edoc::with('tbobjective')->where('status', 'เอกสารที่ยังไม่ผ่านการอนุมัติ')->get();

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<style> 
+<style>
        #header{
         border-radius:15px;
         background: #3ACEFF;
@@ -14,10 +14,10 @@
         height: 100%;
         color: #FFF;
         font-family:verdana;
-       }   
+       }
        #headerI{
-        
-       }  
+
+       }
 </style>
 <div class="kt-login__container">
     <div id="header" class="kt-login__logo" >
@@ -31,6 +31,9 @@
         </div> --}}
 
         {!! Form::open(['route' => 'login', 'method' => 'post', 'class' => 'kt-form']) !!}
+        {{-- intra --}}
+        {{-- <form class="md-float-material" method="POST" action="{{ route('web-login') }}">
+                @csrf --}}
         @csrf
         <div >
             <div class="input-group">
@@ -56,7 +59,7 @@
                 @enderror
             </div>
         </div>
-        
+
 
         <div class="row kt-login__extra">
             <div class="col">
@@ -80,10 +83,11 @@
             <button type="submit" class="btn btn-outline-primary">เข้าสู่ระบบ</button>
             {{-- <button id="kt_login_signin_submit" class="btn btn-brand btn-elevate kt-login__btn-primary">เข้าสู่ระบบ</button> --}}
         </div>
+        {{-- </form> --}}
         {!! Form::close() !!}
 
     </div>
-    
+
         @endsection
 
         @section('js')
