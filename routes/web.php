@@ -45,7 +45,19 @@ Route::post('inbox/marksignaturestore/{id}', [
 ]);
 Route::resource('marksignaturestore', 'InboxController' , ['except' => 'marksignaturestore']);
 
-/*----------------------------------------*/
+/*------------reciever-------------------*/
+
+Route::get('receiver/markforward/{id}', [
+    'as' => 'markforward',
+    'uses' => 'ReceiverController@markforward'
+]);
+Route::resource('markforward', 'ReceiverController' , ['except' => 'markforward']);
+
+Route::post('receiver/markforwardstore/{id}', [
+    'as' => 'markforwardstore',
+    'uses' => 'ReceiverController@markforwardstore'
+]);
+Route::resource('markforwardstore', 'ReceiverController' , ['except' => 'markforwardstore']);
 
 Route::get('receiver/marksignature/{id}', [
     'as' => 'receivermarksignature',
@@ -59,6 +71,11 @@ Route::post('receiver/marksignaturestore/{id}', [
     'uses' => 'ReceiverController@marksignaturestore'
 ]);
 Route::resource('marksignaturestore', 'ReceiverController' , ['except' => 'marksignaturestore']);
+
+
+
+
+
 
 
 
