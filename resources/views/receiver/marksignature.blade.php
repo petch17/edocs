@@ -21,12 +21,12 @@ function clickHotspotImage(event) {
         document.getElementById("gety").value = yCoordinate;
         var circlelist = new Array()
         c1 = document.createElement("img");
-        c1.src = "http://203.113.14.20:3000/imagesend/{{$receive2->path}}";
+        c1.src = "{{asset('marksignature/5.png')}}";
         c1.style.position = "absolute";
         c1.style.left = xCoordinate+"px";
         c1.style.top = yCoordinate+"px";
-        // c1.style.width = "20px";
-        // c1.style.height = "20px";
+        c1.style.width = "20px";
+        c1.style.height = "20px";
         document.body.appendChild(c1);
         circlelist.push(c1);
 }</script>

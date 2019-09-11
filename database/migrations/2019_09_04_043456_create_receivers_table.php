@@ -29,8 +29,8 @@ class CreateReceiversTable extends Migration
             // $table->string('created_by')->nullable();
             $table->integer('edoc_id')->unsigned();
             $table->foreign('edoc_id')->references('id')->on('edocs')->onDelete('cascade');
-            $table->string('getx')->nullable();
-            $table->string('gety')->nullable();
+            $table->integer('getx')->nullable();
+            $table->integer('gety')->nullable();
             $table->string('path')->nullable();
             $table->string('signnature')->nullable();
             $table->string('status')->nullable();
