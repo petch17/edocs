@@ -41,7 +41,7 @@ class ReceiverController extends Controller
         // return redirect()->route('inbox.index');
         return redirect()->route('markforward',['id' => $receive->id]);
     }
-    
+
     public function show($id)
     {
         //
@@ -49,11 +49,11 @@ class ReceiverController extends Controller
 
     public function markforward($id){
         // return $id;
-        // $data2 = Edoc::find($id);
+        // $edoc2 = Edoc::find($id);
         // return '1';
         $receive = Receiver::find($id);
-        $data2 = Edoc::find($receive->edoc_id);
-        return view('receiver.markforward',['data2' => $data2
+        $edoc2 = Edoc::find($receive->edoc_id);
+        return view('receiver.markforward',['edoc2' => $edoc2
                                             ,'receive' => $receive]);
     }
 
@@ -61,33 +61,35 @@ class ReceiverController extends Controller
         // return '1';
         // return $request;
         $receive = Receiver::find($id);
-        $receive;
         $receive->getx = $request->getx;
         $receive->gety = $request->gety;
         $receive->save();
 
-    //    return redirect()->route('sent.index');
+    //    return redirect()->route('receiver.marksignature');
 
-        $receive = Receiver::find($id);
-        $data2 = Edoc::find($receive->edoc_id);
-        return view('receiver.marksignature',['data2' => $data2
-                                            ,'receive' => $receive]);
+        $receive2 = Receiver::find($id);
+        $edoc3 = Edoc::find($receive2->edoc_id);
+        return view('receiver.marksignature',['edoc3' => $edoc3
+                                                ,'receive2' => $receive2]);
 
     }
 
     public function marksignature($id){
 
-        $data = Edoc::find($id);
+        // $data = Edoc::find($id);
         // $data = Edoc::select('signature')->find($id);
-        return view('inbox.marksignature',['data' => $data]);
+        $receive2 = Receiver::find($id);
+        $edoc3 = Edoc::find($receive2->edoc_id);
+        return view('receiver.marksignature',['edoc3' => $edoc3
+                                              ,'receive2' => $receive2]);
     }
 
     public function marksignaturestore(Request $request, $id){
-       
-        $edoc = Edoc::find($id);
-        $edoc->getx = $request->getx;
-        $edoc->gety = $request->gety;
-        $edoc->save();
+
+        $receive = Receiver::find($id);
+        $receive->getx = $request->getx;
+        $receive->gety = $request->gety;
+        $receive->save();
 
        return redirect()->route('sent.index');
     }
