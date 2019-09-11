@@ -32,16 +32,38 @@ class ReceiverController extends Controller
         $receive->edoc_id = $request->edoc_id;
 
         $receive->save();
-
+        // return $receive->edoc_id;
         $client = new \GuzzleHttp\Client();
         $text_to_img = "http://203.113.14.20:3000/senddoc/".$receive->id;
         $text_to_img2 = $client->get($text_to_img);
         // return $text_to_img;
 
-        return redirect()->route('inbox.index');
+        // return redirect()->route('inbox.index');
+        return redirect()->route('receivermarksignature',['id' => $receive->id]);
     }
     public function show($id)
     {
         //
+    }
+    public function marksignature($id){
+        // return $id;
+        // $data2 = Edoc::find($id);
+        // return '1';
+        $receive = Receiver::find($id);
+        $data2 = Edoc::find($receive->edoc_id);
+        return view('receiver.marksignature',['data2' => $data2
+                                            ,'receive' => $receive]);
+    }
+
+    public function marksignaturestore(Request $request, $id){
+        // return '1';
+        // return $request;
+        $receive = Receiver::find($id);
+        $receive;
+        $receive->getx = $request->getx;
+        $receive->gety = $request->gety;
+        $receive->save();
+
+       return redirect()->route('sent.index');
     }
 }

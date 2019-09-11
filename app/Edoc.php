@@ -12,7 +12,7 @@ class Edoc extends Model
         return $this->belongsTo(Objective::class, 'objective_id');
     }
 
-    public function tbreceiver(){
+    public function tbreceivers(){
         return $this->hasMany(Edoc::class);
     }
 }

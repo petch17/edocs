@@ -8,7 +8,7 @@ class Receiver extends Model
 {
     protected $table = 'receivers';
 
-    public function tbedocs(){
+    public function tbedoc(){
         return $this->belongsTo(Edoc::class, 'edoc_id');
     }
 }
