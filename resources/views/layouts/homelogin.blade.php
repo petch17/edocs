@@ -46,7 +46,7 @@ License: You must have a valid license purchased only from themeforest(the above
   <!--begin::Layout Skins(used by all pages) -->
   <!--end::Layout Skins -->
 
-  <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+  <link rel="shortcut icon" href="{{asset('img/e.png ')}}" />
   @yield('css')
 </head>
 <!-- end::Head -->
