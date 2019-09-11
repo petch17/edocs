@@ -53,34 +53,34 @@ class InboxController extends Controller
         $pdf_to_img2 = $client->get($pdf_to_img);
         // return $pdf_to_img;
         return redirect()->route('marksignature',['id' => $edoc->id]);
-        
+
         // return redirect()->route('inbox.index');
     }
-    
+
     public function show($id)
     {
         // $data = Edoc::find($id);
         // $data = Edoc::with('tbobjective')->find($id);
-        // $data2 = [  'booknum' => $data->booknum, 
+        // $data2 = [  'booknum' => $data->booknum,
         //             'date' => $data->date,
         //             'topic' => $data->topic,
         //             'position' => $data->position,
         //             'name' => $data->tbobjective->name
         //             ];
-                    
+
         // $pdf = PDF::loadView('myPDF', $data2);
 
         // return $pdf->stream();
     }
     public function marksignature($id){
 
-        $data = Edoc::find($id);
+        $edoc = Edoc::find($id);
         // $data = Edoc::select('signature')->find($id);
-        return view('inbox.marksignature',['data' => $data]);
+        return view('inbox.marksignature',['edoc' => $edoc]);
     }
 
     public function marksignaturestore(Request $request, $id){
-       
+
         $edoc = Edoc::find($id);
         $edoc->getx = $request->getx;
         $edoc->gety = $request->gety;

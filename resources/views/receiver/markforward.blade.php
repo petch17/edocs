@@ -7,8 +7,8 @@
 
 <img src="http://203.113.14.20:3000/output/{{$edoc2->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
 
-    <button style="position: absolute; top: 20px; right: 180px;" type="submit" class="btn btn-outline-primary">Submit</button>
-    <button style="position: absolute; top: 20px; right: 100px;" type="reset" class="btn btn-outline-danger" onclick="window.history.back();">Cancel</button>
+    <button style="position: absolute; top: 20px; right: 180px;" type="submit" class="btn btn-outline-primary">ยืนยัน</button>
+    <button style="position: absolute; top: 20px; right: 100px;" type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ยกเลิก</button>
 <!-- </div> -->
 {!! Form::close() !!}
 <script>
