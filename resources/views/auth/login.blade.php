@@ -9,20 +9,14 @@
        #header{
         border-radius:15px;
         background: #3ACEFF;
-        padding: 10px;
         width:100%;
         height: 100%;
-        color: #FFF;
-        font-family:verdana;
-       }
-       #headerI{
-
        }
 </style>
 <div class="kt-login__container">
     <div id="header" class="kt-login__logo" >
         <a>
-            <img src="{{asset('img/ed2.png')}}" width="300" height="80"/>
+            <img src="{{asset('img/edocsbook.png')}}" width="300" height="100"/>
         </a>
     </div>
     <div class="kt-login__signin">
