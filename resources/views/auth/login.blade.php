@@ -30,14 +30,14 @@
             <h2 class="kt-login__title">เข้าสู่ระบบ</h2>
         </div> --}}
 
-        {!! Form::open(['route' => 'login', 'method' => 'post', 'class' => 'kt-form']) !!}
+        {{-- {!! Form::open(['route' => 'login', 'method' => 'post', 'class' => 'kt-form']) !!} --}}
         {{-- intra --}}
-        {{-- <form class="md-float-material" method="POST" action="{{ route('web-login') }}">
-                @csrf --}}
+        <form class="kt-form" method="POST" action="{{ route('web-login') }}">
+                @csrf
         @csrf
         <div >
             <div class="input-group">
-            <input id="email" type="email" placeholder="อีเมล์"
+            <input id="email" type="text" placeholder="อีเมล์"
                 class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
                 required autocomplete="email" autofocus>
 
@@ -83,8 +83,8 @@
             <button type="submit" class="btn btn-outline-primary">เข้าสู่ระบบ</button>
             {{-- <button id="kt_login_signin_submit" class="btn btn-brand btn-elevate kt-login__btn-primary">เข้าสู่ระบบ</button> --}}
         </div>
-        {{-- </form> --}}
-        {!! Form::close() !!}
+        </form>
+        {{-- {!! Form::close() !!} --}}
 
     </div>
 

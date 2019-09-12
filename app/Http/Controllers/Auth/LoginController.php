@@ -85,6 +85,7 @@ class LoginController extends Controller
             $json = json_encode($xml);
             $array = json_decode($json,TRUE);
 
+            return $array;
             // return '1';
 
             $data = User::select('id', 'email','password')->where('email', $request->email);
@@ -101,7 +102,8 @@ class LoginController extends Controller
                     $IntranetUsersTB->password = bcrypt($request->input('password'));
                     $IntranetUsersTB->save();
                 }
-            }else{
+            }
+            else{
 
             $tbintranetusers = new User();
             // return $tbintranetusers;
