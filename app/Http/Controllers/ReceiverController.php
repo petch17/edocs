@@ -99,7 +99,7 @@ class ReceiverController extends Controller
         $receive->getx = $request->getx;
         $receive->gety = $request->gety;
 
-        $receive->status = 'ยังไม่ทราบ';
+        $receive->status = 'ยังไม่ส่ง';
 
         $receive->save();
 

@@ -52,7 +52,7 @@
                         <td>{{$index+1}}</td>
                         <td>{{$item->topic}}</td>
                         <td>
-                                <a target="_blank" data-toggle="kt-tooltip" title="ดูรายละเอียด">
+                                <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                     <i class="fa fa-search"></i>
                                 </a>
                                 &nbsp; &nbsp;
