@@ -89,6 +89,9 @@ class LoginController extends Controller
 
             $data = User::select('id', 'email','password')->where('email', $request->email);
             $empcode = $data->count();
+            // $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'];
+            // $edocs = User::where('EMPCODE', $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'])->count();
+            // $tbintranetusers->type = 'manager';
             if($empcode > 0){
                 //have idcard
                 // if($array['NewDataSet']['LOGIN_EMPLOYEE']['CURR_DEP_ABBR'] != $data->first()->CURR_DEP_ABBR){
