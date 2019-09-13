@@ -607,11 +607,12 @@ class EmpcodeSeeder extends Seeder
             [ 'EMPCODE' => '	12601990	' ],
             [ 'EMPCODE' => '	12601991	' ],
             [ 'EMPCODE' => '	12601992	' ],
-            [ 'EMPCODE' => '	12601993	' ]
+            [ 'EMPCODE' => '	12601993	' ],
+            [ 'EMPCODE' => '	26201296	' ]
 
             ]);
     }
-    
-    
+
+
 }
 
