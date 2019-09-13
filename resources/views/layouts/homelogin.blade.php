@@ -34,8 +34,7 @@ License: You must have a valid license purchased only from themeforest(the above
   <!--end::Page Custom Styles -->
 
   <!--begin:: Global Mandatory Vendors -->
-  <link href="{{asset('assets/vendors/general/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet"
-    type="text/css" />
+  {{-- <link href="{{asset('assets/vendors/general/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" type="text/css" /> --}}
   <!--end:: Global Mandatory Vendors -->
 
   <!--begin::Global Theme Styles(used by all pages) -->
@@ -84,15 +83,14 @@ License: You must have a valid license purchased only from themeforest(the above
 
   <!--begin:: Global Mandatory Vendors -->
   <script src="{{asset('assets/vendors/general/jquery/dist/jquery.js')}}" type="text/javascript"></script>
-  <script src="{{asset('assets/vendors/general/popper.js/dist/umd/popper.js')}}" type="text/javascript"></script>
+  {{-- <script src="{{asset('assets/vendors/general/popper.js/dist/umd/popper.js')}}" type="text/javascript"></script> --}}
   <script src="{{asset('assets/vendors/general/bootstrap/dist/js/bootstrap.min.js')}}" type="text/javascript"></script>
   <script src="{{asset('assets/vendors/general/js-cookie/src/js.cookie.js')}}" type="text/javascript"></script>
-  <script src="{{asset('assets/vendors/general/moment/min/moment.min.js')}}" type="text/javascript"></script>
-  <script src="{{asset('assets/vendors/general/tooltip.js/dist/umd/tooltip.min.js')}}" type="text/javascript"></script>
-  <script src="{{asset('assets/vendors/general/perfect-scrollbar/dist/perfect-scrollbar.js')}}"
-    type="text/javascript"></script>
-  <script src="{{asset('assets/vendors/general/sticky-js/dist/sticky.min.js')}}" type="text/javascript"></script>
-  <script src="{{asset('assets/vendors/general/wnumb/wNumb.js')}}" type="text/javascript"></script>
+  {{-- <script src="{{asset('assets/vendors/general/moment/min/moment.min.js')}}" type="text/javascript"></script> --}}
+  {{-- <script src="{{asset('assets/vendors/general/tooltip.js/dist/umd/tooltip.min.js')}}" type="text/javascript"></script> --}}
+  {{-- <script src="{{asset('assets/vendors/general/perfect-scrollbar/dist/perfect-scrollbar.js')}}" type="text/javascript"></script> --}}
+  {{-- <script src="{{asset('assets/vendors/general/sticky-js/dist/sticky.min.js')}}" type="text/javascript"></script> --}}
+  {{-- <script src="{{asset('assets/vendors/general/wnumb/wNumb.js')}}" type="text/javascript"></script> --}}
   <!--end:: Global Mandatory Vendors -->
 
   <!--begin::Global Theme Bundle(used by all pages) -->
