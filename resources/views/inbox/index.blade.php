@@ -46,7 +46,7 @@
                     </tr>
                 </thead>
 
-               
+
                 <tbody>
                 @foreach($edocs as $index=>$item)
                     <tr>
@@ -57,11 +57,12 @@
                                     <i class="fa fa-search"></i>
                                 </a>
                                 &nbsp; &nbsp;
-                                <a href="{{ url('destroy/'.$item->id) }}" data-toggle="kt-tooltip" title="ลบ">
+
+                                <a href="" class="delBtn" data-id="{{$item->id}}" data-toggle="kt-tooltip" title="ลบ">
                                     <i class="fa fa-trash-alt"></i>
                                 </a>
-                            
-                                
+                                <input type="hidden" name="_token" id="_token" value="{{ csrf_token()}}">
+
                         </td>
                         {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
                         {{-- @php
@@ -72,7 +73,7 @@
                     </tr>
                     @endforeach
                 </tbody>
-               
+
 
             </table>
         </div>
@@ -86,6 +87,7 @@
 <script src="{{asset('assets/js/demo11/scripts.bundle.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/demo11/pages/crud/datatables/basic/basic.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/demo11/sweetalert.min.js') }}"></script>
 
 <script>
     $(document).ready(function() {
@@ -93,6 +95,45 @@
 
         $('#table1').DataTable();
 
+    });
+
+    $(document).on('click', '.delBtn', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        // alert(id);
+        swal({
+            title: "คุณต้องการลบ?",
+            text: "หากคุณทำการลบข้อมูล จะไม่สามารถทำการกู้คืนได้อีก",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        method: "DELETE",
+                        url: '{{ url('inbox')}}/' + id,
+                        data: { ids: id, _token: $('#_token').val(), },
+                        success: function (data) {
+                            if (data.success == "1") {
+                                swal("ทำการลบข้อมูลสำเร็จ", {
+                                    icon: "success",
+                                }).then(() => { location.reload(); });
+                            } else {
+                                swal({
+                                    title: "พบข้อผิดพลาด",
+                                    text: "กรุณาติดต่อผู้ดูแลระบบ",
+                                    icon: "warning",
+                                    dangerMode: true,
+
+                                });
+                            }
+                        }
+                    });
+                } else {
+                    swal("ยกเลิกการลบข้อมูล");
+                }
+            });
     });
 </script>
 @endsection

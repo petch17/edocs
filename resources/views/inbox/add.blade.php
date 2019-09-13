@@ -52,8 +52,8 @@
                                 <div class="row">
                                     <div class="col-lg-3"></div>
                                     <div class="col-lg-6">
-                                        <button type="submit" class="btn btn-brand">Submit</button>
-                                        <button type="reset" class="btn btn-secondary"  onclick="window.history.back();">Cancel</button>
+                                        <button type="submit" class="btn btn-outline-primary">ยืนยัน</button>
+                                        <button type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ยกเลิก</button>
                                     </div>
                                 </div>
                             </div>

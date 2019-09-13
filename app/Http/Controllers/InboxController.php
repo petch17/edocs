@@ -20,7 +20,9 @@ class InboxController extends Controller
     {
         $edocs = Edoc::with('tbobjective')->where('status', 'เอกสารที่ยังไม่ผ่านการอนุมัติ')->get();
         // $edocs = Edoc::with('tbobjective')->get();
+
         return view('inbox.index',['edocs' => $edocs]);
+
     }
 
     public function create()
@@ -91,12 +93,27 @@ class InboxController extends Controller
         $edoc->gety = $request->gety;
         $edoc->save();
 
-       return redirect()->route('sent.index');
+       return redirect()->route('inbox.index');
     }
 
     public function destroy($id) {
 
-        Edoc::destroy($id);
+        // Edoc::destroy($id);
+        // return back();
+
+
+       $result = Edoc::find($id)->delete();
+
+       File::delete(base_path().'http://203.113.14.20:3000/pdffile/'.$result->file);
+       $result->delete();
+
+        if($result){
+            return response()->json(['success' => '1']);
+        }else{
+            return response()->json(['success' => '0']);
+        }
         return back();
+
     }
+
 }
