@@ -188,12 +188,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </li>
 
                                             <li id="sent" class="kt-menu__item" aria-haspopup="true">
-                                                    <a  href="{{ route('sent.index') }}" class="kt-menu__link ">
+                                                    <a  {{-- href="{{ route('sent.index') }}"  --}}class="kt-menu__link">
                                                         <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
                                                         <span class="kt-menu__link-text" >เอกสารที่ได้จากการโดนแทงแล้ว</span>
                                                     </a>
                                                 </li>
-                                          
+
 
                                         </ul>
                                     </div>
