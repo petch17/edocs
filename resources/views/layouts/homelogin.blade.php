@@ -59,7 +59,7 @@ License: You must have a valid license purchased only from themeforest(the above
   <!-- begin:: Page -->
   <div class="kt-grid kt-grid--ver kt-grid--root kt-page">
     <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v3 kt-login--signin" id="kt_login">
-      <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" 
+      <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
        style="background-image: url{{asset('assets/media//bg/bg-3.jpg')}};">
         <div class="kt-grid__item kt-grid__item--fluid kt-login__wrapper">
 
@@ -95,7 +95,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
   <!--begin::Global Theme Bundle(used by all pages) -->
 
-  <script src="{{asset('assets/js/demo11/scripts.bundle.js')}}" type="text/javascript"></script>
+  {{-- <script src="{{asset('assets/js/demo11/scripts.bundle.js')}}" type="text/javascript"></script> --}}
   <!--end::Global Theme Bundle -->
 
 

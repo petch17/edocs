@@ -54,13 +54,8 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
         // return $credentials;
-        if (Auth::attempt($credentials)) {
-            // Authentication passed...
-            // return $request->email;
-                return redirect()->route('inbox.index');
-        }else{
-            // return '1';
-        //Soap
+
+            //Soap
             $client = new \SoapClient("http://10.3.12.26/WebServices/TOTAuthentication.asmx?WSDL",[
                 "trace" => 1,
                 "exceptions" =>1,
@@ -88,7 +83,23 @@ class LoginController extends Controller
             $json = json_encode($xml);
             $array = json_decode($json,TRUE);
 
-            return $array;
+            $empcode = Empcode::select('empcode')->where('EMPCODE', $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'])->count();
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            // return $request->email;
+
+
+            if($empcode > 0){
+                return Redirect::back()->with('formanager','กรุณา login ผ่านโทรศัพท์')->withInput(Input::all());
+            }
+
+               return redirect()->route('inbox.index');
+        }else{
+            // return '1';
+
+
+            // return $array;
             // return '1';
 
             $data = User::select('id', 'email','password')->where('email', $request->email);
@@ -110,55 +121,60 @@ class LoginController extends Controller
                 }
             }
             else{
-
-            $tbintranetusers = new User();
-            // return $tbintranetusers;
-            if( $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'] == null || $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'] == '' ){
                 // return "1";
-            $tbemployee = new Employee();
+                $tbintranetusers = new User();
+                // return $tbintranetusers;
 
-            $tbemployee->EMPCODE = $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'];
-            $tbemployee->TITLE_TH = $array['NewDataSet']['LOGIN_EMPLOYEE']['TITLE_TH'];
-            $tbemployee->FIRST_NAME_TH = $array['NewDataSet']['LOGIN_EMPLOYEE']['FIRST_NAME_TH'];
-            $tbemployee->LAST_NAME_TH =  $array['NewDataSet']['LOGIN_EMPLOYEE']['LAST_NAME_TH'];
-            $tbemployee->TITLE_EN = $array['NewDataSet']['LOGIN_EMPLOYEE']['TITLE_EN'];
-            $tbemployee->FIRST_NAME_EN = $array['NewDataSet']['LOGIN_EMPLOYEE']['FIRST_NAME_EN'];
-            $tbemployee->LAST_NAME_EN =  $array['NewDataSet']['LOGIN_EMPLOYEE']['LAST_NAME_EN'];
-            $tbemployee->EMAILINTRA =  $array['NewDataSet']['LOGIN_EMPLOYEE']['EMAIL'];
-            $tbemployee->POS_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['POS_FULL'];
-            $tbemployee->DEP_ABBR =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_ABBR'];
-            $tbemployee->DEP_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_FULL'];
-            $tbemployee->HIERACHY_CODE =  $array['NewDataSet']['LOGIN_EMPLOYEE']['HIERACHY_CODE'];
-            $tbemployee->ID4DIGIT =  $array['NewDataSet']['LOGIN_EMPLOYEE']['ID4DIGIT'];
-            $tbemployee->USER_NAME =  $array['NewDataSet']['LOGIN_EMPLOYEE']['USER_NAME'];
+                if( $empcode == 0 ){
+                    // return "1";
+                    $tbemployee = new Employee();
 
-            return $tbemployee;
-            // $tbemployee->save();
+                    $tbemployee->EMPCODE = $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'];
+                    $tbemployee->TITLE_TH = $array['NewDataSet']['LOGIN_EMPLOYEE']['TITLE_TH'];
+                    $tbemployee->FIRST_NAME_TH = $array['NewDataSet']['LOGIN_EMPLOYEE']['FIRST_NAME_TH'];
+                    $tbemployee->LAST_NAME_TH =  $array['NewDataSet']['LOGIN_EMPLOYEE']['LAST_NAME_TH'];
+                    $tbemployee->TITLE_EN = $array['NewDataSet']['LOGIN_EMPLOYEE']['TITLE_EN'];
+                    $tbemployee->FIRST_NAME_EN = $array['NewDataSet']['LOGIN_EMPLOYEE']['FIRST_NAME_EN'];
+                    $tbemployee->LAST_NAME_EN =  $array['NewDataSet']['LOGIN_EMPLOYEE']['LAST_NAME_EN'];
+                    $tbemployee->EMAILINTRA =  $array['NewDataSet']['LOGIN_EMPLOYEE']['EMAIL'];
+                    $tbemployee->POS_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['POS_FULL'];
+                    $tbemployee->DEP_ABBR =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_ABBR'];
+                    $tbemployee->DEP_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_FULL'];
+                    $tbemployee->HIERACHY_CODE =  $array['NewDataSet']['LOGIN_EMPLOYEE']['HIERACHY_CODE'];
+                    $tbemployee->ID4DIGIT =  $array['NewDataSet']['LOGIN_EMPLOYEE']['ID4DIGIT'];
+                    $tbemployee->USER_NAME =  $array['NewDataSet']['LOGIN_EMPLOYEE']['USER_NAME'];
 
-            }else{
-                // return "2";
-                 return Redirect::back()->with('formanager','กรุณา login ผ่านโทรศัพท์')->withInput(Input::all());
-            }
-            // $tbintranetusers->EMPCODE = $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'];
-            // $tbintranetusers->TITLE_TH = $array['NewDataSet']['LOGIN_EMPLOYEE']['TITLE_TH'];
-            // $tbintranetusers->FIRST_NAME_TH = $array['NewDataSet']['LOGIN_EMPLOYEE']['FIRST_NAME_TH'];
-            // $tbintranetusers->LAST_NAME_TH =  $array['NewDataSet']['LOGIN_EMPLOYEE']['LAST_NAME_TH'];
-            // $tbintranetusers->TITLE_EN = $array['NewDataSet']['LOGIN_EMPLOYEE']['TITLE_EN'];
-            // $tbintranetusers->FIRST_NAME_EN = $array['NewDataSet']['LOGIN_EMPLOYEE']['FIRST_NAME_EN'];
-            // $tbintranetusers->LAST_NAME_EN =  $array['NewDataSet']['LOGIN_EMPLOYEE']['LAST_NAME_EN'];
-            // $tbintranetusers->EMAILINTRA =  $array['NewDataSet']['LOGIN_EMPLOYEE']['EMAIL'];
-            // $tbintranetusers->POS_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['POS_FULL'];
-            // $tbintranetusers->DEP_ABBR =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_ABBR'];
-            // $tbintranetusers->DEP_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_FULL'];
-            // $tbintranetusers->HIERACHY_CODE =  $array['NewDataSet']['LOGIN_EMPLOYEE']['HIERACHY_CODE'];
-            // $tbintranetusers->ID4DIGIT =  $array['NewDataSet']['LOGIN_EMPLOYEE']['ID4DIGIT'];
-            // $tbintranetusers->tel =  isset($array['NewDataSet']['LOGIN_EMPLOYEE']['MTEL']) ? $array['NewDataSet']['LOGIN_EMPLOYEE']['MTEL'] : "";
-            // $tbintranetusers->mtel =  isset($array['NewDataSet']['LOGIN_EMPLOYEE']['MMOBILE']) ? $array['NewDataSet']['LOGIN_EMPLOYEE']['MMOBILE'] : "";
+                    // return $tbemployee;
+                    $tbemployee->save();
 
-            $tbintranetusers->email =  $array['NewDataSet']['LOGIN_EMPLOYEE']['USER_NAME'];
-            $tbintranetusers->password = bcrypt($request->input('password'));
-            // $tbintranetusers->role_id = 30;
-            $tbintranetusers->save();
+                }
+                else{
+                   // return "2";
+                    return Redirect::back()->with('formanager','กรุณา login ผ่านโทรศัพท์')->withInput(Input::all());
+                }
+
+
+                $tbintranetusers->EMPCODE = $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'];
+                // $tbintranetusers->TITLE_TH = $array['NewDataSet']['LOGIN_EMPLOYEE']['TITLE_TH'];
+                // $tbintranetusers->FIRST_NAME_TH = $array['NewDataSet']['LOGIN_EMPLOYEE']['FIRST_NAME_TH'];
+                // $tbintranetusers->LAST_NAME_TH =  $array['NewDataSet']['LOGIN_EMPLOYEE']['LAST_NAME_TH'];
+                // $tbintranetusers->TITLE_EN = $array['NewDataSet']['LOGIN_EMPLOYEE']['TITLE_EN'];
+                // $tbintranetusers->FIRST_NAME_EN = $array['NewDataSet']['LOGIN_EMPLOYEE']['FIRST_NAME_EN'];
+                // $tbintranetusers->LAST_NAME_EN =  $array['NewDataSet']['LOGIN_EMPLOYEE']['LAST_NAME_EN'];
+                // $tbintranetusers->EMAILINTRA =  $array['NewDataSet']['LOGIN_EMPLOYEE']['EMAIL'];
+                // $tbintranetusers->POS_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['POS_FULL'];
+                // $tbintranetusers->DEP_ABBR =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_ABBR'];
+                // $tbintranetusers->DEP_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_FULL'];
+                // $tbintranetusers->HIERACHY_CODE =  $array['NewDataSet']['LOGIN_EMPLOYEE']['HIERACHY_CODE'];
+                // $tbintranetusers->ID4DIGIT =  $array['NewDataSet']['LOGIN_EMPLOYEE']['ID4DIGIT'];
+                // $tbintranetusers->tel =  isset($array['NewDataSet']['LOGIN_EMPLOYEE']['MTEL']) ? $array['NewDataSet']['LOGIN_EMPLOYEE']['MTEL'] : "";
+                // $tbintranetusers->mtel =  isset($array['NewDataSet']['LOGIN_EMPLOYEE']['MMOBILE']) ? $array['NewDataSet']['LOGIN_EMPLOYEE']['MMOBILE'] : "";
+
+                $tbintranetusers->email =  $array['NewDataSet']['LOGIN_EMPLOYEE']['USER_NAME'];
+                $tbintranetusers->password = bcrypt($request->input('password'));
+                $tbintranetusers->remember_token = str_random(10);
+                // $tbintranetusers->role_id = 30;
+                $tbintranetusers->save();
             }
         }
 
