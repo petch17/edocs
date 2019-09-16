@@ -27,7 +27,7 @@ class CreateEmployeesTable extends Migration
             $table->string('DEP_FULL')->nullable(); //แผนก เต็ม
             $table->string('HIERACHY_CODE')->nullable(); //รหัสลำดับขั้น
             $table->string('ID4DIGIT')->nullable(); //เลขท้าย6ตัว ปชช.
-            $table->string('EMAIL')->nullable(); //EMAIL
+            $table->string('EMAIL')->nullable(); //อีเมล์
             $table->string('USER_NAME')->nullable(); //USER_NAME
         });
     }
