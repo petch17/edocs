@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Objective;
 use App\Edoc;
+use App\Employee;
 use File;
 use PDF;
 // use Imagick;
@@ -50,6 +51,11 @@ class InboxController extends Controller
             $edoc->file = $file;
             $edoc->real_filename = $real_filename;
         }
+
+        // $edocs = Employee::select( 'USER_NAME' )->where()->get();
+
+        $edoc->topic = $request->{{ Auth::employee()->USER_NAME }};
+
         $edoc->topic = $request->topic;
         $edoc->edoc_type = $request->edoc_type;
         $edoc->retirement = $request->retirement;

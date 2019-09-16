@@ -31,6 +31,9 @@
                             {!! Form::open(['route' => 'addstore', 'method' => 'post', 'files'=>true, 'class' => 'kt-form kt-form--label-right']) !!}
                         <div class="kt-portlet__body">
 
+                                {{-- {{Auth::user()->email}} --}}
+                                <input name="user_name" type="hidden" value="{{Auth::user()->email}}" />
+
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label">เรื่อง :</label>
                                 <div class="col-lg-6">
