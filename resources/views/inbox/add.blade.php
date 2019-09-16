@@ -31,10 +31,29 @@
                             {!! Form::open(['route' => 'addstore', 'method' => 'post', 'files'=>true, 'class' => 'kt-form kt-form--label-right']) !!}
                         <div class="kt-portlet__body">
 
-                        <div class="form-group row">
+                            <div class="form-group row">
                                 <label class="col-lg-3 col-form-label">เรื่อง :</label>
                                 <div class="col-lg-6">
                                 {!! Form::text('topic',null,['class'=>'form-control','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!}
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label text-right">เรียน :</label>
+                                <div class="col-lg-6">
+                                {!! Form::text('created_by',null,['class'=>'form-control','placeholder'=>'เรียน']); !!}
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label text-right">ประเภทเอกสาร :</label>
+                                <div class="col-lg-6">
+                                    {!! Form::select('edoc_type',
+                                    array( 'แจ้งเพื่อทราบ' => 'แจ้งเพื่อทราบ',
+                                     'แจ้งเพื่อดำเนินการ' => 'แจ้งเพื่อดำเนินการ',
+                                     'แจ้งอบรม/ประชุม/สัมมนา' => 'แจ้งอบรม/ประชุม/สัมมนา') ,
+                                      '-- เลือกประเภทเอกสาร --',
+                                    ['class'=>'form-control' ] ); !!}
                                 </div>
                             </div>
 
