@@ -51,18 +51,24 @@
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
+                @if(session('formanager'))
+                    <span>
+                        กรุณา login ผ่านโทรศัพท์
+                    </span>
+                @endif
+
             </div>
         </div>
 
 
         <div class="row kt-login__extra">
-            <div class="col">
+            {{-- <div class="col">
                 <label class="kt-checkbox" for="remember">
                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                     {{ __('จดจำรหัสนี้') }}
                     <span></span>
                 </label>
-            </div>
+            </div> --}}
 
             {{-- <div class="col kt-align-right"> --}}
              {{-- <a href="javascript:;" id="kt_login_forgot" class="kt-login__link">ลืมรหัสผ่าน ?</a> --}}

@@ -15,38 +15,38 @@ class UsersTableSeeder extends Seeder
 
         $user->insert([
             [
-                'name'=> 'admin',
-                'email'=>'admin@tot.co.th',
+                'email'=> 'admin',
+                // 'EMAILINTRA'=>'admin@tot.co.th',
                 'password'=> Hash::make('12345678'),
                 'remember_token'=> str_random(10)
             ],
             [
-                'name'=> 'pittawat',
-                'email'=>'pittawatmengg@gmail.com',
+                'email'=> 'pittawat',
+                // 'EMAILINTRA'=>'pittawatmengg@gmail.com',
                 'password'=> Hash::make('12345678'),
                 'remember_token'=> str_random(10)
             ],
             [
-                'name'=> 'nattawut',
-                'email'=>'nattawut1613@gmail.com',
+                'email'=> 'nattawut',
+                // 'EMAILINTRA'=>'nattawut1613@gmail.com',
                 'password'=> Hash::make('12345678'),
                 'remember_token'=> str_random(10)
             ],
             [
-                'name'=> 'pranus',
-                'email'=>'pranus@gmail.com',
+                'email'=> 'pranus',
+                // 'EMAILINTRA'=>'pranus@gmail.com',
                 'password'=> Hash::make('12345678'),
                 'remember_token'=> str_random(10)
             ],
             [
-                'name'=> 'wanarat',
-                'email'=>'iicee.iceq@gmail.com',
+                'email'=> 'wanarat',
+                // 'EMAILINTRA'=>'iicee.iceq@gmail.com',
                 'password'=> Hash::make('12345678'),
                 'remember_token'=> str_random(10)
             ],
             [
-                'name'=> 'Nipaporn',
-                'email'=>'amnnitha@gmail.com',
+                'email'=> 'Nipaporn',
+                // 'EMAILINTRA'=>'amnnitha@gmail.com',
                 'password'=> Hash::make('12345678'),
                 'remember_token'=> str_random(10)
             ]

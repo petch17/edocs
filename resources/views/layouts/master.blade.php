@@ -123,7 +123,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="kt-header__topbar-item kt-header__topbar-item--user">
                                     <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
                                         <span class="kt-header__topbar-welcome kt-visible-desktop">Hi,</span>
-                                        <span class="kt-header__topbar-username kt-visible-desktop">{{Auth::user()->name}}</span>
+                                        <span class="kt-header__topbar-username kt-visible-desktop">{{Auth::user()->email}}</span>
                                         <img alt="Pic" src="{{asset('assets/media/users/300_21.jpg')}}"/>
                                         <span class="kt-header__topbar-icon kt-bg-brand kt-hidden"><b>S</b></span>
                                     </div>
@@ -134,7 +134,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <img class="kt-hidden-" alt="Pic" src="{{asset('assets/media/users/300_25.jpg')}}" />
                                             </div>
                                             <div class="kt-user-card__name">
-                                                {{Auth::user()->name}}
+                                                {{Auth::user()->email}}
                                             </div>
                                             <div class="kt-user-card__badge">
                                                 <a href="{{ route('logout') }}" class="btn btn-label btn-label-brand btn-sm btn-bold"
