@@ -54,12 +54,11 @@ class InboxController extends Controller
 
         // $edocs = Employee::select( 'USER_NAME' )->where()->get();
 
-        $edoc->topic = $request->user_name;
+        $edoc->created_by = $request->user_name;
 
         $edoc->topic = $request->topic;
         $edoc->edoc_type = $request->edoc_type;
         $edoc->retirement = $request->retirement;
-        // $edoc->created_by = $request->created_by;
         $edoc->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
         $edoc->save();
 
