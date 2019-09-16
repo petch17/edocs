@@ -51,6 +51,9 @@ class InboxController extends Controller
             $edoc->real_filename = $real_filename;
         }
         $edoc->topic = $request->topic;
+        $edoc->edoc_type = $request->edoc_type;
+        $edoc->retirement = $request->retirement;
+        // $edoc->created_by = $request->created_by;
         $edoc->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
         $edoc->save();
 

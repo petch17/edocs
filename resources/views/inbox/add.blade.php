@@ -41,7 +41,7 @@
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label text-right">เรียน :</label>
                                 <div class="col-lg-6">
-                                {!! Form::text('created_by',null,['class'=>'form-control','placeholder'=>'เรียน']); !!}
+                                {!! Form::text('retirement',null,['class'=>'form-control','placeholder'=>'เรียน']); !!}
                                 </div>
                             </div>
 
