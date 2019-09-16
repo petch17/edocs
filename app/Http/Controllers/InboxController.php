@@ -44,10 +44,10 @@ class InboxController extends Controller
 
         if ($request->hasFile('file')){
             // File::delete(base_path().'\\public\\edocfiles\\'.$edoc->file);
-            $file = str_random(10).'.'.$request->file('file')->getClientOriginalExtension();
-            $real_filename = $request->file('file')->getClientOriginalName();
-            $request->file('file')->move('D://'.'nodeapi'.'/'.'uploads'.'/'.'pdffile'.'/', $file);
-            // $request->file('file')->move(base_path().'/public/edocfiles/',$file);
+            $file = str_random(10).'.'.$request->file('file')->getClientOriginalExtension(); //random flie name
+            $real_filename = $request->file('file')->getClientOriginalName(); //real_filename
+            $request->file('file')->move('D://'.'nodeapi'.'/'.'uploads'.'/'.'pdffile'.'/', $file); //ที่เก็บรูปของ serve
+            // $request->file('file')->move(base_path().'/public/edocfiles/',$file); //ที่เก็บรูปของ เครื่องตัวเอง
             $edoc->file = $file;
             $edoc->real_filename = $real_filename;
         }
@@ -63,6 +63,7 @@ class InboxController extends Controller
         $edoc->save();
 
         // return $edoc->id;
+        // ส่วนการสร้างรูป (ฝั่งแอป)
         $client = new \GuzzleHttp\Client();
         $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
         $pdf_to_img2 = $client->get($pdf_to_img);
