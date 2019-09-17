@@ -37,7 +37,7 @@
 
                     <input name="user_id" type="hidden" value="{{Auth::user()->id}}" />
 
-                    {{-- <div class="form-group row">
+                    <div class="form-group row">
                         <label class="col-lg-3 col-form-label text-right">เลือกผู้บริหาร :</label>
                         <div class="col-lg-6">
 
@@ -46,12 +46,12 @@
                                     @foreach($manager as $managers)
                                     <option>{{$managers->EMPCODE}}</option>
                                     @endforeach
-                                </select>
+                                </select> --}}
                                 {!! Form::select('select_manager',$manager->pluck( 'EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH' , 'id' ),
                                 null, ['class'=>'form-control','id'=>'manager','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!}
 
                         </div>
-                    </div> --}}
+                    </div>
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรื่อง :</label>

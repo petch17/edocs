@@ -35,11 +35,10 @@ class InboxController extends Controller
     public function addcreate()
     {
         $manager = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->get();
+
         return view('inbox.add',['manager' => $manager]);
         // return view('inbox.add',compact('manager'));
 
-        // $goals = Objective::select('id','name')->get();
-        // return view('inbox.add',['goals' => $goals]);
     }
 
     public function addstore(Request $request)
