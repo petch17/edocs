@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Objective;
+use App\Manager;
 use App\Edoc;
 use App\Employee;
 use File;
@@ -33,8 +34,12 @@ class InboxController extends Controller
 
     public function addcreate()
     {
-        $goals = Objective::select('id','name')->get();
-        return view('inbox.add',['goals' => $goals]);
+        $manager = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->get();
+        return view('inbox.add',['manager' => $manager]);
+        // return view('inbox.add',compact('manager'));
+
+        // $goals = Objective::select('id','name')->get();
+        // return view('inbox.add',['goals' => $goals]);
     }
 
     public function addstore(Request $request)
@@ -54,11 +59,12 @@ class InboxController extends Controller
 
         // $edocs = Employee::select( 'USER_NAME' )->where()->get();
 
+        // $edoc->select_manager = $request->select_manager;
         $edoc->created_by = $request->user_id;
 
         $edoc->topic = $request->topic;
         $edoc->edoc_type = $request->edoc_type;
-        $edoc->retirement = $request->retirement;
+        $edoc->POS_ABBR = $request->POS_ABBR;
         $edoc->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
         $edoc->save();
 

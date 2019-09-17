@@ -35,8 +35,8 @@ class CreateEdocsTable extends Migration
             $table->string('approveimage')->nullable();
             $table->string('status')->nullable(); //สถานะ
             $table->integer('created_by')->nullable(); //สร้างโดยใคร
-            $table->string('select_manager')->nullable(); //เลือกผู้บริหาร
-            $table->string('retirement')->nullable(); //ส่งถึงใคร
+            $table->integer('select_manager')->nullable(); //เลือกผู้บริหาร
+            $table->string('POS_ABBR')->nullable(); //ส่งถึงใคร
             // $table->integer('objective_id')->unsigned();
             // $table->foreign('objective_id')->references('id')->on('objective')->onDelete('cascade');
 

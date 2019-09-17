@@ -137,6 +137,7 @@ class LoginController extends Controller
                     $tbemployee->FIRST_NAME_EN = $array['NewDataSet']['LOGIN_EMPLOYEE']['FIRST_NAME_EN'];
                     $tbemployee->LAST_NAME_EN =  $array['NewDataSet']['LOGIN_EMPLOYEE']['LAST_NAME_EN'];
                     $tbemployee->EMAILINTRA =  $array['NewDataSet']['LOGIN_EMPLOYEE']['EMAIL'];
+                    $tbemployee->POS_ABBR =  $array['NewDataSet']['LOGIN_EMPLOYEE']['POS_ABBR'];
                     $tbemployee->POS_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['POS_FULL'];
                     $tbemployee->DEP_ABBR =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_ABBR'];
                     $tbemployee->DEP_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_FULL'];

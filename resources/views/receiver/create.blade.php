@@ -2,6 +2,9 @@
 
 @section('css')
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+
+{{-- select --}}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <style>
     canvas {
         border: 1px black solid;
@@ -108,6 +111,42 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                            <label class="col-lg-3 col-form-label">เลือกผู้รับ :</label>
+                            <div class="kt-header__topbar">
+                                <!--begin: Search -->
+
+                                <form method="get" class="kt-quick-search__form">
+                                    <div class="col-lg-12">
+
+
+                                            <div class="kt-portlet__body">
+                                                <select id="kt-dual-listbox-2" class="kt-dual-listbox" multiple
+                                                    data-available-title="รายชื่อทั้งหมด"
+                                                    data-selected-title="รายชื่อที่เลือก"
+                                                    data-add="<i class='flaticon2-next'></i>"
+                                                    data-remove="<i class='flaticon2-back'></i>"
+                                                    data-add-all="<i class='flaticon2-fast-next'></i>"
+                                                    data-remove-all="<i class='flaticon2-fast-back'></i>"
+                                                    >
+                                                    {{-- <select style="width: 200px" id="manager">
+                                                            <option></option>
+                                                            @foreach($manager as $managers)
+                                                            <option>{{$managers->EMPCODE}}</option>
+                                                            @endforeach
+                                                        </select> --}}
+
+                                                        {!! Form::select('select_manager',$employee->pluck( 'EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH' , 'id' ),
+                                                        null, ['class'=>'form-control','id'=>'manager','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!}
+                                                </select>
+                                            </div>
+
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
                 </div>
                 <div class="kt-portlet__foot">
                     <div class="kt-form__actions">
@@ -148,11 +187,21 @@
 {{-- <script src="assets/vendors/custom/uppy/uppy.bundle.js" type="text/javascript"></script>
 <script src="./assets/js/demo11/pages/crud/file-upload/uppy.js" type="text/javascript"></script> --}}
 <!--end::Page Scripts -->
+<link href="{{asset('assets/vendors/general/dual-listbox/dist/dual-listbox.css')}}" rel="stylesheet" type="text/css" />
 
+<script src="{{asset('assets/js/demo11/pages/components/extended/dual-listbox.js')}}" type="text/javascript"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <script>
     $(document).ready(function () {
         document.getElementById('sent').classList.add('kt-menu__item--open');
     });
+
+    $("#manager").select2({
+            placeholder: "เลือกผู้บริหาร",
+            allowClear: true
+        });
 
     // var tCtx = document.getElementById('textCanvas').getContext('2d'),
     //     imageElem = document.getElementById('image');

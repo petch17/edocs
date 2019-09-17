@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Receiver;
 use App\Edoc;
+use App\Employee;
 
 class ReceiverController extends Controller
 {
@@ -22,7 +23,9 @@ class ReceiverController extends Controller
     public function create($id)
     {
         // return $id;
-        return view('receiver.create',['edoc_id' => $id]);
+        $employee = Employee::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->get();
+        return view('receiver.create',['employee' => $employee],['edoc_id' => $id]);
+        // return view('receiver.create');
     }
 
     public function store(Request $request)

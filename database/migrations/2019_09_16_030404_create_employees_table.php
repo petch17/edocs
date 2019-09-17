@@ -22,7 +22,8 @@ class CreateEmployeesTable extends Migration
             $table->string('TITLE_EN')->nullable(); //คำนำหน้าชื่อ อังกฤษ
             $table->string('FIRST_NAME_EN')->nullable(); //ชื่อ อังกฤษ
             $table->string('LAST_NAME_EN')->nullable(); //นามสกุล อังกฤษ
-            $table->string('POS_FULL')->nullable(); //ตำแหน่ง
+            $table->string('POS_ABBR')->nullable(); //ตำแหน่งย่อ
+            $table->string('POS_FULL')->nullable(); //ตำแหน่งเต็ม
             $table->string('DEP_ABBR')->nullable(); //แผนก ย่อ
             $table->string('DEP_FULL')->nullable(); //แผนก เต็ม
             $table->string('HIERACHY_CODE')->nullable(); //รหัสลำดับขั้น
