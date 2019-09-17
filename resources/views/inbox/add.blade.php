@@ -38,7 +38,7 @@
                     <input name="user_id" type="hidden" value="{{Auth::user()->id}}" />
 
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label text-right">เลือกผู้บริหาร :</label>
+                        <label class="col-lg-3 col-form-label">เลือกผู้บริหาร :</label>
                         <div class="col-lg-6">
 
                                 <select style="width: 100%" id="manager" name="select_manager" class="form-control">
@@ -63,14 +63,14 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label text-right">เรียน :</label>
+                        <label class="col-lg-3 col-form-label">เรียน :</label>
                         <div class="col-lg-6">
                             {!! Form::text('POS_ABBR',null,['class'=>'form-control','placeholder'=>'เรียน']); !!}
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label text-right">ประเภทเอกสาร :</label>
+                        <label class="col-lg-3 col-form-label">ประเภทเอกสาร :</label>
                         <div class="col-lg-6">
                             {!! Form::select('edoc_type',
                             array( 'แจ้งเพื่อทราบ' => 'แจ้งเพื่อทราบ',
@@ -81,8 +81,8 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <label class="col-lg-3 col-form-label text-right">อัพโหลด :</label>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">อัพโหลด :</label>
                         <div class="col-lg-6">
                             {!! Form::file('file' , ['accept' => ',.pdf']); !!}
                         </div>

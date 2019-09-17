@@ -7,8 +7,9 @@
 
 <img src="http://203.113.14.20:3000/output/{{$edoc->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
 
-<button style="position: absolute; top: 20px; right: 180px;" type="submit" class="btn btn-outline-primary">ยืนยัน</button>
-<button style="position: absolute; top: 20px; right: 100px;" type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ยกเลิก</button>
+<a style="position: absolute; top: 20px; right: 1px; color:red;"><h6>*กรุณาคลิกที่รูปเพื่อกำหนดตำแหน่งของลายเซ็น*</h6></a>
+<button style="position: absolute; top: 60px; right: 180px;" type="submit" class="btn btn-outline-primary">ยืนยัน</button>
+<button style="position: absolute; top: 60px; right: 100px;" type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ยกเลิก</button>
 <!-- </div> -->
 {!! Form::close() !!}
 <script>

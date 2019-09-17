@@ -123,7 +123,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="kt-header__topbar-item kt-header__topbar-item--user">
                                     <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
                                         <span class="kt-header__topbar-welcome kt-visible-desktop">Hi,</span>
-                                        <span class="kt-header__topbar-username kt-visible-desktop">{{Auth::user()->email}}</span>
+                                        <span class="kt-header__topbar-username kt-visible-desktop">{{--Auth::user()->email--}}</span>
                                         <img alt="Pic" src="{{asset('assets/media/users/300_21.jpg')}}"/>
                                         <span class="kt-header__topbar-icon kt-bg-brand kt-hidden"><b>S</b></span>
                                     </div>
@@ -188,9 +188,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                             </li>
 
                                             <li id="sent" class="kt-menu__item" aria-haspopup="true">
-                                                    <a  {{-- href="{{ route('sent.index') }}"  --}}class="kt-menu__link">
+                                                    <a  href="{{ route('sent.index') }}" class="kt-menu__link">
                                                         <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
-                                                        <span class="kt-menu__link-text" >เอกสารที่ได้จากการโดนแทงแล้ว</span>
+                                                        <span class="kt-menu__link-text" >เอกสารที่มอบหมาย/ส่งต่อแล้ว</span>
                                                     </a>
                                                 </li>
 

@@ -100,9 +100,9 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="form-group row">
 
-                        <label class="col-lg-3 col-form-label text-right">เกษียนหนังสือ :</label>
+                        <label class="col-lg-3 col-form-label">เกษียนหนังสือ :</label>
                         <div class="col-lg-6">
                             {!!
                             Form::textarea('retirement',null,['class'=>'form-control', 'id'=>'text2'
@@ -127,15 +127,15 @@
                                                     data-add-all="<i class='flaticon2-fast-next'></i>"
                                                     data-remove-all="<i class='flaticon2-fast-back'></i>"
                                                     >
-                                                    {{-- <select style="width: 200px" id="manager">
+                                                    <select id="">
                                                             <option></option>
-                                                            @foreach($manager as $managers)
-                                                            <option>{{$managers->EMPCODE}}</option>
+                                                            @foreach($employee as $employees)
+                                                            <option>{{$employees->EMPCODE}}</option>
                                                             @endforeach
-                                                        </select> --}}
+                                                        </select>
 
-                                                        {!! Form::select('select_manager',$employee->pluck( 'EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH' , 'id' ),
-                                                        null, ['class'=>'form-control','id'=>'manager','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!}
+                                                        {{-- {!! Form::select('select_manager',$employee->pluck( 'EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH' , 'id' ),
+                                                        null, ['class'=>'form-control','id'=>'manager']); !!} --}}
                                                 </select>
                                             </div>
                                     </div>
@@ -194,7 +194,7 @@
         document.getElementById('sent').classList.add('kt-menu__item--open');
     });
 
-    $("#manager").select2({
+    $("#").select2({
             placeholder: "เลือกผู้บริหาร",
             allowClear: true
         });
