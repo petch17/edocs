@@ -4,7 +4,7 @@
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 
 {{-- select --}}
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link href="{{asset('assets/css/select2.min.css')}}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -41,14 +41,15 @@
                         <label class="col-lg-3 col-form-label text-right">เลือกผู้บริหาร :</label>
                         <div class="col-lg-6">
 
-                                {{-- <select style="width: 200px" id="manager" class="form-control">
+                                <select style="width: 100%" id="manager" name="select_manager" class="form-control">
                                     <option></option>
                                     @foreach($manager as $managers)
-                                    <option>{{$managers->EMPCODE}}</option>
+                                    @php $sumname = $managers->TITLE_TH.' '.$managers->FIRST_NAME_TH.' '.$managers->LAST_NAME_TH @endphp
+                                <option value="{{$managers->id}}">{{$managers->EMPCODE}}&nbsp;&nbsp;{{$sumname}}</option>
                                     @endforeach
-                                </select> --}}
-                                {!! Form::select('select_manager',$manager->pluck( 'EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH' , 'id' ),
-                                null, ['class'=>'form-control','id'=>'manager','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!}
+                                </select>
+                                {{-- {!! Form::select('select_manager',$manager->pluck( 'EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH' , 'id' ),
+                                null, ['class'=>'form-control','id'=>'manager','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!} --}}
 
                         </div>
                     </div>
@@ -116,7 +117,7 @@
 <script src="./assets/js/demo11/pages/crud/file-upload/uppy.js" type="text/javascript"></script> --}}
 <!--end::Page Scripts -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="{{asset('assets/js/select2.min.js')}}"></script>
 
 <script>
     $(document).ready(function () {
@@ -133,4 +134,31 @@
     //         allowClear: true
     //     });
 </script>
+    <style>
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 8px;
+        }
+        .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple {
+            line-height: 2;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered .select2-selection__clear {
+            border: 0;
+            position: absolute;
+            top: 80%;
+            font-family: "LineAwesome";
+            text-decoration: inherit;
+            text-rendering: optimizeLegibility;
+            text-transform: none;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+            content: "";
+            font-size: 1.4rem;
+            display: inline-block;
+            left: auto;
+            right: 1.85rem;
+            margin-right: 0.4rem;
+            margin-top: -1rem;
+        }
+    </style>
 @endsection

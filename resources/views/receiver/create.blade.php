@@ -113,13 +113,11 @@
 
                     <div class="form-group row">
                             <label class="col-lg-3 col-form-label">เลือกผู้รับ :</label>
-                            <div class="kt-header__topbar">
+                            <div class="col-lg-9">
                                 <!--begin: Search -->
 
                                 <form method="get" class="kt-quick-search__form">
                                     <div class="col-lg-12">
-
-
                                             <div class="kt-portlet__body">
                                                 <select id="kt-dual-listbox-2" class="kt-dual-listbox" multiple
                                                     data-available-title="รายชื่อทั้งหมด"
@@ -140,10 +138,8 @@
                                                         null, ['class'=>'form-control','id'=>'manager','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!}
                                                 </select>
                                             </div>
-
                                     </div>
                                 </form>
-
                             </div>
                         </div>
 

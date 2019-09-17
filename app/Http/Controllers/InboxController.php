@@ -58,7 +58,7 @@ class InboxController extends Controller
 
         // $edocs = Employee::select( 'USER_NAME' )->where()->get();
 
-        // $edoc->select_manager = $request->select_manager;
+        $edoc->select_manager = $request->select_manager;
         $edoc->created_by = $request->user_id;
 
         $edoc->topic = $request->topic;

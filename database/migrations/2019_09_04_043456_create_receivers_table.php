@@ -19,6 +19,7 @@ class CreateReceiversTable extends Migration
             $table->string('part_id')->nullable(); //เลขที่รับส่วนงาน
             //  $table->string('booknum')->nullable();
              $table->string('edoc_type')->nullable(); //ประเภทเอกสาร
+             $table->integer('select_emp')->nullable(); //ผู้รับเอกสาร
              $table->dateTime('start')->nullable(); //วันทีเริ่ม
              $table->dateTime('end')->nullable(); //วันที่สิ้นสุด
             //  $table->text('detail')->nullable();
