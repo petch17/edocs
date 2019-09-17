@@ -21,24 +21,26 @@ class CreateUsersTable extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->string('TITLE_TH')->nullable();
-            // $table->string('FIRST_NAME_TH')->nullable();
-            // $table->string('LAST_NAME_TH')->nullable();
-            // $table->string('TITLE_EN')->nullable();
-            // $table->string('FIRST_NAME_EN')->nullable();
-            // $table->string('LAST_NAME_EN')->nullable();
-            // $table->string('POS_FULL')->nullable();
-            // $table->string('DEP_ABBR')->nullable();
-            // $table->string('DEP_FULL')->nullable();
-            // $table->string('HIERACHY_CODE')->nullable();
-            // $table->string('ID4DIGIT')->nullable();
-            // $table->string('EMAILINTRA')->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->integer('EMPCODE')->nullable(); //รหัสพนักงงาน
+            $table->string('TITLE_TH')->nullable(); //คำนำหน้าชื่อ ไทย
+            $table->string('FIRST_NAME_TH')->nullable(); //ชื่อ ไทย
+            $table->string('LAST_NAME_TH')->nullable(); //นามสกุล ไทย
+            $table->string('TITLE_EN')->nullable(); //คำนำหน้าชื่อ อังกฤษ
+            $table->string('FIRST_NAME_EN')->nullable(); //ชื่อ อังกฤษ
+            $table->string('LAST_NAME_EN')->nullable(); //นามสกุล อังกฤษ
+            $table->string('POS_ABBR')->nullable(); //ตำแหน่งย่อ
+            $table->string('POS_FULL')->nullable(); //ตำแหน่งเต็ม
+            $table->string('DEP_ABBR')->nullable(); //แผนก ย่อ
+            $table->string('DEP_FULL')->nullable(); //แผนก เต็ม
+            $table->string('HIERACHY_CODE')->nullable(); //รหัสลำดับขั้น
+            $table->string('ID4DIGIT')->nullable(); //เลขท้าย6ตัว ปชช.
+            $table->string('EMAILINTRA')->nullable(); //อีเมล์
+            // $table->string('USER_NAME')->nullable();
+            $table->string('email')->unique()->nullable();//USER_NAME
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->integer('EMPCODE')->unsigned()->nullable();
-            // $table->foreign('EMPCODE_ID')->references('id')->on('empcode')->onDelete('cascade');
             $table->rememberToken();
+
             $table->timestamps();
         });
     }
