@@ -30,17 +30,27 @@ class ReceiverController extends Controller
 
     public function store(Request $request)
     {
-        // return $request;
-        // $receive = Receiver::with('tbedoc')->find($id);
+
+        foreach($request->select_emp as $user_id){
+
         $receive = new Receiver;
         $receive->date = $request->date;
         $receive->part_id = $request->part_id;
         $receive->edoc_type = $request->edoc_type;
-        $receive->retirement = $request->retirement;
+        // $receive->retirement = $request->retirement;
         $receive->edoc_id = $request->edoc_id;
-
+        $receive->select_emp = $user_id;
         $receive->save();
+
+
+
+        }
+
+        //  return $request;
+        // $receive = Receiver::with('tbedoc')->find($id);
+
         // return $receive->edoc_id;
+
         $client = new \GuzzleHttp\Client();
         $text_to_img = "http://203.113.14.20:3000/senddoc/".$receive->id;
         $text_to_img2 = $client->get($text_to_img);

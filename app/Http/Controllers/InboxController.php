@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Objective;
+use App\User;
 use App\Manager;
 use App\Edoc;
 use App\Employee;
 use File;
 use PDF;
+use Auth;
 // use Imagick;
 
 class InboxController extends Controller
@@ -20,10 +21,12 @@ class InboxController extends Controller
 
     public function index()
     {
-        $edocs = Edoc::with('tbobjective')->where('status', 'เอกสารที่ยังไม่ผ่านการอนุมัติ')->get();
+        $edocs = Edoc::with('tbobjective')->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )->where('created_by',Auth::user()->id)->get();
+        $user = User::orderBy('id','desc')->get();
+        // $user = Auth::user()->email;
         // $edocs = Edoc::with('tbobjective')->get();
 
-        return view('inbox.index',['edocs' => $edocs]);
+        return view('inbox.index',['edocs' => $edocs],['user' => $user]);
 
     }
 

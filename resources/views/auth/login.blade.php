@@ -27,8 +27,7 @@
         {{-- {!! Form::open(['route' => 'login', 'method' => 'post', 'class' => 'kt-form']) !!} --}}
         {{-- intra --}}
         <form class="kt-form" method="POST" action="{{ route('web-login') }}">
-                @csrf
-        @csrf
+            @csrf
         <div >
             <div class="input-group">
             <input id="email" type="text" placeholder="อีเมล์"
