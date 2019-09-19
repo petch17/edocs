@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rcdetail extends Model
 {
-    protected $table = 'rcdetail';
+    protected $table = 'rcdetails';
 
     public function tbreceiver(){
-        return $this->belongsTo(Receiver::class, 'edoc_id');
+        return $this->belongsTo(Receiver::class, 'reciver_id');
     }
 }

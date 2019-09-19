@@ -38,7 +38,7 @@ class CreateReceiversTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('rcdetail', function (Blueprint $table) {
+        Schema::create('rcdetails', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('reciver_id')->unsigned();
             $table->foreign('reciver_id')->references('id')->on('receivers')->onDelete('cascade');

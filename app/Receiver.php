@@ -13,6 +13,6 @@ class Receiver extends Model
     }
 
     public function tbrcdetails(){
-        return $this->hasMany(Receiver::class);
+        return $this->hasMany(Rcdetail::class);
     }
 }

@@ -7,6 +7,7 @@ use App\Receiver;
 use App\Rcdetail;
 use App\Edoc;
 use App\User;
+use Auth;
 
 class ReceiverController extends Controller
 {
@@ -17,8 +18,9 @@ class ReceiverController extends Controller
 
     public function index()
     {
-        // $receive = Receiver::with('tbedoc')->get();
-        // return view('receiver.index',['receive' => $receive]);
+        $edocs = Edoc::with('tbobjective')->where('status' , 'เอกสารที่อนุมัติแล้ว')->where('created_by',Auth::user()->id)->get();
+        // $edocs = Edoc::with('tbobjective')->get();
+        return view('receiver.index',['edocs2' => $edocs]);
     }
 
     public function create($id)
@@ -125,6 +127,6 @@ class ReceiverController extends Controller
 
         $receive->save();
 
-       return redirect()->route('sent.index');
+       return redirect()->route('read.index');
     }
 }

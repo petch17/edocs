@@ -4,7 +4,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('web-login', ['as'=>'web-login','uses'=>'Auth\LoginController@webLoginPost']);
 });
 
-Route::resource('sent','SentController');
+Route::resource('read','ReadController');
 
 Route::get('inbox/add', 'InboxController@addcreate')->name('addcreate');
 
@@ -75,12 +75,6 @@ Route::post('receiver/marksignaturestore/{id}', [
     'uses' => 'ReceiverController@marksignaturestore'
 ]);
 Route::resource('marksignaturestore', 'ReceiverController' , ['except' => 'marksignaturestore']);
-
-
-
-
-
-
 
 
 

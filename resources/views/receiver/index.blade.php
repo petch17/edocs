@@ -59,6 +59,10 @@
                                 <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
                                     <i class="fa fa-share-square"></i>
                                 </a>
+                                {{-- &nbsp; &nbsp;
+                                <a href="{{ route('inbox.show' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ดาวน์โหลด">
+                                    <i class="fa fa-download"></i>
+                                </a> --}}
                         </td>
                         {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
                         {{-- @php
@@ -86,7 +90,7 @@
 
 <script>
     $(document).ready(function() {
-        document.getElementById('sent').classList.add('kt-menu__item--open');
+        document.getElementById('receiver').classList.add('kt-menu__item--open');
 
         $('#table1').DataTable();
 
