@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Manager;
 use App\Edoc;
-use App\Employee;
 use File;
 use PDF;
 use Auth;

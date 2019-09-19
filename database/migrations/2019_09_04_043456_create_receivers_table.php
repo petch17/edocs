@@ -14,12 +14,10 @@ class CreateReceiversTable extends Migration
     public function up()
     {
         Schema::create('receivers', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->date('date')->nullable();
             $table->string('part_id')->nullable(); //เลขที่รับส่วนงาน
-            //  $table->string('booknum')->nullable();
              $table->string('edoc_type')->nullable(); //ประเภทเอกสาร
-             $table->integer('select_emp')->nullable(); //ผู้รับเอกสาร
              $table->dateTime('start')->nullable(); //วันทีเริ่ม
              $table->dateTime('end')->nullable(); //วันที่สิ้นสุด
             //  $table->text('detail')->nullable();
@@ -36,6 +34,16 @@ class CreateReceiversTable extends Migration
             $table->string('signnature')->nullable();
             $table->string('status')->nullable();
 
+
+            $table->timestamps();
+        });
+
+        Schema::create('rcdetail', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('reciver_id')->unsigned();
+            $table->foreign('reciver_id')->references('id')->on('receivers')->onDelete('cascade');
+            $table->integer('created_by')->nullable(); //ผู้ส่งต่อ
+            $table->integer('select_emp')->nullable(); //ผู้รับเอกสาร
 
             $table->timestamps();
         });

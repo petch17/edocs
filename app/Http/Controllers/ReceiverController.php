@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Receiver;
+use App\Rcdetail;
 use App\Edoc;
 use App\User;
 
@@ -28,10 +29,9 @@ class ReceiverController extends Controller
         // return view('receiver.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request )
     {
-
-        foreach($request->select_emp as $user_id){
+        // return $request;
 
         $receive = new Receiver;
         $receive->date = $request->date;
@@ -39,10 +39,19 @@ class ReceiverController extends Controller
         $receive->edoc_type = $request->edoc_type;
         // $receive->retirement = $request->retirement;
         $receive->edoc_id = $request->edoc_id;
-        $receive->select_emp = $user_id;
+
+        // return $receive;
         $receive->save();
 
+        foreach($request->select_emp as $emp_id){
 
+        $rcdetail = new Rcdetail;
+        $rcdetail->reciver_id = $receive->id;
+        $rcdetail->created_by = $request->user_id;
+        $rcdetail->select_emp = $emp_id;
+
+        // return $rcdetail;
+        $rcdetail->save();
 
         }
 

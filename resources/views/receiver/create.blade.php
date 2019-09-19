@@ -47,9 +47,9 @@
                 {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'file'=>true, 'onsubmit'=>'return
                 validateForm()', 'class' => 'kt-form
                 kt-form--label-right']) !!}
-
-                <input name="user_id" type="hidden" value="{{Auth::user()->$id}}" />
                 <div class="kt-portlet__body">
+
+                    <input name="user_id" type="hidden" value="{{Auth::user()->$id}}" />
 
                     <!--get_image-->
                     {{-- <input id="getimg" name="getimg" type="hidden" value="" />
@@ -148,9 +148,9 @@
                                         <option value="{{$employees->id}}">{{$sumname}}</option>
                                     @endforeach
                                 </select>
-                        </div> 
-                        
-                                
+                        </div>
+
+
                     </div>
 
                 </div>
@@ -206,7 +206,7 @@
     <script src="{{asset('js2/jquery.tinysort.js')}}" type="text/javascript"></script>
     <script src="{{asset('js2/jquery.quicksearch.js')}}" type="text/javascript"></script> --}}
     <script src="{{asset('js2/jquery.multi-select.js')}}" type="text/javascript"></script>
-    
+
 <script>
     $(document).ready(function () {
 
@@ -238,7 +238,7 @@
     //     document.getElementById("getimg2").value = imageElem.src;
     // }, false);
 
-   
+
     $('.searchable').multiSelect({
   selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา' style='width: 165px; ' >",
   selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา' style='width: 165px; ' >",
