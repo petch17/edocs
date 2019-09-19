@@ -47,6 +47,8 @@
                 {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'file'=>true, 'onsubmit'=>'return
                 validateForm()', 'class' => 'kt-form
                 kt-form--label-right']) !!}
+
+                <input name="user_id" type="hidden" value="{{Auth::user()->$id}}" />
                 <div class="kt-portlet__body">
 
                     <!--get_image-->
@@ -117,8 +119,8 @@
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลือกผู้รับ :</label>
-                        {{-- <div class="col-lg-9">
-                            <div class="col-lg-12">
+                        <div class="col-lg-9">
+                            {{-- <div class="col-lg-12">
                                 <div class="kt-portlet__body">
                                     <select id="kt-dual-listbox-2" class="kt-dual-listbox" name="select_emp[]" multiple
                                     data-available-title="Source Options"
@@ -137,20 +139,18 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
-                        </div> --}}
-                        <div class="row">
-                        <div class='span12'>
-                        <select multiple class="searchable" name="select_emp[]">
-                            @foreach($employee as $employees)
-                                @php
-                                    $sumname = $employees->TITLE_TH.' '.$employees->FIRST_NAME_TH.' '.$employees->LAST_NAME_TH
-                                @endphp
-                                <option value="{{$employees->id}}">{{$sumname}}</option>
-                            @endforeach
-                        </select>
-                        </div>
-                        </div>
+                            </div> --}}
+                            <select multiple class="searchable" name="select_emp[]">
+                                    @foreach($employee as $employees)
+                                        @php
+                                            $sumname = $employees->TITLE_TH.' '.$employees->FIRST_NAME_TH.' '.$employees->LAST_NAME_TH
+                                        @endphp
+                                        <option value="{{$employees->id}}">{{$sumname}}</option>
+                                    @endforeach
+                                </select>
+                        </div> 
+                        
+                                
                     </div>
 
                 </div>
@@ -206,6 +206,7 @@
     <script src="{{asset('js2/jquery.tinysort.js')}}" type="text/javascript"></script>
     <script src="{{asset('js2/jquery.quicksearch.js')}}" type="text/javascript"></script> --}}
     <script src="{{asset('js2/jquery.multi-select.js')}}" type="text/javascript"></script>
+    
 <script>
     $(document).ready(function () {
 
@@ -236,9 +237,11 @@
     //     imageElem2.src = tCtx2.canvas.toDataURL();
     //     document.getElementById("getimg2").value = imageElem.src;
     // }, false);
+
+   
     $('.searchable').multiSelect({
-  selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา'>",
-  selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา'>",
+  selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา' style='width: 165px; ' >",
+  selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา' style='width: 165px; ' >",
   afterInit: function(ms){
     var that = this,
         $selectableSearch = that.$selectableUl.prev(),
@@ -272,5 +275,6 @@
   }
 });
 </script>
+
 
 @endsection
