@@ -240,8 +240,8 @@
 
 
     $('.searchable').multiSelect({
-  selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา' style='width: 165px; ' >",
-  selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา' style='width: 165px; ' >",
+  selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา' style='width: 165px; border-radius: 4px' >",
+  selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา' style='width: 165px; border-radius: 4px' >",
   afterInit: function(ms){
     var that = this,
         $selectableSearch = that.$selectableUl.prev(),
