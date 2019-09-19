@@ -214,30 +214,6 @@
         document.getElementById('sent').classList.add('kt-menu__item--open');
     });
 
-    // var tCtx = document.getElementById('textCanvas').getContext('2d'),
-    //     imageElem = document.getElementById('image');
-
-    // document.getElementById('text').addEventListener('keyup', function () {
-    //     tCtx.canvas.width = tCtx.measureText(this.value).width;
-    //     tCtx.font = "18px THSarabunNew";
-    //     tCtx.fillText(this.value, 0, 25);
-    //     imageElem.src = tCtx.canvas.toDataURL();
-    //     // console.log(imageElem.src);
-    //     // alert(imageElem.src);
-    //     document.getElementById("getimg").value = imageElem.src;
-    // }, false);
-
-    // var tCtx2 = document.getElementById('textCanvas2').getContext('2d'),
-    //     imageElem2 = document.getElementById('image2');
-
-    // document.getElementById('text2').addEventListener('keyup', function () {
-    //     tCtx2.canvas.width = tCtx2.measureText(this.value).width;
-    //     tCtx2.font = "18px THSarabunNew";
-    //     tCtx2.fillText(this.value, 0, 25);
-    //     imageElem2.src = tCtx2.canvas.toDataURL();
-    //     document.getElementById("getimg2").value = imageElem.src;
-    // }, false);
-
 
     $('.searchable').multiSelect({
   selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา' style='width: 165px; border-radius: 4px' >",
