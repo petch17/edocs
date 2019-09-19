@@ -41,14 +41,16 @@
                         <label class="col-lg-3 col-form-label">เลือกผู้บริหาร :</label>
                         <div class="col-lg-6">
 
-                                <select style="width: 100%" id="manager" name="select_manager" class="form-control">
-                                    <option></option>
-                                    @foreach($manager as $managers)
-                                    @php $sumname = $managers->TITLE_TH.' '.$managers->FIRST_NAME_TH.' '.$managers->LAST_NAME_TH @endphp
-                                <option value="{{$managers->id}}">{{$managers->EMPCODE}}&nbsp;&nbsp;{{$sumname}}</option>
-                                    @endforeach
-                                </select>
-                                {{-- {!! Form::select('select_manager',$manager->pluck( 'EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH' , 'id' ),
+                            <select style="width: 100%" id="manager" name="select_manager" class="form-control">
+                                <option></option>
+                                @foreach($manager as $managers)
+                                @php $sumname = $managers->TITLE_TH.' '.$managers->FIRST_NAME_TH.'
+                                '.$managers->LAST_NAME_TH @endphp
+                                <option value="{{$managers->id}}">{{$managers->EMPCODE}}&nbsp;&nbsp;{{$sumname}}
+                                </option>
+                                @endforeach
+                            </select>
+                            {{-- {!! Form::select('select_manager',$manager->pluck( 'EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH' , 'id' ),
                                 null, ['class'=>'form-control','id'=>'manager','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!} --}}
 
                         </div>
@@ -125,40 +127,43 @@
     });
 
     $("#manager").select2({
-            placeholder: "เลือกผู้บริหาร",
-            allowClear: true
-        });
+        placeholder: "เลือกผู้บริหาร",
+        allowClear: true
+    });
 
     // $("#manager").select2({
     //         placeholder: "เลือกผู้บริหาร",
     //         allowClear: true
     //     });
 </script>
-    <style>
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
-            line-height: 8px;
-        }
-        .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple {
-            line-height: 2;
-        }
-        .select2-container--default .select2-selection--single .select2-selection__rendered .select2-selection__clear {
-            border: 0;
-            position: absolute;
-            top: 80%;
-            font-family: "LineAwesome";
-            text-decoration: inherit;
-            text-rendering: optimizeLegibility;
-            text-transform: none;
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-smoothing: antialiased;
-            content: "";
-            font-size: 1.4rem;
-            display: inline-block;
-            left: auto;
-            right: 1.85rem;
-            margin-right: 0.4rem;
-            margin-top: -1rem;
-        }
-    </style>
+<style>
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 8px;
+    }
+
+    .select2-container--default .select2-selection--single,
+    .select2-container--default .select2-selection--multiple {
+        line-height: 2;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered .select2-selection__clear {
+        border: 0;
+        position: absolute;
+        top: 80%;
+        font-family: "LineAwesome";
+        text-decoration: inherit;
+        text-rendering: optimizeLegibility;
+        text-transform: none;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+        content: "";
+        font-size: 1.4rem;
+        display: inline-block;
+        left: auto;
+        right: 1.85rem;
+        margin-right: 0.4rem;
+        margin-top: -1rem;
+    }
+</style>
 @endsection
