@@ -21,7 +21,7 @@
     </div>
     <div class="kt-login__signin">
         {{-- <div id="headerI" class="kt-login__head">
-            <h2 class="kt-login__title">เข้าสู่ระบบ</h2>
+            <h2 class="kt-login__title">กรุณาล็อกอินเพื่อเข้าสู่ระบบ</h2>
         </div> --}}
 
         {{-- {!! Form::open(['route' => 'login', 'method' => 'post', 'class' => 'kt-form']) !!} --}}
@@ -36,10 +36,16 @@
 
             @error('email')
             <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
+                <strong>User name หรือ Password ไม่ถูกต้อง</strong>
             </span>
             @enderror
+
             </div>
+            @if(session('artlogin'))
+                <span>
+                    Username หรือ Password ไม่ถูกต้อง
+                </span>
+            @endif
 
             <div class="input-group">
                 <input id="password" type="password" placeholder="รหัสผ่าน"
@@ -47,7 +53,7 @@
                     autocomplete="current-password">
                 @error('password')
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong>User name หรือ Password ไม่ถูกต้อง</strong>
                 </span>
                 @enderror
                 @if(session('formanager'))
@@ -55,7 +61,6 @@
                         กรุณา login ผ่านโทรศัพท์
                     </span>
                 @endif
-
             </div>
         </div>
 
@@ -90,5 +95,7 @@
         @endsection
 
         @section('js')
+
+
 
         @endsection

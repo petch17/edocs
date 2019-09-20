@@ -14,31 +14,10 @@ use Session;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -70,13 +49,14 @@ class LoginController extends Controller
             $data = $client->AuthenAndGetInfo4($params);
             $data_ = json_decode(json_encode($data),TRUE);
 
+
             if(!isset($data->AuthenAndGetInfo4Result->any)){
                 // return '1';
-                Session::flash('status', 'username wrong!');
-                return redirect()->route('login');//->with('status', 'Profile updated!');
+                // Session::flash('status', 'username wrong!');
+                // return redirect()->route('login');//->with('status', 'Profile updated!');
+            return Redirect::back()->with('artlogin','User name หรือ Password ไม่ถูกต้อง')->withInput(Input::all());
 
             }
-
             $xml_string = $data->AuthenAndGetInfo4Result->any;
             $xml = simplexml_load_string($xml_string);
             $json = json_encode($xml);
@@ -86,18 +66,16 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            // return $request->email;
-
+            // return $request->password;
 
             if($empcode > 0){
                 return Redirect::back()->with('formanager','กรุณา login ผ่านโทรศัพท์')->withInput(Input::all());
             }
+            else{
+                return redirect()->route('inbox.index');
+            }
 
-               return redirect()->route('inbox.index');
         }else{
-            // return '1';
-
-
             // return $array;
             // return '1';
 
@@ -153,20 +131,6 @@ class LoginController extends Controller
                     return Redirect::back()->with('formanager','กรุณา login ผ่านโทรศัพท์')->withInput(Input::all());
                 }
 
-
-                // $tbintranetusers->EMPCODE = $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'];
-                // $tbintranetusers->TITLE_TH = $array['NewDataSet']['LOGIN_EMPLOYEE']['TITLE_TH'];
-                // $tbintranetusers->FIRST_NAME_TH = $array['NewDataSet']['LOGIN_EMPLOYEE']['FIRST_NAME_TH'];
-                // $tbintranetusers->LAST_NAME_TH =  $array['NewDataSet']['LOGIN_EMPLOYEE']['LAST_NAME_TH'];
-                // $tbintranetusers->TITLE_EN = $array['NewDataSet']['LOGIN_EMPLOYEE']['TITLE_EN'];
-                // $tbintranetusers->FIRST_NAME_EN = $array['NewDataSet']['LOGIN_EMPLOYEE']['FIRST_NAME_EN'];
-                // $tbintranetusers->LAST_NAME_EN =  $array['NewDataSet']['LOGIN_EMPLOYEE']['LAST_NAME_EN'];
-                // $tbintranetusers->EMAILINTRA =  $array['NewDataSet']['LOGIN_EMPLOYEE']['EMAIL'];
-                // $tbintranetusers->POS_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['POS_FULL'];
-                // $tbintranetusers->DEP_ABBR =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_ABBR'];
-                // $tbintranetusers->DEP_FULL =  $array['NewDataSet']['LOGIN_EMPLOYEE']['DEP_FULL'];
-                // $tbintranetusers->HIERACHY_CODE =  $array['NewDataSet']['LOGIN_EMPLOYEE']['HIERACHY_CODE'];
-                // $tbintranetusers->ID4DIGIT =  $array['NewDataSet']['LOGIN_EMPLOYEE']['ID4DIGIT'];
                 // $tbintranetusers->tel =  isset($array['NewDataSet']['LOGIN_EMPLOYEE']['MTEL']) ? $array['NewDataSet']['LOGIN_EMPLOYEE']['MTEL'] : "";
                 // $tbintranetusers->mtel =  isset($array['NewDataSet']['LOGIN_EMPLOYEE']['MMOBILE']) ? $array['NewDataSet']['LOGIN_EMPLOYEE']['MMOBILE'] : "";
 

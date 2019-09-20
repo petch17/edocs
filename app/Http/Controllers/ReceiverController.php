@@ -26,7 +26,8 @@ class ReceiverController extends Controller
     public function create($id)
     {
         // return $id;
-        $employee = User::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->get();
+        $employee = User::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->where('id' ,'!=', Auth::user()->id)->get();
+
         return view('receiver.create',['employee' => $employee],['edoc_id' => $id]);
         // return view('receiver.create');
     }
