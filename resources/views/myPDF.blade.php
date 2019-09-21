@@ -1,3 +1,3 @@
 {{
-    $pdf_to_img2
+    $pdf
 }}

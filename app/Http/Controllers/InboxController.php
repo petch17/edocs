@@ -82,15 +82,15 @@ class InboxController extends Controller
 
     public function show($id)
     {
-        $data = Edoc::find($id);
+        // $data = Edoc::find($id);
 
-        $pdf = "D:\\nodeapi\uploads\pdffile\\". $data->file;
+        // $pdf = "http://203.113.14.20:3000/pdffile/". $data->id;
 
-        // return $pdf;
+        // // return $pdf;
 
-        $pdfs = PDF::loadView( $pdf );
+        // $pdfs = PDF::loadView( 'myPDF' , $pdf );
 
-        return $pdfs->download();
+        // return $pdfs->download();
     }
 
     public function marksignature($id){
