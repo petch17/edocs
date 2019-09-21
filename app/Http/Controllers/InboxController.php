@@ -80,18 +80,22 @@ class InboxController extends Controller
         // return redirect()->route('inbox.index');
     }
 
-    // public function show($id)
-    // {
-    //     $data = Edoc::find($id);
+    public function show($id)
+    {
+        $data = Edoc::find($id);
 
-    //     $pdf = PDF::loadView('myPDF', $data);
+        $pdf = "D:\\nodeapi\uploads\pdffile\\". $data->file;
 
-    //     return $pdf->stream();
-    // }
+        // return $pdf;
+
+        $pdfs = PDF::loadView( $pdf );
+
+        return $pdfs->download();
+    }
+
     public function marksignature($id){
 
         $edoc = Edoc::find($id);
-        // $data = Edoc::select('signature')->find($id);
         return view('inbox.marksignature',['edoc' => $edoc]);
     }
 
@@ -109,8 +113,6 @@ class InboxController extends Controller
 
         // Edoc::destroy($id);
         // return back();
-
-
        $result = Edoc::find($id)->delete();
 
        File::delete(base_path().'http://203.113.14.20:3000/pdffile/'.$result->file);

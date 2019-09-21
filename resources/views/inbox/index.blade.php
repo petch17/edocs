@@ -62,10 +62,10 @@
                             </a>
                             <input type="hidden" name="_token" id="_token" value="{{ csrf_token()}}">
 
-                            &nbsp; &nbsp;
+                            {{-- &nbsp; &nbsp;
                             <a target="_blank" href="{{ route('inbox.show' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ดาวน์โหลด">
                                 <i class="fa fa-download"></i>
-                            </a>
+                            </a> --}}
                         </td>
                         {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
                         {{-- @php
