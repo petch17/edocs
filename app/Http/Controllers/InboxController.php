@@ -27,9 +27,9 @@ class InboxController extends Controller
 
         $edocs = DB::table('edocs')
             ->join('edocdetails', 'edocs.id', '=', 'edocdetails.edoc_id')
-            ->select('edocs.*', 'edocdetails.created_by')
+            ->select('edocs.*')
             ->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )->where('edocdetails.created_by',Auth::user()->id)
-            // ->groupBy('created_by')
+             ->groupBy('edocdetails.created_by')
             ->get();
 
             // return $edocs;
