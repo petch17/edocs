@@ -57,5 +57,6 @@ class CreateReceiversTable extends Migration
     public function down()
     {
         Schema::dropIfExists('receivers');
+        Schema::dropIfExists('rcdetails');
     }
 }

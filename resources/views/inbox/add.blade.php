@@ -5,6 +5,20 @@
 
 {{-- select --}}
 <link href="{{asset('assets/css/select2.min.css')}}" rel="stylesheet" />
+
+<style>
+    canvas {
+        border: 1px black solid;
+    }
+
+    .text {
+        display: none;
+    }
+</style>
+<link href="{{asset('css2/multi-select.css')}}" media="screen" rel="stylesheet" type="text/css">
+<link href="{{asset('css2/multi-select.dev.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('css2/multi-select.dist.css')}}" rel="stylesheet" type="text/css">
+
 @endsection
 
 @section('content')
@@ -37,16 +51,19 @@
 
                     <input name="user_id" type="hidden" value="{{Auth::user()->id}}" />
 
+
+
+                    @if(Auth::user()->MANAGER_ID == null)
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลือกผู้บริหาร :</label>
                         <div class="col-lg-6">
-
-                            <select style="width: 100%" id="manager" name="select_manager" class="form-control">
+                            <select style="width: 100%" id="manager" name="MANAGER_ID" class="form-control">
                                 <option></option>
                                 @foreach($manager as $managers)
                                 @php $sumname = $managers->TITLE_TH.' '.$managers->FIRST_NAME_TH.'
                                 '.$managers->LAST_NAME_TH @endphp
-                                <option value="{{$managers->id}}">{{$managers->EMPCODE}}&nbsp;&nbsp;{{$sumname}}
+                                <option value="{{$managers->id}}">
+                                    {{$managers->EMPCODE}}&nbsp;&nbsp;{{$sumname}}
                                 </option>
                                 @endforeach
                             </select>
@@ -55,6 +72,22 @@
 
                         </div>
                     </div>
+                    @else
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label">เลือกผู้บริหาร :</label>
+                            <div class="col-lg-6">
+                                <select style="width: 100%" id="manager" name="MANAGER_ID" class="form-control">
+                                    @foreach($manager as $managers)
+                                    @php $sumname =  $managers->TITLE_TH.' '.$managers->FIRST_NAME_TH.'
+                                    '.$managers->LAST_NAME_TH  @endphp
+                                    <option value="{{ Auth::user()->MANAGER_ID }}">
+                                        {{$sumname}}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    @endif
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรื่อง :</label>
@@ -66,10 +99,21 @@
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรียน :</label>
-                        <div class="col-lg-6">
-                            {!! Form::text('POS_ABBR',null,['class'=>'form-control','placeholder'=>'เรียน']); !!}
-                        </div>
+                            <div class="col-lg-9">
+                                <select multiple class="searchable" name="select_manager[]">
+                                    @foreach($manager2 as $manager22)
+                                    @php
+                                    $sumname2 = $manager22->TITLE_TH.' '.$manager22->FIRST_NAME_TH.' '.$manager22->LAST_NAME_TH
+                                    @endphp
+                                    <option value="{{$manager22->id}}">{{$sumname2}}</option>
+
+                                    {{-- <input name="POS_ABBR" type="hidden" value="{{ $manager22->POS_ABBR }}" /> --}}
+                                    @endforeach
+                                    {{-- <option></option> --}}
+                                </select>
+                            </div>
                     </div>
+
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">ประเภทเอกสาร :</label>
@@ -114,27 +158,65 @@
 @endsection
 
 @section('js')
-<!--begin::Page Scripts(used by this page) -->
-{{-- <script src="assets/vendors/custom/uppy/uppy.bundle.js" type="text/javascript"></script>
-<script src="./assets/js/demo11/pages/crud/file-upload/uppy.js" type="text/javascript"></script> --}}
-<!--end::Page Scripts -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="{{asset('assets/js/select2.min.js')}}"></script>
+
+<script>
+
+        $("#manager").select2({
+            placeholder: "เลือกผู้บริหาร",
+            allowClear: true
+        });
+
+</script>
+
+<script src="{{asset('js2/jquery.js')}}" type="text/javascript"></script>
+<script src="{{asset('js2/jquery.multi-select.js')}}" type="text/javascript"></script>
 
 <script>
     $(document).ready(function () {
         document.getElementById('inbox').classList.add('kt-menu__item--open');
     });
 
-    $("#manager").select2({
-        placeholder: "เลือกผู้บริหาร",
-        allowClear: true
+    $('.searchable').multiSelect({
+        selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา' style='width: 165px; border-radius: 4px' >",
+        selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='ค้นหา' style='width: 165px; border-radius: 4px' >",
+        afterInit: function (ms) {
+            var that = this,
+                $selectableSearch = that.$selectableUl.prev(),
+                $selectionSearch = that.$selectionUl.prev(),
+                selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                .on('keydown', function (e) {
+                    if (e.which === 40) {
+                        that.$selectableUl.focus();
+                        return false;
+                    }
+                });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                .on('keydown', function (e) {
+                    if (e.which == 40) {
+                        that.$selectionUl.focus();
+                        return false;
+                    }
+                });
+        },
+        afterSelect: function () {
+            this.qs1.cache();
+            this.qs2.cache();
+        },
+        afterDeselect: function () {
+            this.qs1.cache();
+            this.qs2.cache();
+        }
     });
 
-    // $("#manager").select2({
-    //         placeholder: "เลือกผู้บริหาร",
-    //         allowClear: true
-    //     });
+
+
+
 </script>
 <style>
     .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -166,4 +248,5 @@
         margin-top: -1rem;
     }
 </style>
+
 @endsection

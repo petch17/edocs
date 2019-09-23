@@ -28,6 +28,8 @@ class CreateUsersTable extends Migration
             $table->string('TITLE_EN')->nullable(); //คำนำหน้าชื่อ อังกฤษ
             $table->string('FIRST_NAME_EN')->nullable(); //ชื่อ อังกฤษ
             $table->string('LAST_NAME_EN')->nullable(); //นามสกุล อังกฤษ
+            // $table->string('MANAGER_ID')->nullable(); //หัวหน้างาน
+            // $table->foreign('MANAGER_ID')->references('id')->on('managers')->onDelete('cascade');
             $table->string('POS_ABBR')->nullable(); //ตำแหน่งย่อ
             $table->string('POS_FULL')->nullable(); //ตำแหน่งเต็ม
             $table->string('DEP_ABBR')->nullable(); //แผนก ย่อ
@@ -35,7 +37,6 @@ class CreateUsersTable extends Migration
             $table->string('HIERACHY_CODE')->nullable(); //รหัสลำดับขั้น
             $table->string('ID4DIGIT')->nullable(); //เลขท้าย6ตัว ปชช.
             $table->string('EMAILINTRA')->nullable(); //อีเมล์
-            // $table->string('USER_NAME')->nullable();
             $table->string('email')->unique()->nullable();//USER_NAME
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();

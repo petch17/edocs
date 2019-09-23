@@ -10,6 +10,13 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = 'users';
+
+
+    public function tbmanager(){
+        return $this->belongsTo(Manager::class, 'MANAGER_ID');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,4 +43,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

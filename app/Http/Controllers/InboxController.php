@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Manager;
 use App\Edoc;
+use App\Edocdetail;
 use File;
+use DB;
 use PDF;
 use Auth;
 // use Imagick;
@@ -20,12 +22,22 @@ class InboxController extends Controller
 
     public function index()
     {
-        $edocs = Edoc::with('tbobjective')->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )->where('created_by',Auth::user()->id)->get();
-        $user = User::orderBy('id','desc')->get();
+        // $edocs = Edoc::where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )->where('id',Auth::user()->id)->get();
+        // return $edocs;
+
+        $edocs = DB::table('edocs')
+            ->join('edocdetails', 'edocs.id', '=', 'edocdetails.edoc_id')
+            ->select('edocs.*', 'edocdetails.created_by')
+            ->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )->where('edocdetails.created_by',Auth::user()->id)
+            // ->groupBy('created_by')
+            ->get();
+
+            // return $edocs;
+        // $user = User::orderBy('id','desc')->get();
         // $user = Auth::user()->email;
         // $edocs = Edoc::with('tbobjective')->get();
 
-        return view('inbox.index',['edocs' => $edocs],['user' => $user]);
+        return view('inbox.index',['edocs' => $edocs]);
 
     }
 
@@ -37,16 +49,35 @@ class InboxController extends Controller
     public function addcreate()
     {
         $manager = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->get();
+        // return $manager;
+        if(Auth::user()->MANAGER_ID == null){
+            $manager2 = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->get();
+            // return '1';
+        }else{
+            $manager2 = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')
+            ->where('id' ,'!=', Auth::user()->MANAGER_ID)->get();
+            // return '2';
+        }
 
-        return view('inbox.add',['manager' => $manager]);
+        // return $manager2;
+
+        return view('inbox.add',['manager' => $manager],['manager2' => $manager2]);
         // return view('inbox.add',compact('manager'));
 
     }
 
     public function addstore(Request $request)
     {
+        $user = User::find(Auth::user()->id);
+        $user->MANAGER_ID =  $request->MANAGER_ID;
+        // return $user;
+        $user->save();
+
 
         $edoc = new Edoc;
+        $edoc->topic = $request->topic;
+        $edoc->edoc_type = $request->edoc_type;
+        $edoc->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
 
         if ($request->hasFile('file')){
             // File::delete(base_path().'\\public\\edocfiles\\'.$edoc->file);
@@ -57,17 +88,16 @@ class InboxController extends Controller
             $edoc->file = $file;
             $edoc->real_filename = $real_filename;
         }
-
-        // $edocs = Employee::select( 'USER_NAME' )->where()->get();
-
-        $edoc->select_manager = $request->select_manager;
-        $edoc->created_by = $request->user_id;
-
-        $edoc->topic = $request->topic;
-        $edoc->edoc_type = $request->edoc_type;
-        $edoc->POS_ABBR = $request->POS_ABBR;
-        $edoc->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
         $edoc->save();
+
+        foreach($request->select_manager as $manager_id){
+        $edocdetail = new Edocdetail;
+        $edocdetail->edoc_id = $edoc->id;
+        $edocdetail->created_by = $request->user_id;
+        $edocdetail->select_manager = $manager_id;
+        $edocdetail->POS_ABBR = $request->POS_ABBR;
+        $edocdetail->save();
+        }
 
         // return $edoc->id;
         // ส่วนการสร้างรูป (ฝั่งแอป)

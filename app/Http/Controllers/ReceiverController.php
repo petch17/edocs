@@ -18,7 +18,7 @@ class ReceiverController extends Controller
 
     public function index()
     {
-        $edocs = Edoc::with('tbobjective')->where('status' , 'เอกสารที่อนุมัติแล้ว')->where('created_by',Auth::user()->id)->get();
+        $edocs = Edoc::where( 'status','เอกสารที่อนุมัติแล้ว' )->where('id',Auth::user()->id)->get();
         // $edocs = Edoc::with('tbobjective')->get();
         return view('receiver.index',['edocs2' => $edocs]);
     }

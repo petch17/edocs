@@ -51,11 +51,6 @@
 
                     <input name="user_id" type="hidden" value="{{Auth::user()->id}}" />
 
-                    <!--get_image-->
-                    {{-- <input id="getimg" name="getimg" type="hidden" value="" />
-                    <input id="getimg2" name="getimg2" type="hidden" value="" /> --}}
-                    <!--end get_image-->
-
                     <input name="edoc_id" type="hidden" value="{{$edoc_id}}" />
 
                     <div class="form-group row">
@@ -107,52 +102,19 @@
                         </div>
                     </div>
 
-                    {{-- <div class="form-group row">
-
-                        <label class="col-lg-3 col-form-label">เกษียนหนังสือ :</label>
-                        <div class="col-lg-6">
-                            {!!
-                            Form::textarea('retirement',null,['class'=>'form-control', 'id'=>'text2'
-                            ,'placeholder'=>'เรียน']);
-                            !!}
-                        </div>
-                    </div> --}}
-
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลือกผู้รับ :</label>
                         <div class="col-lg-9">
-                            {{-- <div class="col-lg-12">
-                                <div class="kt-portlet__body">
-                                    <select id="kt-dual-listbox-2" class="kt-dual-listbox" name="select_emp[]" multiple
-                                    data-available-title="Source Options"
-                                    data-selected-title="Destination Options"
-                                    data-add="<i class='flaticon2-next'></i>"
-                                    data-remove="<i class='flaticon2-back'></i>"
-                                    data-add-all="<i class='flaticon2-fast-next'></i>"
-                                    data-remove-all="<i class='flaticon2-fast-back'></i>"
-                                    >
-                                            <option></option>
-                                        @foreach($employee as $employees)
-                                            @php
-                                                $sumname = $employees->TITLE_TH.' '.$employees->FIRST_NAME_TH.' '.$employees->LAST_NAME_TH
-                                            @endphp
-                                            <option value="{{$employees->id}}">{{$sumname}}</option>
-                            @endforeach
+                            <select multiple class="searchable" name="select_emp[]">
+                                @foreach($employee as $employees)
+                                @php
+                                $sumname = $employees->TITLE_TH.' '.$employees->FIRST_NAME_TH.' '.$employees->LAST_NAME_TH
+                                @endphp
+                                <option value="{{$employees->id}}">{{$sumname}}</option>
+                                @endforeach
                             </select>
-                        </div>
-                    </div> --}}
-                    <select multiple class="searchable" name="select_emp[]">
-                        @foreach($employee as $employees)
-                        @php
-                        $sumname = $employees->TITLE_TH.' '.$employees->FIRST_NAME_TH.' '.$employees->LAST_NAME_TH
-                        @endphp
-                        <option value="{{$employees->id}}">{{$sumname}}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-
-            </div>
+                         </div>
+                    </div>
 
         </div>
 
@@ -184,7 +146,7 @@
     $(document).ready(function () {
 
         // $('#kt-dual-listbox-2').multiselect('select',String|Array);
-        document.getElementById('sent').classList.add('kt-menu__item--open');
+        document.getElementById('receiver').classList.add('kt-menu__item--open');
     });
 
 
