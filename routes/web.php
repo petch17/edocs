@@ -4,8 +4,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('web-login', ['as'=>'web-login','uses'=>'Auth\LoginController@webLoginPost']);
 });
 
-Route::resource('read','ReadController');
-
 Route::get('inbox/add', 'InboxController@addcreate')->name('addcreate');
 
 Route::post('inbox/addstore', [
@@ -14,27 +12,19 @@ Route::post('inbox/addstore', [
 ]);
 Route::resource('addstore', 'InboxController' , ['except' => 'addstore']);
 
-Route::get('destroy/{id}','InboxController@destroy');
+Route::resource('read','ReadController');
 
 Route::resource('receiver','ReceiverController');
 
-// Route::get('456/create/{id}', [
-//     'as' => 'sentcreate',
-//     'uses' => 'SentController@create'
-// ]);
-// Route::resource('create', 'SentController' , ['except' => 'create']);
-
-Route::get('receive/create/{id}', [
-    'as' => 'receivercreate',
-    'uses' => 'ReceiverController@create'
-]);
-Route::resource('create', 'ReceiverController' , ['except' => 'create']);
-
 Route::resource('inbox','InboxController');
+
+Route::get('destroy/{id}','InboxController@destroy');
 
 Route::get('/', function () {
     return view('auth.login');
 });
+
+/*------------inbox-------------------*/
 
 Route::get('inbox/marksignature/{id}', [
     'as' => 'marksignature',
@@ -49,34 +39,56 @@ Route::post('inbox/marksignaturestore/{id}', [
 ]);
 Route::resource('marksignaturestore', 'InboxController' , ['except' => 'marksignaturestore']);
 
-/*------------reciever-------------------*/
+/*------------end_inbox-------------------*/
 
-Route::get('receiver/markforward/{id}', [
+/*------------read-------------------*/
+
+Route::get('read/create/{id}', [
+    'as' => 'readcreate',
+    'uses' => 'ReadController@create'
+]);
+Route::resource('create', 'ReadController' , ['except' => 'create']);
+
+Route::get('read/markrunnumber/{id}', [
+    'as' => 'readmarkrunnumber',
+    'uses' => 'ReadController@markrunnumber'
+]);
+Route::resource('markrunnumber', 'ReadController' , ['except' => 'markrunnumber']);
+
+
+Route::post('read/markrunnumberstore/{id}', [
+    'as' => 'readmarkrunnumberstore',
+    'uses' => 'ReadController@markrunnumberstore'
+]);
+Route::resource('markrunnumberstore', 'ReadController' , ['except' => 'markrunnumberstore']);
+
+Route::get('read/markforward/{id}', [
     'as' => 'markforward',
-    'uses' => 'ReceiverController@markforward'
+    'uses' => 'ReadController@markforward'
 ]);
-Route::resource('markforward', 'ReceiverController' , ['except' => 'markforward']);
+Route::resource('markforward', 'ReadController' , ['except' => 'markforward']);
 
-Route::post('receiver/markforwardstore/{id}', [
+Route::post('read/markforwardstore/{id}', [
     'as' => 'markforwardstore',
-    'uses' => 'ReceiverController@markforwardstore'
+    'uses' => 'ReadController@markforwardstore'
 ]);
-Route::resource('markforwardstore', 'ReceiverController' , ['except' => 'markforwardstore']);
+Route::resource('markforwardstore', 'ReadController' , ['except' => 'markforwardstore']);
 
-Route::get('receiver/marksignature/{id}', [
-    'as' => 'receivermarksignature',
-    'uses' => 'ReceiverController@marksignature'
+Route::get('read/marksignature/{id}', [
+    'as' => 'readmarksignature',
+    'uses' => 'ReadController@marksignature'
 ]);
-Route::resource('marksignature', 'ReceiverController' , ['except' => 'marksignature']);
+Route::resource('marksignature', 'ReadController' , ['except' => 'marksignature']);
 
 
-Route::post('receiver/marksignaturestore/{id}', [
-    'as' => 'receivermarksignaturestore',
-    'uses' => 'ReceiverController@marksignaturestore'
+Route::post('read/marksignaturestore/{id}', [
+    'as' => 'readmarksignaturestore',
+    'uses' => 'ReadController@marksignaturestore'
 ]);
-Route::resource('marksignaturestore', 'ReceiverController' , ['except' => 'marksignaturestore']);
+Route::resource('marksignaturestore', 'ReadController' , ['except' => 'marksignaturestore']);
 
 
+/*------------end_read-------------------*/
 
 Auth::routes();
 

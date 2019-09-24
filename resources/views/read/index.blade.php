@@ -40,8 +40,9 @@
             <table id="table1" class="table table-striped- table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="20%">#</th>
-                        <th width="60%">ผู้ส่งถึง</th>
+                        <th width="10%">#</th>
+                        <th width="35%">ผู้ส่งถึง</th>
+                        <th width="35%">ชื่อไฟล์</th>
                         <th width="20%"><i class="fa fa-cog"></i></th>
                     </tr>
                 </thead>
@@ -51,14 +52,19 @@
                     <tr>
                         <td>{{$index+1}}</td>
                         <td>{{$item->created_by}}</td>
+                        <td>{{$item->topic}}</td>
                         <td>
                                 <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                     <i class="fa fa-search"></i>
                                 </a>
                                 &nbsp; &nbsp;
+                                <a href="{{ route('readcreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
+                                    <i class="fa fa-share-square"></i>
+                                </a>
+                                {{-- &nbsp; &nbsp;
                                 <a href="{{ route('inbox.show' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ดาวน์โหลด">
                                     <i class="fa fa-download"></i>
-                                </a>
+                                </a> --}}
                         </td>
                         {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
                         {{-- @php

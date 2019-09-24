@@ -54,11 +54,11 @@
                         <td>
                                 <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                     <i class="fa fa-search"></i>
-                                </a>
+                                {{-- </a>
                                 &nbsp; &nbsp;
                                 <a href="{{ route('receivercreate' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ส่งต่อ">
                                     <i class="fa fa-share-square"></i>
-                                </a>
+                                </a> --}}
                                 {{-- &nbsp; &nbsp;
                                 <a href="{{ route('inbox.show' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ดาวน์โหลด">
                                     <i class="fa fa-download"></i>

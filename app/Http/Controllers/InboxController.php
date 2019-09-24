@@ -28,14 +28,12 @@ class InboxController extends Controller
         $edocs = DB::table('edocs')
             ->join('edocdetails', 'edocs.id', '=', 'edocdetails.edoc_id')
             ->select('edocs.*')
-            ->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )->where('edocdetails.created_by',Auth::user()->id)
-             ->groupBy('edocdetails.created_by')
+            ->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )
+            ->where('edocdetails.created_by',Auth::user()->id)
+            ->groupBy('edocdetails.created_by' , 'edocdetails.edoc_id')
             ->get();
 
             // return $edocs;
-        // $user = User::orderBy('id','desc')->get();
-        // $user = Auth::user()->email;
-        // $edocs = Edoc::with('tbobjective')->get();
 
         return view('inbox.index',['edocs' => $edocs]);
 
