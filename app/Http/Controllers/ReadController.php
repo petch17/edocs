@@ -118,8 +118,8 @@ class ReadController extends Controller
 
 
         $receive2 = Receiver::find($id);
-        $edoc3 = Edoc::find($receive2->edoc_id);
-        return view('read.markforward',['edoc3' => $edoc3 ,'receive2' => $receive2]);
+        $edoc = Edoc::find($receive2->edoc_id);
+        return view('read.markforward',['edoc2' => $edoc , 'receive' => $receive2]);
 
     }
 
