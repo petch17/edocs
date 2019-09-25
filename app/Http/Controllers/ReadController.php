@@ -37,6 +37,8 @@ class ReadController extends Controller
     public function store(Request $request )
     {
         // return $request;
+        $Manager = Manager::find($request->MAAGER_ID);
+        $Manager_name = $Manager->DEP_ABBR;
 
         $receive = new Receiver;
         $receive->date = $request->date;

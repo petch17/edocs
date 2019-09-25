@@ -46,8 +46,7 @@ class InboxController extends Controller
 
     public function addcreate()
     {
-        $manager = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->get();
-        // return $manager;
+        // เรียน
         if(Auth::user()->MANAGER_ID == null){
             $manager2 = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->get();
             // return '1';
@@ -59,19 +58,13 @@ class InboxController extends Controller
 
         // return $manager2;
 
-        return view('inbox.add',['manager' => $manager],['manager2' => $manager2]);
+        return view('inbox.add',['manager2' => $manager2]);
         // return view('inbox.add',compact('manager'));
 
     }
 
     public function addstore(Request $request)
     {
-        $user = User::find(Auth::user()->id);
-        $user->MANAGER_ID =  $request->MANAGER_ID;
-        // return $user;
-        $user->save();
-
-
         $edoc = new Edoc;
         $edoc->topic = $request->topic;
         $edoc->edoc_type = $request->edoc_type;
@@ -93,7 +86,6 @@ class InboxController extends Controller
         $edocdetail->edoc_id = $edoc->id;
         $edocdetail->created_by = $request->user_id;
         $edocdetail->select_manager = $manager_id;
-        $edocdetail->POS_ABBR = $request->POS_ABBR;
         $edocdetail->save();
         }
 

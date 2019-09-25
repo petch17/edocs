@@ -53,6 +53,17 @@
 
                     <input name="edoc_id" type="hidden" value="{{$edoc_id}}" />
 
+                    <input name="MAAGER_ID" type="hidden" value="{{Auth::user()->MAAGER_ID}}" />
+
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">ตัวย่อหน่วยงานของผู้รับ :</label>
+                        <div class="col-lg-6">
+                            {!! Form::text('part_id',null,['class'=>'form-control', 'id'=>'text'
+                            ,'placeholder'=>'เลขที่รับส่วนงาน']);
+                            !!}
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลขที่รับส่วนงาน :</label>
                         <div class="col-lg-6">

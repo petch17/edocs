@@ -182,7 +182,26 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </div>
                                     <!--end: Head -->
+                                    <!--begin: Navigation -->
+                                    <div class="kt-notification">
+                                        <a href="{{ route('SCMNG')}}" class="kt-notification__item">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-calendar-3 kt-font-success"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title kt-font-bold">
+                                                    เลือกหัวหน้าฝ่ายงานของคุณ
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    เลือกผู้บริหาร
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!--end: Navigation -->
+
                                 </div>
+
                             </div>
                             <!--end: User bar -->
                         </div>

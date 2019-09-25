@@ -49,7 +49,6 @@ class CreateEdocsTable extends Migration
             $table->foreign('edoc_id')->references('id')->on('edocs')->onDelete('cascade');
             $table->integer('created_by')->nullable(); //สร้างโดยใคร
             $table->integer('select_manager')->nullable(); //เลือกผู้บริหาร
-            $table->integer('POS_ABBR')->nullable(); //ส่งถึงใคร
             $table->timestamps();
         });
     }

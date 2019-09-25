@@ -12,6 +12,19 @@ Route::post('inbox/addstore', [
 ]);
 Route::resource('addstore', 'InboxController' , ['except' => 'addstore']);
 
+
+
+// add manager
+Route::get('SCMNG', 'HomeController@SCMNG')->name('SCMNG');
+
+Route::post('manager/SCMNGstore', [
+    'as' => 'SCMNGstore',
+    'uses' => 'HomeController@SCMNGstore'
+]);
+Route::resource('SCMNGstore', 'HomeController' , ['except' => 'SCMNGstore']);
+
+//  end add manager
+
 Route::resource('read','ReadController');
 
 Route::resource('receiver','ReceiverController');
