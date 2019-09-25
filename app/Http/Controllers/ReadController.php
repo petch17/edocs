@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Receiver;
 use App\Rcdetail;
 use App\Edoc;
+use App\Manager;
 use App\User;
 use Auth;
+use DB;
 
 class ReadController extends Controller
 {
@@ -18,11 +20,19 @@ class ReadController extends Controller
 
     public function index()
     {
-        // $edocs = Receiver::with('rcdetails')->where('status' , 'ยังไม่ส่ง')->where('created_by',Auth::user()->id)->get();
-        $tbrc = Rcdetail::where('select_emp',Auth::user()->id)->get();
-        $tbrecive = Receiver::where('status','ส่งแล้ว')->get();
+        $tbrc = DB::table('edocdetails')
+        ->join('edocs', 'edocs.id', '=', 'edocdetails.edoc_id')
+        ->join('users', 'edocdetails.sent_manager', '=', 'users.MANAGER_ID')
+        ->join('managers', 'users.MANAGER_ID', '=', 'managers.id')
+        ->select('edocs.*','edocdetails.created_by','managers.TITLE_TH','managers.FIRST_NAME_TH','managers.LAST_NAME_TH')
+        ->where( 'edocdetails.status','เอกสารที่อนุมัติแล้ว' )
+        ->where('edocdetails.sent_manager',Auth::user()->MANAGER_ID)
+        ->groupBy('edocdetails.sent_manager' , 'edocdetails.edoc_id')
+        ->get();
 
-        return view('read.index',['tbrc' => $tbrc],['tbrecive' => $tbrecive]);
+        // return $tbrc;
+
+        return view('read.index',['tbrc' => $tbrc]);
     }
 
     public function create($id)
@@ -98,10 +108,10 @@ class ReadController extends Controller
         $receive->gety = $request->gety;
         $receive->save();
 
-    //    return redirect()->route('receiver.marksignature');
-    $client = new \GuzzleHttp\Client();
-    $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
-    $text_to_img2 = $client->get($text_to_img);
+        //    return redirect()->route('receiver.marksignature');
+        $client = new \GuzzleHttp\Client();
+        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
+        $text_to_img2 = $client->get($text_to_img);
 
 
         $receive2 = Receiver::find($id);
@@ -127,10 +137,10 @@ class ReadController extends Controller
         $receive->gety = $request->gety;
         $receive->save();
 
-    //    return redirect()->route('receiver.marksignature');
-    $client = new \GuzzleHttp\Client();
-    $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
-    $text_to_img2 = $client->get($text_to_img);
+        //    return redirect()->route('receiver.marksignature');
+        $client = new \GuzzleHttp\Client();
+        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
+        $text_to_img2 = $client->get($text_to_img);
 
 
         $receive2 = Receiver::find($id);

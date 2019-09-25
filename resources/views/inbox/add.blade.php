@@ -48,6 +48,8 @@
 
                     <input name="user_id" type="hidden" value="{{Auth::user()->id}}" />
 
+                    <input name="select_manager" type="hidden" value="{{Auth::user()->MANAGER_ID}}" />
+
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรื่อง :</label>
                         <div class="col-lg-6">
@@ -59,7 +61,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรียน :</label>
                             <div class="col-lg-9">
-                                <select multiple class="searchable" name="select_manager[]">
+                                <select multiple class="searchable" name="sent_manager[]">
                                     @foreach($manager2 as $manager22)
                                     @php
                                     $sumname2 = $manager22->TITLE_TH.' '.$manager22->FIRST_NAME_TH.' '.$manager22->LAST_NAME_TH

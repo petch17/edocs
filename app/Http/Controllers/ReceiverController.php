@@ -18,12 +18,13 @@ class ReceiverController extends Controller
     {
         // $edocs = Edoc::where( 'status','เอกสารที่อนุมัติแล้ว' )->where('id',Auth::user()->id)->get();
         $edocs = DB::table('edocs')
-            ->join('edocdetails', 'edocs.id', '=', 'edocdetails.edoc_id')
-            ->select('edocs.*')
-            ->where( 'status','เอกสารที่อนุมัติแล้ว' )
-            ->where('edocdetails.created_by',Auth::user()->id)
-            ->groupBy('edocdetails.created_by' , 'edocdetails.edoc_id')
-            ->get();
+        ->join('edocdetails', 'edocs.id', '=', 'edocdetails.edoc_id')
+        ->select('edocs.*')
+        ->where( 'edocs.status','เอกสารที่อนุมัติแล้ว' )
+        ->where('edocdetails.created_by',Auth::user()->id)
+        ->groupBy('edocdetails.created_by' , 'edocdetails.edoc_id')
+        ->get();
+
 
         return view('receiver.index',['edocs2' => $edocs]);
     }

@@ -51,7 +51,7 @@
                 @foreach($tbrc as $index=>$item)
                     <tr>
                         <td>{{$index+1}}</td>
-                        <td>{{$item->created_by}}</td>
+                        <td>{{$item->TITLE_TH}} {{$item->FIRST_NAME_TH}} {{$item->LAST_NAME_TH}}</td>
                         <td>{{$item->topic}}</td>
                         <td>
                                 <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">

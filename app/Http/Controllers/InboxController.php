@@ -28,7 +28,7 @@ class InboxController extends Controller
         $edocs = DB::table('edocs')
             ->join('edocdetails', 'edocs.id', '=', 'edocdetails.edoc_id')
             ->select('edocs.*')
-            ->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )
+            ->where( 'edocs.status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )
             ->where('edocdetails.created_by',Auth::user()->id)
             ->groupBy('edocdetails.created_by' , 'edocdetails.edoc_id')
             ->get();
@@ -68,6 +68,7 @@ class InboxController extends Controller
         $edoc = new Edoc;
         $edoc->topic = $request->topic;
         $edoc->edoc_type = $request->edoc_type;
+        $edoc->select_manager = $request->select_manager;
         $edoc->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
 
         if ($request->hasFile('file')){
@@ -81,11 +82,12 @@ class InboxController extends Controller
         }
         $edoc->save();
 
-        foreach($request->select_manager as $manager_id){
+        foreach($request->sent_manager as $manager_id){
         $edocdetail = new Edocdetail;
         $edocdetail->edoc_id = $edoc->id;
         $edocdetail->created_by = $request->user_id;
-        $edocdetail->select_manager = $manager_id;
+        $edocdetail->sent_manager = $manager_id;
+        $edocdetail->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
         $edocdetail->save();
         }
 

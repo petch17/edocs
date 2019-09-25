@@ -60,11 +60,15 @@
                         <div class="col-lg-6">
                             <select style="width: 100%" id="manager" name="MANAGER_ID" class="form-control">
                                 @foreach($manager as $managers)
-                                @php $sumname = $managers->TITLE_TH.' '.$managers->FIRST_NAME_TH.'
-                                '.$managers->LAST_NAME_TH @endphp
-                                <option value="{{$managers->id}}">
-                                    {{$sumname}}
-                                </option>
+                                    @php
+                                        $sumname = $managers->TITLE_TH.' '.$managers->FIRST_NAME_TH.' '.$managers->LAST_NAME_TH
+                                    @endphp
+
+                                    @if ($managers->id == Auth::user()->MANAGER_ID)
+                                        <option value="{{$managers->id}}" selected> {{ $sumname }} </option>
+                                    @else
+                                        <option value="{{ $managers->id }}">{{ $sumname }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -100,7 +104,7 @@
     <script>
 
         $("#manager").select2({
-            placeholder: "เลือกผู้บริหาร",
+            placeholder: "-- เลือกผู้บริหาร --",
             allowClear: true
         });
 

@@ -18,10 +18,11 @@ class CreateReceiversTable extends Migration
             $table->integer('edoc_id')->unsigned();
             $table->foreign('edoc_id')->references('id')->on('edocs')->onDelete('cascade');
             $table->date('date')->nullable();
+            // $table->timeTz('time')->nullable();
             $table->string('part_num')->nullable(); //เลขที่รับส่วนงาน
              $table->string('edoc_type')->nullable(); //ประเภทเอกสาร
-             $table->dateTime('start')->nullable(); //วันทีเริ่ม
-             $table->dateTime('end')->nullable(); //วันที่สิ้นสุด
+            //  $table->dateTime('start')->nullable(); //วันทีเริ่ม
+            //  $table->dateTime('end')->nullable(); //วันที่สิ้นสุด
             //  $table->text('detail')->nullable();
             // $table->string('retirement')->nullable(); //เกษียนหนังสือ
             // $table->string('position')->nullable();
@@ -40,10 +41,10 @@ class CreateReceiversTable extends Migration
 
         Schema::create('rcdetails', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('reciver_id')->unsigned();
-            $table->foreign('reciver_id')->references('id')->on('receivers')->onDelete('cascade');
+            $table->integer('receiver_id')->unsigned();
+            $table->foreign('receiver_id')->references('id')->on('receivers')->onDelete('cascade');
             $table->integer('created_by')->nullable(); //ผู้ส่งต่อ
-            $table->integer('select_emp')->nullable(); //ผู้รับเอกสาร
+            $table->integer('select_manager')->nullable(); //ผู้รับเอกสาร
 
             $table->timestamps();
         });
