@@ -44,7 +44,7 @@
                         </div>
                     </div> --}}
                 <!--begin::Form-->
-                {!! Form::open(['route' => 'receiver.store', 'method' => 'post', 'file'=>true, 'onsubmit'=>'return
+                {!! Form::open(['route' => 'read.store', 'method' => 'post', 'file'=>true, 'onsubmit'=>'return
                 validateForm()', 'class' => 'kt-form
                 kt-form--label-right']) !!}
                 <div class="kt-portlet__body">
@@ -58,7 +58,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">ตัวย่อหน่วยงานของผู้รับ :</label>
                         <div class="col-lg-6">
-                            {!! Form::text('part_id',null,['class'=>'form-control', 'id'=>'text'
+                            {!! Form::text('part_num',null,['class'=>'form-control', 'id'=>'text'
                             ,'placeholder'=>'เลขที่รับส่วนงาน']);
                             !!}
                         </div>
@@ -118,10 +118,11 @@
                         <div class="col-lg-9">
                             <select multiple class="searchable" name="select_emp[]">
                                 @foreach($employee as $employees)
-                                @php
-                                $sumname = $employees->TITLE_TH.' '.$employees->FIRST_NAME_TH.' '.$employees->LAST_NAME_TH
-                                @endphp
-                                <option value="{{$employees->id}}">{{$sumname}}</option>
+                                    @php
+                                        $sumname = $employees->TITLE_TH.' '.$employees->FIRST_NAME_TH.' '.$employees->LAST_NAME_TH
+                                    @endphp
+
+                                    <option value="{{$employees->id}}"> {{ $sumname }} </option>
                                 @endforeach
                             </select>
                          </div>

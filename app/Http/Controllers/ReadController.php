@@ -38,7 +38,10 @@ class ReadController extends Controller
     public function create($id)
     {
         // return $id;
-        $employee = User::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->where('id' ,'!=', Auth::user()->id)->get();
+        $employee = User::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')
+            ->where('id' ,'!=', Auth::user()->id)
+            ->where('MANAGER_ID' , Auth::user()->MANAGER_ID)
+            ->get();
 
         return view('read.create',['employee' => $employee , 'edoc_id' => $id]);
         // return view('receiver.create');
@@ -47,14 +50,15 @@ class ReadController extends Controller
     public function store(Request $request )
     {
         // return $request;
-        $Manager = Manager::find($request->MAAGER_ID);
-        $Manager_name = $Manager->DEP_ABBR;
+        // $Manager = User::find($request->MAAGER_ID);
+        // return  $request;
+        // $Manager_DEP = $Manager->DEP_ABBR;
 
         $receive = new Receiver;
         $receive->date = $request->date;
-        $receive->part_id = $request->part_id;
+        $receive->part_num = $request->part_num;
         $receive->edoc_type = $request->edoc_type;
-        // $receive->retirement = $request->retirement;
+        $receive->pos_abbr = $request->MAAGER_ID;
         $receive->edoc_id = $request->edoc_id;
 
         // return $receive;
@@ -63,7 +67,7 @@ class ReadController extends Controller
         foreach($request->select_emp as $emp_id){
 
         $rcdetail = new Rcdetail;
-        $rcdetail->reciver_id = $receive->id;
+        $rcdetail->receiver_id = $receive->id;
         $rcdetail->created_by = $request->user_id;
         $rcdetail->select_emp = $emp_id;
 
@@ -83,7 +87,7 @@ class ReadController extends Controller
         // return $text_to_img;
 
         // return redirect()->route('inbox.index');
-        return redirect()->route('markforward',['id' => $receive->id]);
+        return redirect()->route('readmarkrunnumber',['id' => $receive->id]);
     }
 
     public function show($id)
@@ -108,7 +112,6 @@ class ReadController extends Controller
         $receive->gety = $request->gety;
         $receive->save();
 
-        //    return redirect()->route('receiver.marksignature');
         $client = new \GuzzleHttp\Client();
         $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
         $text_to_img2 = $client->get($text_to_img);
@@ -122,7 +125,6 @@ class ReadController extends Controller
 
     public function markforward($id){
         // return $id;
-        // $edoc2 = Edoc::find($id);
         // return '1';
         $receive = Receiver::find($id);
         $edoc2 = Edoc::find($receive->edoc_id);
