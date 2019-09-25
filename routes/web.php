@@ -27,6 +27,8 @@ Route::resource('SCMNGstore', 'HomeController' , ['except' => 'SCMNGstore']);
 
 Route::resource('read','ReadController');
 
+Route::resource('sent','SentController');
+
 Route::resource('receiver','ReceiverController');
 
 Route::resource('inbox','InboxController');
@@ -68,7 +70,6 @@ Route::get('read/markrunnumber/{id}', [
 ]);
 Route::resource('markrunnumber', 'ReadController' , ['except' => 'markrunnumber']);
 
-
 Route::post('read/markrunnumberstore/{id}', [
     'as' => 'readmarkrunnumberstore',
     'uses' => 'ReadController@markrunnumberstore'
@@ -92,7 +93,6 @@ Route::get('read/marksignature/{id}', [
     'uses' => 'ReadController@marksignature'
 ]);
 Route::resource('marksignature', 'ReadController' , ['except' => 'marksignature']);
-
 
 Route::post('read/marksignaturestore/{id}', [
     'as' => 'readmarksignaturestore',

@@ -242,6 +242,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <li id="read" class="kt-menu__item" aria-haspopup="true">
                                             <a href="{{ route('read.index') }}" class="kt-menu__link">
                                                 <i class="kt-menu__link-icon flaticon2-list-3"></i>
+                                                <span class="kt-menu__link-text">เอกสารที่ถูกส่งถึง</span>
+                                            </a>
+                                        </li>
+
+                                        <li id="sent" class="kt-menu__item" aria-haspopup="true">
+                                            <a href="{{ route('sent.index') }}" class="kt-menu__link">
+                                                <i class="kt-menu__link-icon flaticon2-list-3"></i>
                                                 <span class="kt-menu__link-text">เอกสารที่มอบหมาย/ส่งต่อแล้ว</span>
                                             </a>
                                         </li>

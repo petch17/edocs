@@ -25,7 +25,6 @@ class ReceiverController extends Controller
         ->groupBy('edocdetails.created_by' , 'edocdetails.edoc_id')
         ->get();
 
-
         return view('receiver.index',['edocs2' => $edocs]);
     }
 
