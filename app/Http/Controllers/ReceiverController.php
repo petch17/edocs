@@ -25,7 +25,17 @@ class ReceiverController extends Controller
         ->groupBy('edocdetails.created_by' , 'edocdetails.edoc_id')
         ->get();
 
-        return view('receiver.index',['edocs2' => $edocs]);
+        $edoc_details = DB::table('edocdetails')
+        ->join('users', 'edocdetails.created_by', '=', 'users.id')
+        ->join('managers', 'edocdetails.sent_manager', '=', 'managers.id')
+        ->select('edoc_id','created_by','sent_manager','managers.DEP_ABBR')
+        ->where('status','เอกสารที่อนุมัติแล้ว')
+        ->where('created_by',Auth::user()->id)
+        ->where('sent_manager' , '!=' , Auth::user()->MANAGER_ID)
+        ->get();
+
+        return view('receiver.index',['edocs2' => $edocs
+                                    , 'edoc_details' => $edoc_details]);
     }
 
     public function create($id)

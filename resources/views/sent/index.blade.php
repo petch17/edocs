@@ -41,16 +41,24 @@
                 <thead>
                     <tr>
                         <th width="20%">#</th>
-                        <th width="60%">ชื่อไฟล์</th>
+                        <th width="35%">ชื่อไฟล์</th>
+                        <th width="35%">ตำแหน่งผู้รับ</th>
                         <th width="20%"><i class="fa fa-cog"></i></th>
                     </tr>
                 </thead>
 
                 <tbody>
-                @foreach($edocs2 as $index=>$item)
+                @foreach($sents as $index=>$item)
                     <tr>
                         <td>{{$index+1}}</td>
                         <td>{{$item->topic}}</td>
+                        <td>
+                            @foreach($receive_details as $num=>$receive_detail)
+                                @if($receive_detail->receiver_id == $item->id)
+                                    {{$receive_detail->DEP_ABBR}}
+                                @endif
+                            @endforeach
+                        </td>
                         <td>
                                 <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                     <i class="fa fa-search"></i>

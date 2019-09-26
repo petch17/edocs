@@ -16,14 +16,25 @@ class SentController extends Controller
     public function index()
     {
         // $edocs = Edoc::where( 'status','เอกสารที่อนุมัติแล้ว' )->where('id',Auth::user()->id)->get();
-        $edocs = DB::table('receivers')
+        $sent = DB::table('receivers')
         ->join('rcdetails', 'receivers.id', '=', 'rcdetails.receiver_id')
-        ->select('receivers.*')
-        ->where( 'receivers.status','ส่งแล้ว' )
+        ->join('edocs', 'receivers.edoc_id', '=', 'edocs.id')
+        ->select('receivers.*','edocs.topic','edocs.file')
+        ->where( 'rcdetails.status','เอกสารที่อนุมัติแล้ว' )
         ->where('rcdetails.created_by',Auth::user()->id)
         ->groupBy('rcdetails.created_by' , 'rcdetails.receiver_id')
         ->get();
 
-        return view('sent.index',['edocs2' => $edocs]);
+        $receive_details = DB::table('rcdetails')
+        ->join('users', 'rcdetails.created_by', '=', 'users.id')
+        ->join('managers', 'rcdetails.select_manager', '=', 'managers.id')
+        ->select('receiver_id','created_by','select_manager','managers.DEP_ABBR')
+        ->where('status','เอกสารที่อนุมัติแล้ว')
+        ->where('created_by',Auth::user()->id)
+        ->where('select_manager' , '!=' , Auth::user()->MANAGER_ID)
+        ->get();
+
+        return view('sent.index',['sents' => $sent
+                                , 'receive_details' => $receive_details]);
     }
 }

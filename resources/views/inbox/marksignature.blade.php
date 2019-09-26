@@ -28,37 +28,33 @@ function clickHotspotImage(event) {
         //console.log(xCoordinate + ',' + yCoordinate)
     }
 
+    function clearCircle(){
+        for(i in circlelist){
+        document.body.removeChild(circlelist[i]);
+        }
+        circlelist = new Array();
+    }
+
+
     function check(x,y){
         // alert(nu);
         // window.nu = 0;
         if(nu == 0){
             // alert(nu);
-            //clickHotspotImage(event);
+            // clickHotspotImage(event);
             photoclick(x,y);
 
-            if (count < 2) {
-                count++;
-                coor.push({'x': x, 'y': y});
-            }
-
-
-            if (count == 2) {
-                console.log(coor);
-                count = 0;
-                coor = [];
-            }
         }
         else{
-            //alert(x);
-
+            // alert(nu);
+            clearCircle(x,y);
             nu = 0;
-
         }
     }
 
     function photoclick(x,y){
         // alert(nu);
-        // var circlelist = new Array();
+        var circlelist = new Array();
         c1 = document.createElement("img");
         c1.src = "{{asset('marksignature/5.png')}}";
         c1.style.position = "absolute";
@@ -67,10 +63,10 @@ function clickHotspotImage(event) {
         c1.style.width = "20px";
         c1.style.height = "20px";
         document.body.appendChild(c1);
-        //circlelist.push(c1);
+        circlelist.push(c1);
 
         nu++;
-        //alert(nu);
+        // alert(nu);
     }
 </script>
 

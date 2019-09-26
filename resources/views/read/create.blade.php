@@ -116,7 +116,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลือกผู้รับ :</label>
                         <div class="col-lg-9">
-                            <select multiple class="searchable" name="select_emp[]">
+                            <select multiple class="searchable" name="select_manager[]">
                                 @foreach($employee as $employees)
                                     @php
                                         $sumname = $employees->TITLE_TH.' '.$employees->FIRST_NAME_TH.' '.$employees->LAST_NAME_TH

@@ -38,7 +38,7 @@ class ReadController extends Controller
     public function create($id)
     {
         // return $id;
-        $employee = User::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')
+        $employee = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')
             ->where('id' ,'!=', Auth::user()->id)
             ->where('MANAGER_ID' , Auth::user()->MANAGER_ID)
             ->get();
@@ -64,12 +64,14 @@ class ReadController extends Controller
         // return $receive;
         $receive->save();
 
-        foreach($request->select_emp as $emp_id){
+        foreach($request->select_manager as $mng_id){
 
         $rcdetail = new Rcdetail;
         $rcdetail->receiver_id = $receive->id;
         $rcdetail->created_by = $request->user_id;
-        $rcdetail->select_emp = $emp_id;
+        $rcdetail->select_manager = $mng_id;
+
+        $receive->status = 'เอกสารที่อนุมัติแล้ว';
 
         // return $rcdetail;
         $rcdetail->save();
@@ -166,7 +168,7 @@ class ReadController extends Controller
         $receive->getx = $request->getx;
         $receive->gety = $request->gety;
 
-        $receive->status = 'ยังไม่ส่ง';
+        $receive->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
 
         $receive->save();
 

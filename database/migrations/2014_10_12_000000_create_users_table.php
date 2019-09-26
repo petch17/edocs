@@ -53,6 +53,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('empcode');
         Schema::dropIfExists('users');
     }
 }
