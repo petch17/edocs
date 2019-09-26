@@ -51,6 +51,13 @@
                 @foreach($tbrc as $index=>$item)
                     <tr>
                         <td>{{$index+1}}</td>
+                        {{-- <td>
+                            @foreach($tbread as $edoc_detail)
+                                @if($edoc_detail->edoc_id == $item->id)
+                                    {{$edoc_detail->TITLE_TH}} {{$edoc_detail->FIRST_NAME_TH}} {{$edoc_detail->LAST_NAME_TH}}
+                                @endif
+                            @endforeach
+                        </td> --}}
                         <td>{{$item->TITLE_TH}} {{$item->FIRST_NAME_TH}} {{$item->LAST_NAME_TH}}</td>
                         <td>{{$item->topic}}</td>
                         <td>

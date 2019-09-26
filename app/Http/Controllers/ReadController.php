@@ -38,9 +38,12 @@ class ReadController extends Controller
     public function create($id)
     {
         // return $id;
-        $employee = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')
-            ->where('id' ,'!=', Auth::user()->id)
-            ->where('MANAGER_ID' , Auth::user()->MANAGER_ID)
+        // $employee = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')
+        $employee = DB::table('users')
+            ->join('managers' , 'users.MANAGER_ID','=','managers.id')
+            ->select('managers.*')
+            ->where('users.id' , Auth::user()->id)
+            ->where('users.MANAGER_ID' , Auth::user()->MANAGER_ID)
             ->get();
 
         return view('read.create',['employee' => $employee , 'edoc_id' => $id]);

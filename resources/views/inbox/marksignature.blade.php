@@ -47,7 +47,7 @@ function clickHotspotImage(event) {
         }
         else{
             // alert(nu);
-            clearCircle(x,y);
+            clearCircle();
             nu = 0;
         }
     }
