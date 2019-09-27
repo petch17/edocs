@@ -26,11 +26,11 @@ class InboxController extends Controller
         // return $edocs;
 
         $edocs = DB::table('edocs')
-            ->join('edocdetails', 'edocs.id', '=', 'edocdetails.edoc_id')
+            // ->join('edocdetails', 'edocs.id', '=', 'edocdetails.edoc_id')
             ->select('edocs.*')
             ->where( 'edocs.status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )
-            ->where('edocdetails.created_by',Auth::user()->id)
-            ->groupBy('edocdetails.created_by' , 'edocdetails.edoc_id')
+            ->where('edocs.created_by',Auth::user()->id)
+            // ->groupBy('edocdetails.created_by' , 'edocdetails.edoc_id')
             ->get();
 
             // return $edocs;
@@ -47,19 +47,20 @@ class InboxController extends Controller
     public function addcreate()
     {
         // เรียน
-        if(Auth::user()->MANAGER_ID == null){
-            $manager2 = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->get();
-            // return '1';
-        }else{
-            $manager2 = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')
-            ->where('id' ,'!=', Auth::user()->MANAGER_ID)->get();
-            // return '2';
-        }
+        // if(Auth::user()->MANAGER_ID == null){
+        //     $manager2 = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')->get();
+        //     // return '1';
+        // }else{
+        //     $manager2 = Manager::select( 'id','EMPCODE','TITLE_TH','FIRST_NAME_TH','LAST_NAME_TH')
+        //     ->where('id' ,'!=', Auth::user()->MANAGER_ID)->get();
+        //     // return '2';
+        // }
 
-        // return $manager2;
+        // // return $manager2;
 
-        return view('inbox.add',['manager2' => $manager2]);
+        // return view('inbox.add',['manager2' => $manager2]);
         // return view('inbox.add',compact('manager'));
+        return view('inbox.add');
 
     }
 
@@ -68,7 +69,9 @@ class InboxController extends Controller
         $edoc = new Edoc;
         $edoc->topic = $request->topic;
         $edoc->edoc_type = $request->edoc_type;
+        $edoc->created_by = $request->user_id;
         $edoc->select_manager = $request->select_manager;
+        $edoc->retirement = $request->retirement;
         $edoc->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
 
         if ($request->hasFile('file')){
@@ -82,14 +85,15 @@ class InboxController extends Controller
         }
         $edoc->save();
 
-        foreach($request->sent_manager as $manager_id){
-        $edocdetail = new Edocdetail;
-        $edocdetail->edoc_id = $edoc->id;
-        $edocdetail->created_by = $request->user_id;
-        $edocdetail->sent_manager = $manager_id;
-        $edocdetail->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
-        $edocdetail->save();
-        }
+        // ลูบวนเก็บค่าตาราง edoc_detail
+        // foreach($request->sent_manager as $manager_id){
+        // $edocdetail = new Edocdetail;
+        // $edocdetail->edoc_id = $edoc->id;
+        // $edocdetail->created_by = $request->user_id;
+        // $edocdetail->sent_manager = $manager_id;
+        // $edocdetail->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
+        // $edocdetail->save();
+        // }
 
         // return $edoc->id;
         // ส่วนการสร้างรูป (ฝั่งแอป)

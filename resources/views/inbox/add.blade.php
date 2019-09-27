@@ -53,15 +53,16 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรื่อง :</label>
                         <div class="col-lg-9">
-                            {!! Form::text('topic',null,['class'=>'form-control','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!}
+                            {!! Form::text('topic',null,['class'=>'form-control','placeholder'=>'กรุณากรอกชื่อเรื่อง']);
+                            !!}
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรียน :</label>
-                            <div class="col-lg-9">
-                                {!! Form::textarea('retirement',null,['class'=>'form-control','placeholder'=>'เรียน']); !!}
-                            </div>
+                        <div class="col-lg-9">
+                            {!! Form::textarea('retirement',null,['class'=>'form-control','placeholder'=>'เรียน']); !!}
+                        </div>
                     </div>
                     {{-- select & search --}}
                     {{-- <select multiple class="searchable" name="sent_manager[]">
@@ -70,20 +71,20 @@
                         $sumname2 = $manager22->TITLE_TH.' '.$manager22->FIRST_NAME_TH.' '.$manager22->LAST_NAME_TH
                         @endphp
                         <option value="{{$manager22->id}}">{{$sumname2}}</option>
-                        @endforeach
+                    @endforeach
                     </select> --}}
 
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">ประเภทเอกสาร :</label>
                         <div class="col-lg-9">
-                                <select class="form-control" name="edoc_type" id="manager" >
-                                    <option></option>
-                                    <option value="แจ้งเพื่อทราบ">แจ้งเพื่อทราบ</option>
-                                    <option value="แจ้งเพื่อดำเนินการ">แจ้งเพื่อดำเนินการ</option>
-                                    <option value="แจ้งอบรม/ประชุม/สัมมนา">แจ้งอบรม/ประชุม/สัมมนา</option>
-                                </select>
-                                {{-- {!! Form::select('edoc_type',
+                            <select class="form-control" name="edoc_type" placeholder="--เลือกประเภทเอกสาร--">
+                                <option></option>
+                                <option value="แจ้งเพื่อทราบ">แจ้งเพื่อทราบ</option>
+                                <option value="แจ้งเพื่อดำเนินการ">แจ้งเพื่อดำเนินการ</option>
+                                <option value="แจ้งอบรม/ประชุม/สัมมนา">แจ้งอบรม/ประชุม/สัมมนา</option>
+                            </select>
+                            {{-- {!! Form::select('edoc_type',
                                 array( ''=>'',
                                         'แจ้งเพื่อทราบ' => 'แจ้งเพื่อทราบ',
                                         'แจ้งเพื่อดำเนินการ' => 'แจ้งเพื่อดำเนินการ',
@@ -100,19 +101,22 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label"> :</label>
-                        <div class="col-lg-6">
-                            {!! Form::file('file' , ['accept' => ',.pdf']); !!}
+                    {{-- <div class="form-group row">
+                        <label class="col-lg-3 col-form-label" class="form-control" >ชั้นความเร็ว :</label>
+                        <div class="col-lg-6" >
+                                <input type="radio" name="speed" value="ด่วน" /> ด่วน &nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="speed" value="ด่วนมาก" /> ด่วนมาก &nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="speed" value="ด่วนที่สุด" /> ด่วนที่สุด
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label">อัพโหลด :</label>
+                    {{-- <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">ชั้นความลับ :</label>
                         <div class="col-lg-6">
-                            {!! Form::file('file' , ['accept' => ',.pdf']); !!}
+                                <input type="radio" name="secert" value="ลับ" /> ลับ  &nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="secert" value="ไม่ลับ" /> ไม่ลับ
                         </div>
-                    </div>
+                    </div> --}}
 
 
                 </div>
@@ -144,13 +148,14 @@
 
 <script>
     $(document).ready(function () {
-        document.getElementById('inbox').classList.add('kt-menu__item--open');
+        document.getElementById('native').classList.add('kt-menu__item--open');
+        document.getElementById('adds').classList.add('kt-menu__item--open');
     });
 
     $("#manager").select2({
-            placeholder: "-- เลือกประเภทเอกสาร --",
-            allowClear: true
-        });
+        placeholder: "-- เลือกประเภทเอกสาร --",
+        allowClear: true
+    });
 
 
         // multiSelect

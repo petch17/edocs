@@ -227,34 +227,35 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                         {{-- <li id="inbox" class="kt-menu__item " aria-haspopup="true">
                                             <a href="{{ route('inbox.index') }}" class="kt-menu__link ">
-                                                <i class="kt-menu__link-icon flaticon-suitcase"></i>
-                                                <span class="kt-menu__link-text">เอกสารที่ยังไม่ผ่านการอนุมัติ</span>
-                                            </a>
-                                        </li>
-
-                                        <li id="receiver" class="kt-menu__item" aria-haspopup="true">
-                                            <a href="{{ route('receiver.index') }}" class="kt-menu__link ">
-                                                <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
-                                                <span class="kt-menu__link-text">เอกสารที่อนุมัติแล้ว</span>
-                                            </a>
-                                        </li>
-
-                                        <li id="read" class="kt-menu__item" aria-haspopup="true">
-                                            <a href="{{ route('read.index') }}" class="kt-menu__link">
-                                                <i class="kt-menu__link-icon flaticon2-list-3"></i>
-                                                <span class="kt-menu__link-text">เอกสารที่ถูกส่งถึง</span>
-                                            </a>
-                                        </li>
-
-                                        <li id="sent" class="kt-menu__item" aria-haspopup="true">
-                                            <a href="{{ route('sent.index') }}" class="kt-menu__link">
-                                                <i class="kt-menu__link-icon flaticon2-list-3"></i>
-                                                <span class="kt-menu__link-text">เอกสารที่มอบหมาย/ส่งต่อแล้ว</span>
-                                            </a>
+                                        <i class="kt-menu__link-icon flaticon-suitcase"></i>
+                                        <span class="kt-menu__link-text">เอกสารที่ยังไม่ผ่านการอนุมัติ</span>
+                                        </a>
                                         </li> --}}
 
-                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                            <a  href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                        {{-- <li id="receiver" class="kt-menu__item" aria-haspopup="true">
+                                            <a href="{{ route('receiver.index') }}" class="kt-menu__link ">
+                                        <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
+                                        <span class="kt-menu__link-text">เอกสารที่อนุมัติแล้ว</span>
+                                        </a>
+                                        </li> --}}
+
+                                        {{-- <li id="read" class="kt-menu__item" aria-haspopup="true">
+                                            <a href="{{ route('read.index') }}" class="kt-menu__link">
+                                        <i class="kt-menu__link-icon flaticon2-list-3"></i>
+                                        <span class="kt-menu__link-text">เอกสารที่ถูกส่งถึง</span>
+                                        </a>
+                                        </li> --}}
+
+                                        <li id="inbox" class="kt-menu__item" aria-haspopup="true">
+                                            <a href="{{ route('inbox.index') }}" class="kt-menu__link">
+                                                <i class="kt-menu__link-icon flaticon2-list-3"></i>
+                                                <span class="kt-menu__link-text">กล่องเอกสาร</span>
+                                            </a>
+                                        </li>
+
+                                        <li id="native" class="kt-menu__item  kt-menu__item--submenu"
+                                            aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                                 <i class="kt-menu__link-icon flaticon-layers"></i>
                                                 <span class="kt-menu__link-text">เอกสาร</span>
                                                 <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -262,18 +263,20 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <div class="kt-menu__submenu ">
                                                 <span class="kt-menu__arrow"></span>
                                                 <ul class="kt-menu__subnav">
-                                                    <li id="inbox" class="kt-menu__item " aria-haspopup="true">
-                                                        <a href="{{ route('inbox.index') }}" class="kt-menu__link ">
+                                                    <li id="adds" class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="{{ route('addcreate') }}" class="kt-menu__link ">
                                                             <i class="kt-menu__link-icon flaticon-suitcase"></i>
-                                                            <span class="kt-menu__link-text">เอกสารทีสร้างเอง</span>
+                                                            <span class="kt-menu__link-text">สร้างเอกสาร
+                                                                (อยู่ระหว่างการพัฒนา)</span>
                                                         </a>
                                                     </li>
 
-                                                    <li id="inbox" class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="#" class="kt-menu__link ">
-                                                                <i class="kt-menu__link-icon flaticon-suitcase"></i>
-                                                                <span class="kt-menu__link-text">เอกสารส่งต่อ</span>
-                                                            </a>
+                                                    <li id="" class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="#" class="kt-menu__link ">
+                                                            <i class="kt-menu__link-icon flaticon-suitcase"></i>
+                                                            <span class="kt-menu__link-text">ส่งต่อเอกสาร
+                                                                (ยังใช้งานไม่ได้)</span>
+                                                        </a>
                                                     </li>
                                                 </ul>
 

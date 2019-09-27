@@ -13,12 +13,12 @@ class CreateEdocsTable extends Migration
      */
     public function up()
     {
-        Schema::create('objective', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+        // Schema::create('objective', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('name');
 
-            $table->timestamps();
-        });
+        //     $table->timestamps();
+        // });
 
         Schema::create('edocs', function (Blueprint $table) {
             $table->increments('id');
@@ -36,6 +36,8 @@ class CreateEdocsTable extends Migration
             $table->string('status')->nullable(); //สถานะ
             $table->integer('created_by')->nullable(); //สร้างโดยใคร
             $table->integer('select_manager')->nullable(); //เลือกผู้บริหาร
+            $table->string('speed')->nullable(); //เลือกผู้บริหาร
+            $table->string('secert')->nullable(); //เลือกผู้บริหาร
             // $table->string('POS_ABBR')->nullable(); //ส่งถึงใคร
             $table->integer('retirement')->nullable(); //เกษียณหนังสือ
 
@@ -60,7 +62,7 @@ class CreateEdocsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('objective');
+        // Schema::dropIfExists('objective');
         Schema::dropIfExists('edocs');
         // Schema::dropIfExists('edocdetails');
     }
