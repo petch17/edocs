@@ -29,6 +29,8 @@ class CreateManagersTable extends Migration
             $table->integer('HIERACHY_CODE')->nullable(); //รหัสลำดับขั้น
             $table->integer('ID4DIGIT')->nullable(); //เลขท้าย6ตัว ปชช.
             $table->string('EMAILINTRA')->nullable(); //อีเมล์
+            $table->string('PHONENUMER')->nullable(); //หมายเลขโทรศัพท์
+            $table->boolean('VERIFY_STATUS')->default(false); //อีเมล์
             $table->string('USER_NAME')->nullable(); //USER_NAME
 
             $table->timestamps();
