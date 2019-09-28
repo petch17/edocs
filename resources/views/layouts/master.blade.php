@@ -271,11 +271,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </a>
                                                     </li>
 
-                                                    <li id="" class="kt-menu__item " aria-haspopup="true">
-                                                        <a href="#" class="kt-menu__link ">
+                                                    <li id="addsforward" class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="{{ route('addforward') }}" class="kt-menu__link ">
                                                             <i class="kt-menu__link-icon flaticon-suitcase"></i>
                                                             <span class="kt-menu__link-text">ส่งต่อเอกสาร
-                                                                (ยังใช้งานไม่ได้)</span>
+                                                                (อยู่ระหว่างการพัฒนา)</span>
                                                         </a>
                                                     </li>
                                                 </ul>

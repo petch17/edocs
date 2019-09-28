@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Manager;
 use App\Edoc;
-use App\Edocdetail;
 use File;
 use DB;
 use PDF;
@@ -33,15 +32,48 @@ class InboxController extends Controller
             // ->groupBy('edocdetails.created_by' , 'edocdetails.edoc_id')
             ->get();
 
-            // return $edocs;
-
         return view('inbox.index',['edocs' => $edocs]);
 
     }
 
-    public function create()
+    public function addforward()
     {
-        return view('inbox.create');
+        // return '1';
+        return view('inbox.addforward');
+    }
+
+
+    public function addforwardstore(Request $request )
+    {
+        return $request;
+        $receive = new Receiver;
+        $receive->date = $request->date;
+        $receive->part_num = $request->part_num;
+        $receive->edoc_type = $request->edoc_type;
+        $receive->pos_abbr = $request->MAAGER_ID;
+        $receive->edoc_id = $request->edoc_id;
+
+        // return $receive;
+        $receive->save();
+
+        foreach($request->select_manager as $mng_id){
+
+        $rcdetail = new Rcdetail;
+        $rcdetail->receiver_id = $receive->id;
+        $rcdetail->created_by = $request->user_id;
+        $rcdetail->select_manager = $mng_id;
+
+        $receive->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
+
+        $rcdetail->save();
+
+        }
+
+        $client = new \GuzzleHttp\Client();
+        $text_to_img = "http://203.113.14.20:3000/senddoc/".$receive->id;
+        $text_to_img2 = $client->get($text_to_img);
+
+        return redirect()->route('readmarkrunnumber',['id' => $receive->id]);
     }
 
     public function addcreate()
@@ -55,11 +87,7 @@ class InboxController extends Controller
         //     ->where('id' ,'!=', Auth::user()->MANAGER_ID)->get();
         //     // return '2';
         // }
-
-        // // return $manager2;
-
         // return view('inbox.add',['manager2' => $manager2]);
-        // return view('inbox.add',compact('manager'));
         return view('inbox.add');
 
     }
@@ -118,19 +146,68 @@ class InboxController extends Controller
 
         // return $pdfs->download();
     }
+    public function markrunnumber($id){
+        // return $id;
+        $edoc = Edoc::find($id);
+        // return '1';
+        return view('read.markrunnumber',['edoc' => $edoc]);
+    }
 
-    public function marksignature($id){
+    public function markrunnumberstore(Request $request, $id){
+        // return '1';
+        // return $request;
+        $receive = Edoc::find($id);
+        $receive->getx = $request->getx;
+        $receive->gety = $request->gety;
+        $receive->save();
+
+        $client = new \GuzzleHttp\Client();
+        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
+        $text_to_img2 = $client->get($text_to_img);
+
 
         $edoc = Edoc::find($id);
-        return view('inbox.marksignature',['edoc' => $edoc]);
+        return view('read.markforward',['edoc' => $edoc]);
+
+    }
+
+    public function markforward($id){
+        // return $id;
+        // return '1';
+        $edoc2 = Edoc::find($id);
+        return view('read.markforward',['edoc2' => $edoc2 ]);
+    }
+
+    public function markforwardstore(Request $request, $id){
+        // return '1';
+        // return $request;
+        $receive = Edoc::find($id);
+        $receive->getx = $request->getx;
+        $receive->gety = $request->gety;
+        $receive->save();
+
+        //    return redirect()->route('receiver.marksignature');
+        $client = new \GuzzleHttp\Client();
+        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
+        $text_to_img2 = $client->get($text_to_img);
+
+
+        $edoc2 = Receiver::find($id);
+        return view('read.marksignature',['edoc2' => $edoc2]);
+
+    }
+
+    public function marksignature($id){
+        $edoc3 = Edoc::find($id);
+        return view('read.marksignature',['edoc3' => $edoc3 ]);
     }
 
     public function marksignaturestore(Request $request, $id){
 
-        $edoc = Edoc::find($id);
-        $edoc->getx = $request->getx;
-        $edoc->gety = $request->gety;
-        $edoc->save();
+        $edoc3 = Edoc::find($id);
+        $edoc3->getx = $request->getx;
+        $edoc3->gety = $request->gety;
+        $edoc3->save();
 
        return redirect()->route('inbox.index');
     }

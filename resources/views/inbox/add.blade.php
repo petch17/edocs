@@ -3,7 +3,7 @@
 @section('css')
 {{-- <script src="{{asset('ckeditor/ckeditor.js')}}"></script> --}}
 
-<style>
+{{-- <style>
     canvas {
         border: 1px black solid;
     }
@@ -14,7 +14,7 @@
 </style>
 <link href="{{asset('css2/multi-select.css')}}" media="screen" rel="stylesheet" type="text/css">
 <link href="{{asset('css2/multi-select.dev.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('css2/multi-select.dist.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('css2/multi-select.dist.css')}}" rel="stylesheet" type="text/css"> --}}
 
 @endsection
 
@@ -152,10 +152,10 @@
         document.getElementById('adds').classList.add('kt-menu__item--open');
     });
 
-    $("#manager").select2({
-        placeholder: "-- เลือกประเภทเอกสาร --",
-        allowClear: true
-    });
+    // $("#manager").select2({
+    //     placeholder: "-- เลือกประเภทเอกสาร --",
+    //     allowClear: true
+    // });
 
 
         // multiSelect

@@ -1,11 +1,11 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- <div style="border-style:solid;"> -->
-{!! Form::model($receive,['route' => ['markforwardstore',$receive->id], 'method' => 'post'] ) !!}
+{!! Form::model($edoc,['route' => ['readmarkrunnumberstore',$edoc->id], 'method' => 'post'] ) !!}
 <input id="getx" name="getx" type="hidden" value="" />
 <input id="gety" name="gety" type="hidden" value="" />
 
-<img src="http://203.113.14.20:3000/output/{{$edoc2->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
+<img src="http://203.113.14.20:3000/output/{{$edoc->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
 
     <button style="position: absolute; top: 20px; right: 180px;" type="submit" class="btn btn-outline-primary">ยืนยัน</button>
     <button style="position: absolute; top: 20px; right: 100px;" type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ยกเลิก</button>
@@ -21,7 +21,7 @@ function clickHotspotImage(event) {
         document.getElementById("gety").value = yCoordinate;
         var circlelist = new Array()
         c1 = document.createElement("img");
-        c1.src = "http://203.113.14.20:3000/imagesend/{{$receive->path}}";
+        c1.src = "http://203.113.14.20:3000/imagesend/{{$edoc->path}}";
         c1.style.position = "absolute";
         c1.style.left = xCoordinate+"px";
         c1.style.top = yCoordinate+"px";

@@ -1,11 +1,11 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- <div style="border-style:solid;"> -->
-{!! Form::model($edoc,['route' => ['marksignaturestore',$edoc->id], 'method' => 'post'] ) !!}
+{!! Form::model($edoc3,['route' => ['marksignaturestore',$edoc3->id], 'method' => 'post'] ) !!}
 <input id="getx" name="getx" type="hidden" value="" />
 <input id="gety" name="gety" type="hidden" value="" />
 
-<img src="http://203.113.14.20:3000/output/{{$edoc->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
+<img src="http://203.113.14.20:3000/output/{{$edoc3->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
 
 <a style="position: absolute; top: 20px; right: 1px; color:red;"><h6>*กรุณาคลิกที่รูปเพื่อกำหนดตำแหน่งของลายเซ็น*</h6></a>
 <button style="position: absolute; top: 60px; right: 180px;" type="submit" class="btn btn-outline-primary">ยืนยัน</button>

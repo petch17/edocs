@@ -8,10 +8,6 @@ class Edoc extends Model
 {
     protected $table = 'edocs';
 
-    public function tbobjective(){
-        return $this->belongsTo(Objective::class, 'objective_id');
-    }
-
     public function tbreceivers(){
         return $this->hasMany(Edoc::class);
     }

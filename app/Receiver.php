@@ -11,8 +11,4 @@ class Receiver extends Model
     public function tbreceiver(){
         return $this->belongsTo(Edoc::class, 'edoc_id');
     }
-
-    public function tbrcdetails(){
-        return $this->hasMany(Rcdetail::class);
-    }
 }
