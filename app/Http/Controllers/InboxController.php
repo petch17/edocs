@@ -173,7 +173,7 @@ class InboxController extends Controller
 
         // return $edoc2;
 
-        // $edoc2->save();
+        $edoc2->save();
 
         // return $edoc2;
 
