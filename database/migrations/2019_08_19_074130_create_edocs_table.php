@@ -24,6 +24,7 @@ class CreateEdocsTable extends Migration
             $table->increments('id');
             $table->text('topic')->nullable(); //เรื่อง
             $table->string('edoc_type')->nullable(); //ประเภทเอกสาร
+            $table->string('objective')->nullable(); //วัตถุประสงค์
             $table->string('file')->nullable(); //ชื่อไฟล์
             $table->string('real_filename')->nullable(); //ชื่อไฟล์ของจริง
             $table->string('signature')->nullable(); //ลายเซ็น
@@ -32,13 +33,17 @@ class CreateEdocsTable extends Migration
             $table->integer('getx')->nullable(); //ค่า X
             $table->integer('gety')->nullable();  //ค่า Y
             $table->integer('pagelength')->nullable();
-            $table->string('approveimage')->nullable();
+            $table->string('path')->nullable(); //path
             $table->string('status')->nullable(); //สถานะ
+            $table->string('part_num')->nullable(); //เลขที่รับส่วนงาน
+            $table->string('pos_abbr')->nullable(); //ตัวย่อหน่วยงานของผู้รับ
+            $table->date('date')->nullable(); //วันที่
+            $table->time('time')->nullable(); //เวลา
             $table->integer('created_by')->nullable(); //สร้างโดยใคร
             $table->integer('select_manager')->nullable(); //เลือกผู้บริหาร
             $table->string('speed')->nullable(); //เลือกผู้บริหาร
             $table->string('secert')->nullable(); //เลือกผู้บริหาร
-            // $table->string('POS_ABBR')->nullable(); //ส่งถึงใคร
+            $table->string('document')->nullable(); //แยกสถานะเอกสาร ส่งต่อ กับ สร้างเอง
             $table->integer('retirement')->nullable(); //เกษียณหนังสือ
 
             $table->timestamps();

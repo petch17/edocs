@@ -9,7 +9,7 @@
 <div class="kt-subheader kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
         <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title">รายการเอกสารสร้างเอง</h3>
+            <h3 class="kt-subheader__title">รายการเอกสารส่งต่อ</h3>
             {{-- <span class="kt-subheader__separator kt-hidden"></span>
                 <div class="kt-subheader__breadcrumbs">
                     <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
@@ -27,7 +27,7 @@
             <div class="kt-portlet__head-toolbar">
                 <div class="kt-portlet__head-wrapper">
                     <div class="kt-portlet__head-actions">
-                        <a href="{{ route('addcreate') }}" class="btn btn-brand btn-elevate btn-icon-sm">
+                        <a href="{{ route('addforward') }}" class="btn btn-brand btn-elevate btn-icon-sm">
                             <i class="la la-plus"></i> อัพโหลดเอกสาร
                         </a>
                     </div>
@@ -41,7 +41,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>เรื่อง</th>
+                        <th>เรียน</th>
                         <th><i class="fa fa-cog"></i></th>
                     </tr>
                 </thead>
@@ -50,7 +50,7 @@
                 @foreach($edocs as $index=>$item)
                     <tr>
                         <td>{{$index+1}}</td>
-                        <td>{{$item->topic}}</td>
+                        <td>{{$item->retirement}}</td>
                         <td>
                             <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                 <i class="fa fa-search"></i>
@@ -92,7 +92,7 @@
 
 <script>
     $(document).ready(function() {
-        document.getElementById('index1').classList.add('kt-menu__item--open');
+        document.getElementById('index2').classList.add('kt-menu__item--open');
 
         $('#table1').DataTable();
 

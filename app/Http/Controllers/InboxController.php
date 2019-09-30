@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Manager;
 use App\Edoc;
+use App\Receiver;
 use File;
 use DB;
 use PDF;
@@ -21,19 +22,29 @@ class InboxController extends Controller
 
     public function index()
     {
-        // $edocs = Edoc::where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )->where('id',Auth::user()->id)->get();
-        // return $edocs;
-
+        // return '1';
+        // $edocs = Edoc::where('created_by',Auth::user()->id)->get();
         $edocs = DB::table('edocs')
-            // ->join('edocdetails', 'edocs.id', '=', 'edocdetails.edoc_id')
-            ->select('edocs.*')
-            ->where( 'edocs.status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )
-            ->where('edocs.created_by',Auth::user()->id)
-            // ->groupBy('edocdetails.created_by' , 'edocdetails.edoc_id')
-            ->get();
+        ->select('edocs.*')
+        // ->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )
+        ->where( 'document','เอกสารสร้างเอง' )
+        ->where('created_by',Auth::user()->id)
+        ->get();
 
         return view('inbox.index',['edocs' => $edocs]);
+    }
 
+    public function indexforward()
+    {
+        // return '3';
+        $edocs = DB::table('edocs')
+        ->select('edocs.*')
+        // ->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )
+        ->where( 'document','เอกสารส่งต่อ' )
+        ->where('created_by',Auth::user()->id)
+        ->get();
+
+        return view('inbox.indexforward',['edocs' => $edocs]);
     }
 
     public function addforward()
@@ -43,38 +54,6 @@ class InboxController extends Controller
     }
 
 
-    public function addforwardstore(Request $request )
-    {
-        return $request;
-        $receive = new Receiver;
-        $receive->date = $request->date;
-        $receive->part_num = $request->part_num;
-        $receive->edoc_type = $request->edoc_type;
-        $receive->pos_abbr = $request->MAAGER_ID;
-        $receive->edoc_id = $request->edoc_id;
-
-        // return $receive;
-        $receive->save();
-
-        foreach($request->select_manager as $mng_id){
-
-        $rcdetail = new Rcdetail;
-        $rcdetail->receiver_id = $receive->id;
-        $rcdetail->created_by = $request->user_id;
-        $rcdetail->select_manager = $mng_id;
-
-        $receive->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
-
-        $rcdetail->save();
-
-        }
-
-        $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://203.113.14.20:3000/senddoc/".$receive->id;
-        $text_to_img2 = $client->get($text_to_img);
-
-        return redirect()->route('readmarkrunnumber',['id' => $receive->id]);
-    }
 
     public function addcreate()
     {
@@ -99,8 +78,47 @@ class InboxController extends Controller
         $edoc->edoc_type = $request->edoc_type;
         $edoc->created_by = $request->user_id;
         $edoc->select_manager = $request->select_manager;
-        $edoc->retirement = $request->retirement;
+        $edoc->document = 'เอกสารสร้างเอง';
         $edoc->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
+
+        if($request->speed == null ){
+            // return '1';
+        }
+        else{
+            // return '2';
+            if($request->speed == 'ด่วน'){
+                // return '2.1';
+                // return $request->speed;
+                $edoc->speed = $request->speed;
+            }
+            elseif($request->speed == 'ด่วนมาก'){
+                // return '2.2';
+                // return $request->speed;
+                $edoc->speed = $request->speed;
+            }
+            else{
+                // return '2.3';
+                // return $request->speed;
+                $edoc->speed = $request->speed;
+            }
+        }
+
+        if($request->secert == null ){
+            // return '1';
+        }
+        else{
+            // return '2';
+            if($request->secert == 'ลับ'){
+                // return $request->secert;
+                $edoc->secert = $request->secert;
+            }
+            else{
+                // return '1.1';
+                // return $request->secert;
+                $edoc->secert = $request->secert;
+            }
+        }
+        // return $edoc ;
 
         if ($request->hasFile('file')){
             // File::delete(base_path().'\\public\\edocfiles\\'.$edoc->file);
@@ -112,6 +130,7 @@ class InboxController extends Controller
             $edoc->real_filename = $real_filename;
         }
         $edoc->save();
+        // return $edoc ;
 
         // ลูบวนเก็บค่าตาราง edoc_detail
         // foreach($request->sent_manager as $manager_id){
@@ -126,12 +145,54 @@ class InboxController extends Controller
         // return $edoc->id;
         // ส่วนการสร้างรูป (ฝั่งแอป)
         $client = new \GuzzleHttp\Client();
+        // return '1';
         $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
         $pdf_to_img2 = $client->get($pdf_to_img);
         // return $pdf_to_img;
         return redirect()->route('marksignature',['id' => $edoc->id]);
 
         // return redirect()->route('inbox.index');
+    }
+
+    public function addforwardstore(Request $request )
+    {
+        // return $request;
+        $edoc2 = new Edoc;
+        // $edoc2->topic = $request->topic;
+        $edoc2->part_num = $request->part_num;
+        $edoc2->pos_abbr = $request->pos_abbr;
+        $edoc2->edoc_type = $request->edoc_type;
+        $edoc2->date = $request->date;
+        $edoc2->time = $request->times;
+        $edoc2->edoc_type = $request->edoc_type;
+        $edoc2->objective = $request->objective;
+        $edoc2->created_by = $request->user_id;
+        $edoc2->retirement = $request->retirement;
+        $edoc2->document = 'เอกสารส่งต่อ';
+        $edoc2->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
+
+        // return $edoc2;
+
+        // $edoc2->save();
+
+        // return $edoc2;
+
+        // วนเก็บค่า
+        // foreach($request->select_manager as $mng_id){
+        // $rcdetail = new Rcdetail;
+        // $rcdetail->receiver_id = $receive->id;
+        // $rcdetail->created_by = $request->user_id;
+        // $rcdetail->select_manager = $mng_id;
+        // $receive->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
+        // $rcdetail->save();
+        // }
+        // end วนเก็บค่า
+
+        $client = new \GuzzleHttp\Client();
+        $text_to_img = "http://203.113.14.20:3000/mergedocsend/".$edoc2->id;
+        $text_to_img2 = $client->get($text_to_img);
+
+        return redirect()->route('readmarkrunnumber',['id' => $edoc2->id]);
     }
 
     public function show($id)
@@ -146,6 +207,7 @@ class InboxController extends Controller
 
         // return $pdfs->download();
     }
+
     public function markrunnumber($id){
         // return $id;
         $edoc = Edoc::find($id);
@@ -199,7 +261,7 @@ class InboxController extends Controller
 
     public function marksignature($id){
         $edoc3 = Edoc::find($id);
-        return view('read.marksignature',['edoc3' => $edoc3 ]);
+        return view('inbox.marksignature',['edoc3' => $edoc3 ]);
     }
 
     public function marksignaturestore(Request $request, $id){

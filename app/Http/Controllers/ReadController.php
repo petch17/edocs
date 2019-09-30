@@ -100,61 +100,61 @@ class ReadController extends Controller
         //
     }
 
-    public function markrunnumber($id){
-        // return $id;
-        // $edoc2 = Edoc::find($id);
-        // return '1';
-        $receive = Receiver::find($id);
-        $edoc2 = Edoc::find($receive->edoc_id);
-        return view('read.markrunnumber',['edoc2' => $edoc2 ,'receive' => $receive]);
-    }
+    // public function markrunnumber($id){
+    //     // return $id;
+    //     // $edoc2 = Edoc::find($id);
+    //     // return '1';
+    //     $receive = Receiver::find($id);
+    //     $edoc2 = Edoc::find($receive->edoc_id);
+    //     return view('read.markrunnumber',['edoc2' => $edoc2 ,'receive' => $receive]);
+    // }
 
-    public function markrunnumberstore(Request $request, $id){
-        // return '1';
-        // return $request;
-        $receive = Receiver::find($id);
-        $receive->getx = $request->getx;
-        $receive->gety = $request->gety;
-        $receive->save();
+    // public function markrunnumberstore(Request $request, $id){
+    //     // return '1';
+    //     // return $request;
+    //     $receive = Receiver::find($id);
+    //     $receive->getx = $request->getx;
+    //     $receive->gety = $request->gety;
+    //     $receive->save();
 
-        $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
-        $text_to_img2 = $client->get($text_to_img);
-
-
-        $receive2 = Receiver::find($id);
-        $edoc = Edoc::find($receive2->edoc_id);
-        return view('read.markforward',['edoc2' => $edoc , 'receive' => $receive2]);
-
-    }
-
-    public function markforward($id){
-        // return $id;
-        // return '1';
-        $receive = Receiver::find($id);
-        $edoc2 = Edoc::find($receive->edoc_id);
-        return view('read.markforward',['edoc2' => $edoc2 ,'receive' => $receive]);
-    }
-
-    public function markforwardstore(Request $request, $id){
-        // return '1';
-        // return $request;
-        $receive = Receiver::find($id);
-        $receive->getx = $request->getx;
-        $receive->gety = $request->gety;
-        $receive->save();
-
-        //    return redirect()->route('receiver.marksignature');
-        $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
-        $text_to_img2 = $client->get($text_to_img);
+    //     $client = new \GuzzleHttp\Client();
+    //     $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
+    //     $text_to_img2 = $client->get($text_to_img);
 
 
-        $receive2 = Receiver::find($id);
-        $edoc3 = Edoc::find($receive2->edoc_id);
-        return view('read.marksignature',['edoc3' => $edoc3 ,'receive2' => $receive2]);
+    //     $receive2 = Receiver::find($id);
+    //     $edoc = Edoc::find($receive2->edoc_id);
+    //     return view('read.markforward',['edoc2' => $edoc , 'receive' => $receive2]);
 
-    }
+    // }
+
+    // public function markforward($id){
+    //     // return $id;
+    //     // return '1';
+    //     $receive = Receiver::find($id);
+    //     $edoc2 = Edoc::find($receive->edoc_id);
+    //     return view('read.markforward',['edoc2' => $edoc2 ,'receive' => $receive]);
+    // }
+
+    // public function markforwardstore(Request $request, $id){
+    //     // return '1';
+    //     // return $request;
+    //     $receive = Receiver::find($id);
+    //     $receive->getx = $request->getx;
+    //     $receive->gety = $request->gety;
+    //     $receive->save();
+
+    //     //    return redirect()->route('receiver.marksignature');
+    //     $client = new \GuzzleHttp\Client();
+    //     $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
+    //     $text_to_img2 = $client->get($text_to_img);
+
+
+    //     $receive2 = Receiver::find($id);
+    //     $edoc3 = Edoc::find($receive2->edoc_id);
+    //     return view('read.marksignature',['edoc3' => $edoc3 ,'receive2' => $receive2]);
+
+    // }
 
     public function marksignature($id){
 

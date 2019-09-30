@@ -239,21 +239,21 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </a>
                                         </li> --}}
 
-                                        {{-- <li id="read" class="kt-menu__item" aria-haspopup="true">
-                                            <a href="{{ route('read.index') }}" class="kt-menu__link">
-                                        <i class="kt-menu__link-icon flaticon2-list-3"></i>
-                                        <span class="kt-menu__link-text">เอกสารที่ถูกส่งถึง</span>
-                                        </a>
-                                        </li> --}}
-
-                                        <li id="inbox" class="kt-menu__item" aria-haspopup="true">
+                                        <li id="index1" class="kt-menu__item" aria-haspopup="true">
                                             <a href="{{ route('inbox.index') }}" class="kt-menu__link">
-                                                <i class="kt-menu__link-icon flaticon2-list-3"></i>
-                                                <span class="kt-menu__link-text">กล่องเอกสาร</span>
+                                        <i class="kt-menu__link-icon flaticon2-list-3"></i>
+                                        <span class="kt-menu__link-text">สร้างเอกสาร (อยู่ระหว่างการพัฒนา)</span>
+                                        </a>
+                                        </li>
+
+                                        <li id="index2" class="kt-menu__item" aria-haspopup="true">
+                                            <a href="{{ route('indexforward') }}" class="kt-menu__link">
+                                                <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
+                                                <span class="kt-menu__link-text">ส่งต่อเอกสาร (อยู่ระหว่างการพัฒนา)</span>
                                             </a>
                                         </li>
 
-                                        <li id="native" class="kt-menu__item  kt-menu__item--submenu"
+                                        {{-- <li id="native" class="kt-menu__item  kt-menu__item--submenu"
                                             aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
                                             <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                                 <i class="kt-menu__link-icon flaticon-layers"></i>
@@ -281,7 +281,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </ul>
 
                                             </div>
-                                        </li>
+                                        </li> --}}
 
                                     </ul>
                                 </div>

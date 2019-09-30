@@ -3,6 +3,11 @@
 Route::group(['middleware' => ['web']], function () {
     Route::post('web-login', ['as'=>'web-login','uses'=>'Auth\LoginController@webLoginPost']);
 });
+
+// Route::get('inbox/indexcreate', 'InboxController@indexcreate')->name('indexcreate'); // index เอกสารสร้างเอง
+
+Route::get('inbox/indexforward', 'InboxController@indexforward')->name('indexforward'); // index เอกสารส่งต่อ
+
 // เอกสารสร้างเอง
 Route::get('inbox/add', 'InboxController@addcreate')->name('addcreate');
 
@@ -49,25 +54,25 @@ Route::get('/', function () {
 
 /*------------inbox marksignature-------------------*/
 
-Route::get('read/markrunnumber/{id}', [
-    'as' => 'readmarkrunnumber',
+Route::get('inbox/markrunnumber/{id}', [
+    'as' => 'inboxmarkrunnumber',
     'uses' => 'InboxController@markrunnumber'
 ]);
 Route::resource('markrunnumber', 'InboxController' , ['except' => 'markrunnumber']);
 
-Route::post('read/markrunnumberstore/{id}', [
-    'as' => 'readmarkrunnumberstore',
+Route::post('inbox/markrunnumberstore/{id}', [
+    'as' => 'inboxmarkrunnumberstore',
     'uses' => 'InboxController@markrunnumberstore'
 ]);
 Route::resource('markrunnumberstore', 'InboxController' , ['except' => 'markrunnumberstore']);
 
-Route::get('read/markforward/{id}', [
+Route::get('inbox/markforward/{id}', [
     'as' => 'markforward',
     'uses' => 'InboxController@markforward'
 ]);
 Route::resource('markforward', 'InboxController' , ['except' => 'markforward']);
 
-Route::post('read/markforwardstore/{id}', [
+Route::post('inbox/markforwardstore/{id}', [
     'as' => 'markforwardstore',
     'uses' => 'InboxController@markforwardstore'
 ]);

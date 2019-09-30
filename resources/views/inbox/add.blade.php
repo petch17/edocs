@@ -58,12 +58,12 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรียน :</label>
                         <div class="col-lg-9">
                             {!! Form::textarea('retirement',null,['class'=>'form-control','placeholder'=>'เรียน']); !!}
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- select & search --}}
                     {{-- <select multiple class="searchable" name="sent_manager[]">
                         @foreach($manager2 as $manager22)
@@ -78,45 +78,46 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">ประเภทเอกสาร :</label>
                         <div class="col-lg-9">
-                            <select class="form-control" name="edoc_type" placeholder="--เลือกประเภทเอกสาร--">
-                                <option></option>
-                                <option value="แจ้งเพื่อทราบ">แจ้งเพื่อทราบ</option>
-                                <option value="แจ้งเพื่อดำเนินการ">แจ้งเพื่อดำเนินการ</option>
-                                <option value="แจ้งอบรม/ประชุม/สัมมนา">แจ้งอบรม/ประชุม/สัมมนา</option>
-                            </select>
-                            {{-- {!! Form::select('edoc_type',
+                            {!! Form::select('edoc_type',
+                            array( null => '--เลือกประเภทเอกสาร--' ,
+                                'แจ้งเพื่อทราบ' => 'แจ้งเพื่อทราบ',
+                                'แจ้งเพื่อดำเนินการ' => 'แจ้งเพื่อดำเนินการ',
+                                'แจ้งอบรม/ประชุม/สัมมนา' => 'แจ้งอบรม/ประชุม/สัมมนา') ,
+                                '-- เลือกประเภทเอกสาร --',
+                            ['class'=>'form-control' ] ); !!}
+                        </div>
+                    </div>
+                    {{-- {!! Form::select('edoc_type',
                                 array( ''=>'',
                                         'แจ้งเพื่อทราบ' => 'แจ้งเพื่อทราบ',
                                         'แจ้งเพื่อดำเนินการ' => 'แจ้งเพื่อดำเนินการ',
                                         'แจ้งอบรม/ประชุม/สัมมนา' => 'แจ้งอบรม/ประชุม/สัมมนา') ,
                                         '-- เลือกประเภทเอกสาร --',
                                 ['class'=>'form-control' , 'id'=>'manager' ] ); !!} --}}
-                        </div>
-                    </div>
 
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label">อัพโหลด :</label>
-                        <div class="col-lg-6">
+                        <label class="col-lg-3 col-form-label" >อัพโหลด :</label>
+                        <div class="col-lg-6" >
                             {!! Form::file('file' , ['accept' => ',.pdf']); !!}
                         </div>
                     </div>
 
-                    {{-- <div class="form-group row">
-                        <label class="col-lg-3 col-form-label" class="form-control" >ชั้นความเร็ว :</label>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label" >ชั้นความเร็ว :</label>
                         <div class="col-lg-6" >
                                 <input type="radio" name="speed" value="ด่วน" /> ด่วน &nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="speed" value="ด่วนมาก" /> ด่วนมาก &nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="speed" value="ด่วนที่สุด" /> ด่วนที่สุด
                         </div>
-                    </div> --}}
+                    </div>
 
-                    {{-- <div class="form-group row">
-                        <label class="col-lg-3 col-form-label">ชั้นความลับ :</label>
-                        <div class="col-lg-6">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label" >ชั้นความลับ :</label>
+                        <div class="col-lg-6" >
                                 <input type="radio" name="secert" value="ลับ" /> ลับ  &nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="secert" value="ไม่ลับ" /> ไม่ลับ
                         </div>
-                    </div> --}}
+                    </div>
 
 
                 </div>
@@ -148,8 +149,8 @@
 
 <script>
     $(document).ready(function () {
-        document.getElementById('native').classList.add('kt-menu__item--open');
-        document.getElementById('adds').classList.add('kt-menu__item--open');
+        // document.getElementById('native').classList.add('kt-menu__item--open');
+        document.getElementById('index1').classList.add('kt-menu__item--open');
     });
 
     // $("#manager").select2({
