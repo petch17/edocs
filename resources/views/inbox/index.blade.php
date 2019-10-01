@@ -116,10 +116,15 @@
                         url: '{{ url('inbox')}}/' + id,
                         data: { ids: id, _token: $('#_token').val(), },
                         success: function (data) {
+                            // alert(1)
+                            // alert(data.success)
                             if (data.success == "1") {
                                 swal("ทำการลบข้อมูลสำเร็จ", {
                                     icon: "success",
-                                }).then(() => { location.reload(); });
+                                }).then(() => {
+                                    // alert(1);
+                                    location.reload();
+                                });
                             } else {
                                 swal({
                                     title: "พบข้อผิดพลาด",

@@ -75,19 +75,23 @@
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">วันที่ :</label>
-                        <div class="col-lg-9">
-                            {!! Form::date('date', null, ['class' => 'form-control datetimepicker','id' =>
+                        <div class="col-lg-3">
+                            {!! Form::date('date', $currentday, ['class' => 'form-control','id' =>
                             '','placeholder' => '-- เลือกวันที่ --']) !!}
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เวลา :</label>
-                        <div class="col-lg-9">
-                            {!! Form::time('times',null, ['class' => 'form-control']) !!}
-                            {{ $errors->first('times') }}
+                        <div class="col-lg-3">
+                                {!! Form::time('times',$currenttime, ['class' => 'form-control']) !!}
+                                {{ $errors->first('times') }}
+                            {{-- {!! Form::time('times',$currenttime, ['class' => 'form-control']) !!}
+                            {{ $errors->first('times') }} --}}
                         </div>
                     </div>
+
+
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรียน :</label>

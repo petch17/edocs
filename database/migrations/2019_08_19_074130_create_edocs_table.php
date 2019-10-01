@@ -44,7 +44,8 @@ class CreateEdocsTable extends Migration
             $table->string('speed')->nullable(); //เลือกผู้บริหาร
             $table->string('secert')->nullable(); //เลือกผู้บริหาร
             $table->string('document')->nullable(); //แยกสถานะเอกสาร ส่งต่อ กับ สร้างเอง
-            $table->integer('retirement')->nullable(); //เกษียณหนังสือ
+            $table->string('retirement')->nullable(); //เกษียณหนังสือ
+            $table->string('not_allowed')->nullable(); // หมายเหตุ
 
             $table->timestamps();
         });

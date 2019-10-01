@@ -11,7 +11,7 @@ use File;
 use DB;
 use PDF;
 use Auth;
-// use Imagick;
+use Carbon\Carbon;
 
 class InboxController extends Controller
 {
@@ -50,7 +50,13 @@ class InboxController extends Controller
     public function addforward()
     {
         // return '1';
-        return view('inbox.addforward');
+        $currentday = Carbon::now()->format('Y-m-d');
+        //
+        $currenttime = date_default_timezone_set('Asia/Bangkok');
+        $currenttime = Carbon::now()->format('H:i');
+        // $currenttime->addHours();
+        //return $currenttime;;
+        return view('inbox.addforward',['currentday' => $currentday , 'currenttime' => $currenttime]);
     }
 
 
@@ -115,7 +121,8 @@ class InboxController extends Controller
             else{
                 // return '1.1';
                 // return $request->secert;
-                $edoc->secert = $request->secert;
+                $secert2 = $request->secert = null ;
+                $edoc->secert = $secert2;
             }
         }
         // return $edoc ;
@@ -278,7 +285,7 @@ class InboxController extends Controller
 
         // Edoc::destroy($id);
         // return back();
-       $result = Edoc::find($id)->delete();
+       $result = Edoc::find($id);
 
        File::delete(base_path().'http://203.113.14.20:3000/pdffile/'.$result->file);
        $result->delete();
@@ -288,7 +295,7 @@ class InboxController extends Controller
         }else{
             return response()->json(['success' => '0']);
         }
-        return back();
+        // return back();
 
     }
 

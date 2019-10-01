@@ -62,6 +62,8 @@ class LoginController extends Controller
             $json = json_encode($xml);
             $array = json_decode($json,TRUE);
 
+            // return $array;
+
             $empcode = Empcode::select('empcode')->where('EMPCODE', $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'])->count();
 
         if (Auth::attempt($credentials)) {
