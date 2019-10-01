@@ -101,7 +101,7 @@ class InboxController extends Controller
             // return '1';
             $client = new \GuzzleHttp\Client();
             // return '1';
-            $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
+            $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage/".$edoc->id;
             $pdf_to_img2 = $client->get($pdf_to_img);
         }
         else{
@@ -112,7 +112,7 @@ class InboxController extends Controller
                 $edoc->speed = $request->speed;
                 $client = new \GuzzleHttp\Client();
                 // return '1';
-                $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
+                $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage/".$edoc->id;
                 $pdf_to_img2 = $client->get($pdf_to_img);
             }
             elseif($request->speed == 'ด่วนมาก'){
@@ -121,7 +121,7 @@ class InboxController extends Controller
                 $edoc->speed = $request->speed;
                 $client = new \GuzzleHttp\Client();
                 // return '1';
-                $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
+                $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage/".$edoc->id;
                 $pdf_to_img2 = $client->get($pdf_to_img);
             }
             else{
@@ -130,16 +130,16 @@ class InboxController extends Controller
                 $edoc->speed = $request->speed;
                 $client = new \GuzzleHttp\Client();
                 // return '1';
-                $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
+                $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage/".$edoc->id;
                 $pdf_to_img2 = $client->get($pdf_to_img);
             }
-        }
+        } // end เช็ครับค่า ชั้นความความเร็ว ลง base
 
         if($request->secert == null ){ //เช็ครับค่า ชั้นความลับ ลง base
             // return '1';
             $client = new \GuzzleHttp\Client();
             // return '1';
-            $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
+            $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage/".$edoc->id;
             $pdf_to_img2 = $client->get($pdf_to_img);
         }
         else{
@@ -149,7 +149,7 @@ class InboxController extends Controller
                 $edoc->secert = $request->secert;
                 $client = new \GuzzleHttp\Client();
                 // return '1';
-                $pdf_to_img = "http://203.113.14.20:3000/pdftoimage3/".$edoc->id;
+                $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage3/".$edoc->id;
                 $pdf_to_img2 = $client->get($pdf_to_img);
             }
             else{
@@ -158,10 +158,10 @@ class InboxController extends Controller
                 $secert2 = $request->secert = null ;
                 $edoc->secert = $secert2; $client = new \GuzzleHttp\Client();
                 // return '1';
-                $pdf_to_img = "http://203.113.14.20:3000/pdftoimage3/".$edoc->id;
+                $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage3/".$edoc->id;
                 $pdf_to_img2 = $client->get($pdf_to_img);
             }
-        }
+        } // end เช็ครับค่า ชั้นความลับ ลง base
         // return $edoc ;
 
         $edoc->save();
@@ -182,7 +182,7 @@ class InboxController extends Controller
         // ส่วนการสร้างรูป (ฝั่งแอป)
         // $client = new \GuzzleHttp\Client();
         // // return '1';
-        // $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id;
+        // $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
         // $pdf_to_img2 = $client->get($pdf_to_img);
         // return $pdf_to_img;
         return redirect()->route('marksignature',['id' => $edoc->id]);
@@ -228,6 +228,7 @@ class InboxController extends Controller
         $text_to_img2 = $client->get($text_to_img);
 
         return redirect()->route('readmarkrunnumber',['id' => $edoc2->id]);
+
     }
 
     public function show($id)
