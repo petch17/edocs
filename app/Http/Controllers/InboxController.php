@@ -96,9 +96,8 @@ class InboxController extends Controller
             $edoc->file = $file;
             $edoc->real_filename = $real_filename;
         }
-        // $edoc->save();
 
-        if($request->speed == null ){
+        if($request->speed == null ){ //เช็ครับค่า ชั้นความความเร็ว ลง base
             // return '1';
             $client = new \GuzzleHttp\Client();
             // return '1';
@@ -136,7 +135,7 @@ class InboxController extends Controller
             }
         }
 
-        if($request->secert == null ){
+        if($request->secert == null ){ //เช็ครับค่า ชั้นความลับ ลง base
             // return '1';
             $client = new \GuzzleHttp\Client();
             // return '1';
@@ -164,10 +163,6 @@ class InboxController extends Controller
             }
         }
         // return $edoc ;
-        // $client = new \GuzzleHttp\Client();
-        // // return '1';
-        // $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
-        // $pdf_to_img2 = $client->get($pdf_to_img);
 
         $edoc->save();
 
