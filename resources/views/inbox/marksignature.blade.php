@@ -4,12 +4,12 @@
 {!! Form::model($edoc3,['route' => ['marksignaturestore',$edoc3->id], 'method' => 'post'] ) !!}
 <input id="getx" name="getx" type="hidden" value="" />
 <input id="gety" name="gety" type="hidden" value="" />
-
+{{-- $pdf_to_img = "http://127.0.0.1:3000/pdftoimage3/".$edoc->id; --}}
 <img src="http://203.113.14.20:3000/output/{{$edoc3->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
 
 <a style="position: absolute; top: 20px; right: 1px; color:red;"><h6>*กรุณาคลิกที่รูปเพื่อกำหนดตำแหน่งของลายเซ็น*</h6></a>
 <button style="position: absolute; top: 60px; right: 180px;" type="submit" class="btn btn-outline-primary">ยืนยัน</button>
-<button style="position: absolute; top: 60px; right: 100px;" type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ยกเลิก</button>
+<button style="position: absolute; top: 60px; right: 80px;" type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ย้อนกลับ</button>
 <!-- </div> -->
 {!! Form::close() !!}
 <script>
