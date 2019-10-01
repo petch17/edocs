@@ -79,6 +79,9 @@ class InboxController extends Controller
 
     public function addstore(Request $request)
     {
+        // $edoc3 = Edoc::find($id);
+        // return $id;
+
         $edoc = new Edoc;
         $edoc->topic = $request->topic;
         $edoc->edoc_type = $request->edoc_type;
@@ -97,75 +100,81 @@ class InboxController extends Controller
             $edoc->real_filename = $real_filename;
         }
 
-        if($request->speed == null ){ //เช็ครับค่า ชั้นความความเร็ว ลง base
-            // return '1';
-            $client = new \GuzzleHttp\Client();
-            // return '1';
-            $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage/".$edoc->id;
-            $pdf_to_img2 = $client->get($pdf_to_img);
-        }
-        else{
+
+        // return $request;
+
+        if($request->speed != null ){ //เช็ครับค่า ชั้นความความเร็ว ลง base
             // return '2';
             if($request->speed == 'ด่วน'){
+                // return $request;
                 // return '2.1';
                 // return $request->speed;
                 $edoc->speed = $request->speed;
+
+                $edoc->save();
                 $client = new \GuzzleHttp\Client();
                 // return '1';
-                $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage/".$edoc->id;
+                $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id;
                 $pdf_to_img2 = $client->get($pdf_to_img);
+
+                return redirect()->route('marksignature',['id' => $edoc->id]);
             }
             elseif($request->speed == 'ด่วนมาก'){
                 // return '2.2';
                 // return $request->speed;
                 $edoc->speed = $request->speed;
+                $edoc->save();
                 $client = new \GuzzleHttp\Client();
                 // return '1';
-                $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage/".$edoc->id;
+                $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id;
                 $pdf_to_img2 = $client->get($pdf_to_img);
+
+                return redirect()->route('marksignature',['id' => $edoc->id]);
             }
             else{
                 // return '2.3';
                 // return $request->speed;
                 $edoc->speed = $request->speed;
+                $edoc->save();
                 $client = new \GuzzleHttp\Client();
                 // return '1';
-                $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage/".$edoc->id;
+                $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id;
                 $pdf_to_img2 = $client->get($pdf_to_img);
-            }
-        } // end เช็ครับค่า ชั้นความความเร็ว ลง base
 
-        if($request->secert == null ){ //เช็ครับค่า ชั้นความลับ ลง base
-            // return '1';
-            $client = new \GuzzleHttp\Client();
-            // return '1';
-            $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage/".$edoc->id;
-            $pdf_to_img2 = $client->get($pdf_to_img);
+                return redirect()->route('marksignature',['id' => $edoc->id]);
+            }
         }
         else{
-            // return '2';
-            if($request->secert == 'ลับ'){
-                // return $request->secert;
-                $edoc->secert = $request->secert;
-                $client = new \GuzzleHttp\Client();
+            if($request->secert != null ){ //เช็ครับค่า ชั้นความลับ ลง base
                 // return '1';
-                $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage3/".$edoc->id;
-                $pdf_to_img2 = $client->get($pdf_to_img);
-            }
+                if($request->secert == 'ลับ'){
+                    // return $request;
+                    $edoc->secert = $request->secert;
+                    $edoc->save();
+                    $client = new \GuzzleHttp\Client();
+                    // return $edoc->id;
+                    $pdf_to_img = "http://127.0.0.1:3000/pdftoimage3/".$edoc->id;
+                    $pdf_to_img2 = $client->get($pdf_to_img);
+                    // return '1222';
+                    return redirect()->route('marksignature',['id' => $edoc->id]);
+                }
             else{
-                // return '1.1';
-                // return $request->secert;
-                $secert2 = $request->secert = null ;
-                $edoc->secert = $secert2; $client = new \GuzzleHttp\Client();
-                // return '1';
-                $pdf_to_img = "http://http://127.0.0.1:3000/pdftoimage3/".$edoc->id;
+                // return '2';
+                $secert1 = $request->secert = null;
+                $edoc->secert = $secert1;
+                $edoc->save();
+                $client = new \GuzzleHttp\Client();
+                // return $edoc;
+                $pdf_to_img = "http://127.0.0.1:3000/pdftoimage3/".$edoc->id;
                 $pdf_to_img2 = $client->get($pdf_to_img);
-            }
-        } // end เช็ครับค่า ชั้นความลับ ลง base
-        // return $edoc ;
 
-        $edoc->save();
+                return redirect()->route('marksignature',['id' => $edoc->id]);
 
+                }
+
+            } // end เช็ครับค่า ชั้นความลับ ลง base
+
+        } // end เช็ครับค่า ชั้นความความเร็ว ลง base
         // return $edoc ;
 
         // ลูบวนเก็บค่าตาราง edoc_detail
@@ -185,7 +194,7 @@ class InboxController extends Controller
         // $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
         // $pdf_to_img2 = $client->get($pdf_to_img);
         // return $pdf_to_img;
-        return redirect()->route('marksignature',['id' => $edoc->id]);
+        // return redirect()->route('marksignature',['id' => $edoc->id]);
 
     }
 

@@ -8,7 +8,8 @@
 <style>
        #header{
         border-radius:15px;
-        background: #3ACEFF;
+        /* background: #3ACEFF; */
+        background: #ffffff;
         width:100%;
         height: 100%;
        }
@@ -16,7 +17,8 @@
 <div class="kt-login__container">
     <div id="header" class="kt-login__logo" >
         <a>
-            <img src="{{asset('img/edocsbook.png')}}" width="300" height="100"/>
+            <img src="{{asset('img/edocsbook2.png')}}" width="100" height="100" style=" width: 300px; margin-bottom: 40px; ">
+            {{-- <img src="{{asset('img/edocsbook.png')}}" width="300" height="100"/> --}}
         </a>
     </div>
     <div class="kt-login__signin">
