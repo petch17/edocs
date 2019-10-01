@@ -87,46 +87,6 @@ class InboxController extends Controller
         $edoc->document = 'เอกสารสร้างเอง';
         $edoc->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
 
-        if($request->speed == null ){
-            // return '1';
-        }
-        else{
-            // return '2';
-            if($request->speed == 'ด่วน'){
-                // return '2.1';
-                // return $request->speed;
-                $edoc->speed = $request->speed;
-            }
-            elseif($request->speed == 'ด่วนมาก'){
-                // return '2.2';
-                // return $request->speed;
-                $edoc->speed = $request->speed;
-            }
-            else{
-                // return '2.3';
-                // return $request->speed;
-                $edoc->speed = $request->speed;
-            }
-        }
-
-        if($request->secert == null ){
-            // return '1';
-        }
-        else{
-            // return '2';
-            if($request->secert == 'ลับ'){
-                // return $request->secert;
-                $edoc->secert = $request->secert;
-            }
-            else{
-                // return '1.1';
-                // return $request->secert;
-                $secert2 = $request->secert = null ;
-                $edoc->secert = $secert2;
-            }
-        }
-        // return $edoc ;
-
         if ($request->hasFile('file')){
             // File::delete(base_path().'\\public\\edocfiles\\'.$edoc->file);
             $file = str_random(10).'.'.$request->file('file')->getClientOriginalExtension(); //random flie name
@@ -136,7 +96,81 @@ class InboxController extends Controller
             $edoc->file = $file;
             $edoc->real_filename = $real_filename;
         }
+        // $edoc->save();
+
+        if($request->speed == null ){
+            // return '1';
+            $client = new \GuzzleHttp\Client();
+            // return '1';
+            $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
+            $pdf_to_img2 = $client->get($pdf_to_img);
+        }
+        else{
+            // return '2';
+            if($request->speed == 'ด่วน'){
+                // return '2.1';
+                // return $request->speed;
+                $edoc->speed = $request->speed;
+                $client = new \GuzzleHttp\Client();
+                // return '1';
+                $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
+                $pdf_to_img2 = $client->get($pdf_to_img);
+            }
+            elseif($request->speed == 'ด่วนมาก'){
+                // return '2.2';
+                // return $request->speed;
+                $edoc->speed = $request->speed;
+                $client = new \GuzzleHttp\Client();
+                // return '1';
+                $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
+                $pdf_to_img2 = $client->get($pdf_to_img);
+            }
+            else{
+                // return '2.3';
+                // return $request->speed;
+                $edoc->speed = $request->speed;
+                $client = new \GuzzleHttp\Client();
+                // return '1';
+                $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
+                $pdf_to_img2 = $client->get($pdf_to_img);
+            }
+        }
+
+        if($request->secert == null ){
+            // return '1';
+            $client = new \GuzzleHttp\Client();
+            // return '1';
+            $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
+            $pdf_to_img2 = $client->get($pdf_to_img);
+        }
+        else{
+            // return '2';
+            if($request->secert == 'ลับ'){
+                // return $request->secert;
+                $edoc->secert = $request->secert;
+                $client = new \GuzzleHttp\Client();
+                // return '1';
+                $pdf_to_img = "http://203.113.14.20:3000/pdftoimage3/".$edoc->id;
+                $pdf_to_img2 = $client->get($pdf_to_img);
+            }
+            else{
+                // return '1.1';
+                // return $request->secert;
+                $secert2 = $request->secert = null ;
+                $edoc->secert = $secert2; $client = new \GuzzleHttp\Client();
+                // return '1';
+                $pdf_to_img = "http://203.113.14.20:3000/pdftoimage3/".$edoc->id;
+                $pdf_to_img2 = $client->get($pdf_to_img);
+            }
+        }
+        // return $edoc ;
+        // $client = new \GuzzleHttp\Client();
+        // // return '1';
+        // $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
+        // $pdf_to_img2 = $client->get($pdf_to_img);
+
         $edoc->save();
+
         // return $edoc ;
 
         // ลูบวนเก็บค่าตาราง edoc_detail
@@ -151,14 +185,13 @@ class InboxController extends Controller
 
         // return $edoc->id;
         // ส่วนการสร้างรูป (ฝั่งแอป)
-        $client = new \GuzzleHttp\Client();
-        // return '1';
-        $pdf_to_img = "http://203.113.14.20:3000/pdftoimage/".$edoc->id;
-        $pdf_to_img2 = $client->get($pdf_to_img);
+        // $client = new \GuzzleHttp\Client();
+        // // return '1';
+        // $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id;
+        // $pdf_to_img2 = $client->get($pdf_to_img);
         // return $pdf_to_img;
         return redirect()->route('marksignature',['id' => $edoc->id]);
 
-        // return redirect()->route('inbox.index');
     }
 
     public function addforwardstore(Request $request )
