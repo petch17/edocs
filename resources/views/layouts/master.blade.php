@@ -155,7 +155,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <span class="kt-header__topbar-welcome kt-visible-desktop">Hi,</span>
                                     <span
                                         class="kt-header__topbar-username kt-visible-desktop">{{Auth::user()->email}}</span>
-                                    <img alt="Pic" src="{{asset('assets/media/users/300_21.jpg')}}" />
+                                    <img alt="Pic" src="{{asset('img/user62.jpg')}}" />
                                     <span class="kt-header__topbar-icon kt-bg-brand kt-hidden"><b>S</b></span>
                                 </div>
                                 <div
@@ -164,7 +164,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="kt-user-card kt-user-card--skin-light kt-notification-item-padding-x">
                                         <div class="kt-user-card__avatar">
                                             <img class="kt-hidden-" alt="Pic"
-                                                src="{{asset('assets/media/users/300_25.jpg')}}" />
+                                                src="{{asset('img/user62.jpg')}}" />
                                         </div>
                                         <div class="kt-user-card__name">
                                             {{Auth::user()->email}}
@@ -242,14 +242,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <li id="index1" class="kt-menu__item" aria-haspopup="true">
                                             <a href="{{ route('inbox.index') }}" class="kt-menu__link">
                                         <i class="kt-menu__link-icon flaticon2-list-3"></i>
-                                        <span class="kt-menu__link-text">สร้างเอกสาร (อยู่ระหว่างการพัฒนา)</span>
+                                        <span class="kt-menu__link-text">เอกสารสร้างเอง</span>
                                         </a>
                                         </li>
 
                                         <li id="index2" class="kt-menu__item" aria-haspopup="true">
                                             <a href="{{ route('indexforward') }}" class="kt-menu__link">
                                                 <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
-                                                <span class="kt-menu__link-text">ส่งต่อเอกสาร (อยู่ระหว่างการพัฒนา)</span>
+                                                <span class="kt-menu__link-text">เอกสารส่งต่อ (อยู่ระหว่างการพัฒนา)</span>
                                             </a>
                                         </li>
 

@@ -9,7 +9,8 @@
 
 <a style="position: absolute; top: 20px; right: 1px; color:red;"><h6>*กรุณาคลิกที่รูปเพื่อกำหนดตำแหน่งของลายเซ็น*</h6></a>
 <button style="position: absolute; top: 60px; right: 180px;" type="submit" class="btn btn-outline-primary">ยืนยัน</button>
-<button style="position: absolute; top: 60px; right: 80px;" type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ย้อนกลับ</button>
+{{-- <button style="position: absolute; top: 120px; right: 80px;" class="btn btn-outline-danger" onClick="window.location.href=window.location.href">re</button> --}}
+<button style="position: absolute; top: 60px; right: 80px;" class="btn btn-outline-danger" onclick="window.history.back();">ย้อนกลับ</button>
 <!-- </div> -->
 {!! Form::close() !!}
 <script>
@@ -28,12 +29,12 @@ function clickHotspotImage(event) {
         //console.log(xCoordinate + ',' + yCoordinate)
     }
 
-    function clearCircle(){
-        for(i in circlelist){
-        document.body.removeChild(circlelist[i]);
-        }
-        circlelist = new Array();
-    }
+    // function clearCircle(){
+    //     for(i in circlelist){
+    //     document.body.removeChild(circlelist[i]);
+    //     }
+    //     circlelist = new Array();
+    // }
 
 
     function check(x,y){
@@ -47,14 +48,14 @@ function clickHotspotImage(event) {
         }
         else{
             // alert(nu);
-            clearCircle();
+            document.body.removeChild(c1);
             nu = 0;
         }
     }
 
     function photoclick(x,y){
         // alert(nu);
-        var circlelist = new Array();
+        // var circlelist = new Array();
         c1 = document.createElement("img");
         c1.src = "{{asset('marksignature/5.png')}}";
         c1.style.position = "absolute";
@@ -63,7 +64,7 @@ function clickHotspotImage(event) {
         c1.style.width = "20px";
         c1.style.height = "20px";
         document.body.appendChild(c1);
-        circlelist.push(c1);
+        // circlelist.push(c1);
 
         nu++;
         // alert(nu);

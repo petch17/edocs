@@ -31,7 +31,8 @@ class CreateManagersTable extends Migration
             $table->string('EMAILINTRA')->nullable(); //อีเมล์
             $table->string('PHONENUMER')->nullable(); //หมายเลขโทรศัพท์
             $table->boolean('VERIFY_STATUS')->default(false); //อีเมล์
-            $table->string('USER_NAME')->nullable(); //USER_NAME
+            $table->string('save_signature')->nullable(); //USER_NAME
+            $table->string('USER_NAME')->nullable(); //save_signature
 
             $table->timestamps();
         });

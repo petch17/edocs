@@ -53,7 +53,7 @@ class LoginController extends Controller
             if(!isset($data->AuthenAndGetInfo4Result->any)){
                 // return '1';
                 // Session::flash('status', 'username wrong!');
-                // return redirect()->route('login');//->with('status', 'Profile updated!');
+                // retx`urn redirect()->route('login');//->with('status', 'Profile updated!');
             return Redirect::back()->with('artlogin','User name หรือ Password ไม่ถูกต้อง')->withInput(Input::all());
 
             }
@@ -65,17 +65,18 @@ class LoginController extends Controller
             // return $array;
 
             $empcode = Empcode::select('empcode')->where('EMPCODE', $array['NewDataSet']['LOGIN_EMPLOYEE']['EMPCODE'])->count();
+            // return $empcode;
+            if($empcode > 0){
+                // return '5';
+                return Redirect::back()->with('formanager','กรุณา login ผ่านโทรศัพท์')->withInput(Input::all());
+            }
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
             // return $request->password;
+            // return '6';
+            return redirect()->route('inbox.index');
 
-            if($empcode > 0){
-                return Redirect::back()->with('formanager','กรุณา login ผ่านโทรศัพท์')->withInput(Input::all());
-            }
-            else{
-                return redirect()->route('inbox.index');
-            }
 
         }else{
             // return $array;

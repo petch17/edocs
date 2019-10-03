@@ -27,9 +27,15 @@
             <div class="kt-portlet__head-toolbar">
                 <div class="kt-portlet__head-wrapper">
                     <div class="kt-portlet__head-actions">
+                        @if(Auth::user()->MANAGER_ID != null)
                         <a href="{{ route('addcreate') }}" class="btn btn-brand btn-elevate btn-icon-sm">
                             <i class="la la-plus"></i> อัพโหลดเอกสาร
                         </a>
+                        @else
+                        <a href="{{ route('SCMNG') }}" class="btn btn-brand btn-elevate btn-icon-sm" onclick="myFunction()">
+                                <i class="la la-plus"></i> อัพโหลดเอกสาร
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -40,9 +46,10 @@
             <table id="table1" class="table table-striped- table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>เรื่อง</th>
-                        <th><i class="fa fa-cog"></i></th>
+                        <th width="10%">#</th>
+                        <th width="35%">เรื่อง</th>
+                        <th width="35%">สถานะของเอกสาร</th>
+                        <th width="20%"><i class="fa fa-cog"></i></th>
                     </tr>
                 </thead>
 
@@ -51,6 +58,7 @@
                     <tr>
                         <td>{{$index+1}}</td>
                         <td>{{$item->topic}}</td>
+                        <td>{{$item->status}}</td>
                         <td>
                             <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                 <i class="fa fa-search"></i>
@@ -62,8 +70,11 @@
                             </a>
                             <input type="hidden" name="_token" id="_token" value="{{ csrf_token()}}">
 
-                            {{-- &nbsp; &nbsp;
-                            <a target="_blank" href="{{ route('inbox.show' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ดาวน์โหลด">
+                            &nbsp; &nbsp;
+                            {{-- <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" download data-toggle="kt-tooltip" title="ดาวน์โหลด">
+                                <i class="fa fa-download"></i>
+                            </a> --}}
+                            {{-- <a target="_blank" href="{{ route('inbox.show' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ดาวน์โหลด">
                                 <i class="fa fa-download"></i>
                             </a> --}}
                         </td>
@@ -89,6 +100,12 @@
 <script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/demo11/pages/crud/datatables/basic/basic.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/demo11/sweetalert.min.js') }}"></script>
+
+<script>
+    function myFunction() {
+        alert("กรุณาเลือกผู้บริหารก่อน").style.color = "red";
+    }
+</script>
 
 <script>
     $(document).ready(function() {

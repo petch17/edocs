@@ -31,7 +31,7 @@ Route::resource('addforwardstore', 'InboxController' , ['except' => 'addforwards
 // add manager
 Route::get('SCMNG', 'HomeController@SCMNG')->name('SCMNG');
 
-Route::post('manager/SCMNGstore', [
+Route::post('view/SCMNGstore', [
     'as' => 'SCMNGstore',
     'uses' => 'HomeController@SCMNGstore'
 ]);

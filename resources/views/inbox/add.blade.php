@@ -53,8 +53,15 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรื่อง :</label>
                         <div class="col-lg-9">
-                            {!! Form::text('topic',null,['class'=>'form-control','placeholder'=>'กรุณากรอกชื่อเรื่อง']);
-                            !!}
+                            {!! Form::text('topic',null,[ 'id'=>'topic','class'=>'form-control','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!}
+                            {{-- <input name="topic" id="topic" type="text" class="form-control @error('topic') is-invalid @enderror"> --}}
+                            <div class="container-fluid" style="height:5px;">
+                                @if( $errors->has('topic') )
+                                    <span style="color:red;">
+                                        {{($errors->first('topic') )}}
+                                </span>
+                                @endif
+                            </div>
                         </div>
                     </div>
 
@@ -85,6 +92,13 @@
                                 'แจ้งอบรม/ประชุม/สัมมนา' => 'แจ้งอบรม/ประชุม/สัมมนา') ,
                                 '-- เลือกประเภทเอกสาร --',
                             ['class'=>'form-control' ] ); !!}
+                                <div class="container-fluid" style="height:5px;">
+                                    @if( $errors->has('edoc_type') )
+                                        <span style="color:red;">
+                                            {{($errors->first('edoc_type') )}}
+                                    </span>
+                                    @endif
+                                </div>
                         </div>
                     </div>
                     {{-- {!! Form::select('edoc_type',
@@ -99,6 +113,13 @@
                         <label class="col-lg-3 col-form-label" >อัพโหลด :</label>
                         <div class="col-lg-6" >
                             {!! Form::file('file' , ['accept' => ',.pdf']); !!}
+                            <div class="container-fluid" style="height:5px;">
+                                @if( $errors->has('file') )
+                                    <span style="color:red;">
+                                        {{($errors->first('file') )}}
+                                </span>
+                                @endif
+                            </div>
                         </div>
                     </div>
 
@@ -114,8 +135,9 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label" >ชั้นความลับ :</label>
                         <div class="col-lg-6" >
-                                <input type="radio" name="secert" value="ลับ" /> ลับ  &nbsp;&nbsp;&nbsp;
-                                <input type="radio" name="secert" value="ไม่ลับ" /> ไม่ลับ
+                                <input type="checkbox" name="secert" value="ลับ" /> ลับ
+                                {{-- &nbsp;&nbsp;&nbsp; --}}
+                                {{-- <input type="radio" name="secert" value="ไม่ลับ" /> ไม่ลับ --}}
                         </div>
                     </div>
 

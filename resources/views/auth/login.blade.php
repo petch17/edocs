@@ -9,9 +9,10 @@
        #header{
         border-radius:15px;
         /* background: #3ACEFF; */
-        background: #ffffff;
+        /* background: #ffffff; */
         width:100%;
         height: 100%;
+        margin: 0em;
        }
 </style>
 <div class="kt-login__container">
@@ -22,9 +23,9 @@
         </a>
     </div>
     <div class="kt-login__signin">
-        {{-- <div id="headerI" class="kt-login__head">
+        <div id="headerI" class="kt-login__head">
             <h2 class="kt-login__title">กรุณาล็อกอินเพื่อเข้าสู่ระบบ</h2>
-        </div> --}}
+        </div>
 
         {{-- {!! Form::open(['route' => 'login', 'method' => 'post', 'class' => 'kt-form']) !!} --}}
         {{-- intra --}}
@@ -36,33 +37,38 @@
                 class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
                 required autocomplete="email" autofocus>
 
-            @error('email')
+            {{-- @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>User name หรือ Password ไม่ถูกต้อง</strong>
             </span>
-            @enderror
+            @enderror --}}
 
             </div>
-            @if(session('artlogin'))
-                <span>
-                    Username หรือ Password ไม่ถูกต้อง
-                </span>
-            @endif
 
             <div class="input-group">
                 <input id="password" type="password" placeholder="รหัสผ่าน"
                     class="form-control @error('password') is-invalid @enderror" name="password" required
                     autocomplete="current-password">
-                @error('password')
+                {{-- @error('password')
                 <span class="invalid-feedback" role="alert">
                     <strong>User name หรือ Password ไม่ถูกต้อง</strong>
                 </span>
-                @enderror
-                @if(session('formanager'))
-                    <span>
-                        กรุณา login ผ่านโทรศัพท์
-                    </span>
-                @endif
+                @enderror --}}
+                @if(session('artlogin'))
+            <div class="container-fluid" style="height:5px;">
+                <span  style="color:red;">
+                    Username หรือ Password ไม่ถูกต้อง
+                </span>
+            </div>
+            @endif
+
+            @if(session('formanager'))
+            <div class="container-fluid" style="height:5px;">
+                <span  style="color:red;">
+                    กรุณา login ผ่านโทรศัพท์
+                </span>
+            </div>
+            @endif
             </div>
         </div>
 
