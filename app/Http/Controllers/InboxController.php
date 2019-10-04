@@ -43,24 +43,11 @@ class InboxController extends Controller
         // ->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )
         ->where( 'document','เอกสารส่งต่อ' )
         ->where('created_by',Auth::user()->id)
+        ->orderBy('id' , 'desc')
         ->get();
 
         return view('inbox.indexforward',['edocs' => $edocs]);
     }
-
-    public function addforward()
-    {
-        // return '1';
-        $currentday = Carbon::now()->format('Y-m-d');
-        //
-        $currenttime = date_default_timezone_set('Asia/Bangkok');
-        $currenttime = Carbon::now()->format('H:i');
-        // $currenttime->addHours();
-        //return $currenttime;;
-        return view('inbox.addforward',['currentday' => $currentday , 'currenttime' => $currenttime]);
-    }
-
-
 
     public function addcreate()
     {
@@ -102,7 +89,7 @@ class InboxController extends Controller
         $edoc->created_by = $request->user_id;
         $edoc->select_manager = $request->select_manager;
         $edoc->document = 'เอกสารสร้างเอง';
-        $edoc->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
+        $edoc->status = 'เอกสารรอดำเนินการ';
 
         if ($request->hasFile('file')){
             // File::delete(base_path().'\\public\\edocfiles\\'.$edoc->file);
@@ -212,8 +199,33 @@ class InboxController extends Controller
         // return $pdfs->download();
     }
 
+    public function addforward()
+    {
+        // return '1';
+        $currentday = Carbon::now()->format('Y-m-d');
+        //
+        $currenttime = date_default_timezone_set('Asia/Bangkok');
+        $currenttime = Carbon::now()->format('H:i');
+        // $currenttime->addHours();
+        //return $currenttime;;
+        return view('inbox.addforward',['currentday' => $currentday , 'currenttime' => $currenttime]);
+    }
+
     public function addforwardstore(Request $request )
     {
+        $this->validate($request , [
+            'part_num' => 'required',
+            'pos_abbr' => 'required',
+            'retirement' => 'required',
+            'file' => 'required',
+        ] ,
+        [
+            'part_num.required'    => 'กรุณากรอกเลขที่รับส่วนงาน',
+            'pos_abbr.required'  => 'กรุณากรอกตัวย่อหน่วยงานของผู้รับ',
+            'retirement.required'  => 'กรุณาเรียน',
+            'file.required'  => 'กรุณาเลือกไฟล์',
+        ]
+    );
         // return $request;
         $edoc2 = new Edoc;
         // $edoc2->topic = $request->topic;
@@ -227,13 +239,25 @@ class InboxController extends Controller
         $edoc2->created_by = $request->user_id;
         $edoc2->retirement = $request->retirement;
         $edoc2->document = 'เอกสารส่งต่อ';
-        $edoc2->status = 'เอกสารที่ยังไม่ผ่านการอนุมัติ';
+        $edoc2->status = 'เอกสารรอดำเนินการ';
+
+        if ($request->hasFile('file')){
+            // File::delete(base_path().'\\public\\edocfiles\\'.$edoc->file);
+            $file = str_random(10).'.'.$request->file('file')->getClientOriginalExtension(); //random flie name
+            $real_filename = $request->file('file')->getClientOriginalName(); //real_filename
+            $request->file('file')->move('D://'.'nodeapi'.'/'.'uploads'.'/'.'pdffile'.'/', $file); //ที่เก็บรูปของ serve
+            // $request->file('file')->move(base_path().'/public/edocfiles/',$file); //ที่เก็บรูปของ เครื่องตัวเอง
+            $edoc2->file = $file;
+            $edoc2->real_filename = $real_filename;
+        }
 
         // return $edoc2;
 
         $edoc2->save();
 
-        // return $edoc2;
+        // return $edoc2->file;
+
+        // return $request;
 
         // วนเก็บค่า
         // foreach($request->select_manager as $mng_id){
@@ -247,10 +271,10 @@ class InboxController extends Controller
         // end วนเก็บค่า
 
         $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://127.0.0.1:3000/mergedocsend2/".$edoc2->id;
+        $text_to_img = "http://127.0.0.1:3000/senddoc2/".$edoc2->id;
         $text_to_img2 = $client->get($text_to_img);
 
-        return redirect()->route('readmarkrunnumber',['id' => $edoc2->id]);
+        return redirect()->route('inboxmarkrunnumber',['id' => $edoc2->id]);
 
     }
 
@@ -258,7 +282,7 @@ class InboxController extends Controller
         // return $id;
         $edoc = Edoc::find($id);
         // return '1';
-        return view('read.markrunnumber',['edoc' => $edoc]);
+        return view('inbox.markrunnumber',['edoc' => $edoc]);
     }
 
     public function markrunnumberstore(Request $request, $id){
@@ -270,12 +294,12 @@ class InboxController extends Controller
         $receive->save();
 
         $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
+        $text_to_img = "http://127.0.0.1:3000/mergedocsend2/".$receive->id;
         $text_to_img2 = $client->get($text_to_img);
 
 
         $edoc = Edoc::find($id);
-        return view('read.markforward',['edoc' => $edoc]);
+        return view('inbox.markforward',['edoc' => $edoc]);
 
     }
 
@@ -283,7 +307,7 @@ class InboxController extends Controller
         // return $id;
         // return '1';
         $edoc2 = Edoc::find($id);
-        return view('read.markforward',['edoc2' => $edoc2 ]);
+        return view('inbox.markforward',['edoc2' => $edoc2 ]);
     }
 
     public function markforwardstore(Request $request, $id){
@@ -301,7 +325,7 @@ class InboxController extends Controller
 
 
         $edoc2 = Receiver::find($id);
-        return view('read.marksignature',['edoc2' => $edoc2]);
+        return view('inbox.marksignature',['edoc2' => $edoc2]);
 
     }
 

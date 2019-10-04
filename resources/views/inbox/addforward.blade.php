@@ -44,16 +44,29 @@
                         </div>
                     </div> --}}
                 <!--begin::Form-->
-                {!! Form::open(['route' => 'addforwardstore', 'method' => 'post', 'file'=>true, 'onsubmit'=>'return
-                validateForm()', 'class' => 'kt-form
-                kt-form--label-right']) !!}
+                {!! Form::open(['route' => 'addforwardstore', 'method' => 'post', 'files'=>true, 'onsubmit'=>'return
+                validateForm()', 'class' => 'kt-form kt-form--label-right']) !!}
                 <div class="kt-portlet__body">
 
                     <input name="user_id" type="hidden" value="{{Auth::user()->id}}" />
 
                     {{-- <input name="edoc_id" type="hidden" value="{{$edoc_id}}" /> --}}
 
-                    <input name="MAAGER_ID" type="hidden" value="{{Auth::user()->MAAGER_ID}}" />
+                    {{-- <input name="MAAGER_ID" type="hidden" value="{{Auth::user()->MAAGER_ID}}" /> --}}
+
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label" >อัพโหลด :</label>
+                        <div class="col-lg-6" >
+                            {!! Form::file('file' , ['accept' => ',.pdf']); !!}
+                            <div class="container-fluid" style="height:5px;">
+                                @if( $errors->has('file') )
+                                    <span style="color:red;">
+                                        {{($errors->first('file') )}}
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">ตัวย่อหน่วยงานของผู้รับ :</label>
@@ -61,6 +74,13 @@
                             {!! Form::text('pos_abbr',null,['class'=>'form-control', 'id'=>'text'
                             ,'placeholder'=>'ตัวย่อหน่วยงานของผู้รับ']);
                             !!}
+                            <div class="container-fluid" style="height:5px;">
+                                @if( $errors->has('pos_abbr') )
+                                    <span style="color:red;">
+                                        {{($errors->first('pos_abbr') )}}
+                                </span>
+                                @endif
+                            </div>
                         </div>
                     </div>
 
@@ -70,6 +90,13 @@
                             {!! Form::text('part_num',null,['class'=>'form-control', 'id'=>'text'
                             ,'placeholder'=>'เลขที่รับส่วนงาน']);
                             !!}
+                            <div class="container-fluid" style="height:5px;">
+                                @if( $errors->has('part_num') )
+                                    <span style="color:red;">
+                                        {{($errors->first('part_num') )}}
+                                </span>
+                                @endif
+                            </div>
                         </div>
                     </div>
 
@@ -97,6 +124,13 @@
                         <label class="col-lg-3 col-form-label">เรียน :</label>
                         <div class="col-lg-9">
                             {!! Form::textarea('retirement',null,['class'=>'form-control','placeholder'=>'เรียน']); !!}
+                            <div class="container-fluid" style="height:5px;">
+                                @if( $errors->has('retirement') )
+                                    <span style="color:red;">
+                                        {{($errors->first('retirement') )}}
+                                </span>
+                                @endif
+                            </div>
                         </div>
                     </div>
 
