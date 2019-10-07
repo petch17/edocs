@@ -52,7 +52,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <style>
   body  {
     background-image: url("{{asset('assets/media//bg/bg-3.jpg')}}");
-    background-color: #cccccc;
+    background-color: #000;
   }
   </style>
 <!-- begin::Body -->
