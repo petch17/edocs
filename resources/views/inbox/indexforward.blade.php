@@ -42,6 +42,7 @@
                     <tr>
                         <th>#</th>
                         <th>เรียน</th>
+                        <th>สถานะของเอกสาร</th>
                         <th><i class="fa fa-cog"></i></th>
                     </tr>
                 </thead>
@@ -51,6 +52,7 @@
                     <tr>
                         <td>{{$index+1}}</td>
                         <td>{{$item->retirement}}</td>
+                        <td>{{$item->status}}</td>
                         <td>
                             <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                 <i class="fa fa-search"></i>

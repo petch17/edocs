@@ -126,17 +126,17 @@ Route::resource('marksignaturestore', 'InboxController' , ['except' => 'marksign
 // ]);
 // Route::resource('markforwardstore', 'ReadController' , ['except' => 'markforwardstore']);
 
-Route::get('read/marksignature/{id}', [
-    'as' => 'readmarksignature',
-    'uses' => 'ReadController@marksignature'
-]);
-Route::resource('marksignature', 'ReadController' , ['except' => 'marksignature']);
+// Route::get('read/marksignature/{id}', [
+//     'as' => 'readmarksignature',
+//     'uses' => 'ReadController@marksignature'
+// ]);
+// Route::resource('marksignature', 'ReadController' , ['except' => 'marksignature']);
 
-Route::post('read/marksignaturestore/{id}', [
-    'as' => 'readmarksignaturestore',
-    'uses' => 'ReadController@marksignaturestore'
-]);
-Route::resource('marksignaturestore', 'ReadController' , ['except' => 'marksignaturestore']);
+// Route::post('read/marksignaturestore/{id}', [
+//     'as' => 'readmarksignaturestore',
+//     'uses' => 'ReadController@marksignaturestore'
+// ]);
+// Route::resource('marksignaturestore', 'ReadController' , ['except' => 'marksignaturestore']);
 
 
 /*------------end_read-------------------*/

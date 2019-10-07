@@ -46,10 +46,11 @@
             <table id="table1" class="table table-striped- table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="10%">#</th>
-                        <th width="35%">เรื่อง</th>
-                        <th width="35%">สถานะของเอกสาร</th>
-                        <th width="20%"><i class="fa fa-cog"></i></th>
+                        <th width="10%">ลำดับ</th>
+                        <th width="25%">เรื่อง</th>
+                        <th width="25%">สถานะของเอกสาร</th>
+                        <th width="25%">หมายเหตุ</th>
+                        <th width="15%"><i class="fa fa-cog"></i></th>
                     </tr>
                 </thead>
 
@@ -59,13 +60,20 @@
                         <td>{{$index+1}}</td>
                         <td>{{$item->topic}}</td>
                         <td>{{$item->status}}</td>
+
+                        @if( $item->not_allowed == null || $item->not_allowed == '' )
+                            <td></td>
+                        @else
+                            <td> <a href="" class="alram" data-id="{{$item->not_allowed}}" > รายละเอียด </a> </td>
+                        @endif
+
                         <td>
                             <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                 <i class="fa fa-search"></i>
                             </a>
                             &nbsp; &nbsp;
 
-                            <a href="" class="delBtn" data-id="{{$item->id}}" data-toggle="kt-tooltip" title="ลบ">
+                        <a href="" class="delBtn" data-id="{{$item->id}}" data-toggle="kt-tooltip" title="ลบ">
                                 <i class="fa fa-trash-alt"></i>
                             </a>
                             <input type="hidden" name="_token" id="_token" value="{{ csrf_token()}}">
@@ -100,11 +108,24 @@
 <script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/demo11/pages/crud/datatables/basic/basic.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/demo11/sweetalert.min.js') }}"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
 
 <script>
     function myFunction() {
         alert("กรุณาเลือกผู้บริหารก่อน").style.color = "red";
     }
+</script>
+
+<script>
+$(document).on('click', '.alram', function (e) {
+        e.preventDefault();
+        var notallow = $(this).data('id');
+        // alert(notallow);
+            Swal.fire(
+                notallow,
+            )
+    });
 </script>
 
 <script>
