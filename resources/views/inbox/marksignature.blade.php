@@ -50,6 +50,7 @@ function clickHotspotImage(event) {
             // alert(nu);
             document.body.removeChild(c1);
             nu = 0;
+            photoclick(x,y)
         }
     }
 

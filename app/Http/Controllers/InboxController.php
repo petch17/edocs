@@ -271,6 +271,9 @@ class InboxController extends Controller
         // end วนเก็บค่า
 
         $client = new \GuzzleHttp\Client();
+        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc2->id;
+        $pdf_to_img2 = $client->get($pdf_to_img);
+
         $text_to_img = "http://127.0.0.1:3000/senddoc2/".$edoc2->id;
         $text_to_img2 = $client->get($text_to_img);
 
@@ -288,18 +291,24 @@ class InboxController extends Controller
     public function markrunnumberstore(Request $request, $id){
         // return '1';
         // return $request;
-        $receive = Edoc::find($id);
-        $receive->getx = $request->getx;
-        $receive->gety = $request->gety;
-        $receive->save();
+        $edoc = Edoc::find($id);
+        $edoc->getx = $request->getx;
+        $edoc->gety = $request->gety;
+        $edoc->save();
 
         $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://127.0.0.1:3000/mergedocsend2/".$receive->id;
+        $text_to_img = "http://127.0.0.1:3000/mergedocsend2/".$edoc->id;
+        $text_to_img2 = $client->get($text_to_img);
+
+        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id;
+        $pdf_to_img2 = $client->get($pdf_to_img);
+
+        $text_to_img = "http://127.0.0.1:3000/senddoc/".$edoc->id;
         $text_to_img2 = $client->get($text_to_img);
 
 
         $edoc = Edoc::find($id);
-        return view('inbox.markforward',['edoc' => $edoc]);
+        return view('inbox.markforward',['edoc2' => $edoc]);
 
     }
 
@@ -313,19 +322,21 @@ class InboxController extends Controller
     public function markforwardstore(Request $request, $id){
         // return '1';
         // return $request;
-        $receive = Edoc::find($id);
-        $receive->getx = $request->getx;
-        $receive->gety = $request->gety;
-        $receive->save();
+        $edoc2 = Edoc::find($id);
+        $edoc2->getx = $request->getx;
+        $edoc2->gety = $request->gety;
+        $edoc2->save();
 
-        //    return redirect()->route('receiver.marksignature');
         $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receive->id;
+        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$edoc2->id;
         $text_to_img2 = $client->get($text_to_img);
 
+        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc2->id;
+        $pdf_to_img2 = $client->get($pdf_to_img);
 
-        $edoc2 = Receiver::find($id);
-        return view('inbox.marksignature',['edoc2' => $edoc2]);
+
+        // $edoc2 = Receiver::find($id);
+        return view('inbox.marksignature',['edoc3' => $edoc2]);
 
     }
 
@@ -341,7 +352,12 @@ class InboxController extends Controller
         $edoc3->gety = $request->gety;
         $edoc3->save();
 
-       return redirect()->route('inbox.index');
+        if($edoc3->document == 'เอกสารสร้างเอง'){
+            return redirect()->route('inbox.index');
+        }
+        else{
+            return redirect()->route('indexforward');
+        }
     }
 
     public function destroy($id) {

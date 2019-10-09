@@ -1,14 +1,16 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- <div style="border-style:solid;"> -->
-{!! Form::model($edoc2,['route' => ['markforwardstore',$edoc2->id], 'method' => 'post'] ) !!}
+{!! Form::model($receive3,['route' => ['marksignaturestore',$receive3->id], 'method' => 'post'] ) !!}
 <input id="getx" name="getx" type="hidden" value="" />
 <input id="gety" name="gety" type="hidden" value="" />
+{{-- $pdf_to_img = "http://127.0.0.1:3000/pdftoimage3/".$receive->id; --}}
+<img src="http://203.113.14.20:3000/output/{{$receive3->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
 
-<img src="http://203.113.14.20:3000/output/{{$edoc2->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
-
-    <button style="position: absolute; top: 20px; right: 180px;" type="submit" class="btn btn-outline-primary">ยืนยัน</button>
-    <button style="position: absolute; top: 20px; right: 100px;" type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ยกเลิก</button>
+<a style="position: absolute; top: 20px; right: 1px; color:red;"><h6>*กรุณาคลิกที่รูปเพื่อกำหนดตำแหน่งของลายเซ็น*</h6></a>
+<button style="position: absolute; top: 60px; right: 180px;" type="submit" class="btn btn-outline-primary">ยืนยัน</button>
+{{-- <button style="position: absolute; top: 120px; right: 80px;" class="btn btn-outline-danger" onClick="window.location.href=window.location.href">re</button> --}}
+<button style="position: absolute; top: 60px; right: 80px;" class="btn btn-outline-danger" onclick="window.history.back();">ย้อนกลับ</button>
 <!-- </div> -->
 {!! Form::close() !!}
 <script>
@@ -48,7 +50,7 @@ function clickHotspotImage(event) {
             // alert(nu);
             document.body.removeChild(c1);
             nu = 0;
-            photoclick(x,y)
+            photoclick(x,y);
         }
     }
 
@@ -56,12 +58,12 @@ function clickHotspotImage(event) {
         // alert(nu);
         // var circlelist = new Array();
         c1 = document.createElement("img");
-        c1.src = "http://203.113.14.20:3000/imagesend/{{$edoc2->path}}";
+        c1.src = "{{asset('marksignature/5.png')}}";
         c1.style.position = "absolute";
         c1.style.left = x+"px";
         c1.style.top = y+"px";
-        // c1.style.width = "20px";
-        // c1.style.height = "20px";
+        c1.style.width = "20px";
+        c1.style.height = "20px";
         document.body.appendChild(c1);
         // circlelist.push(c1);
 
