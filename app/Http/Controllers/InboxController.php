@@ -12,6 +12,7 @@ use DB;
 use PDF;
 use Auth;
 use Carbon\Carbon;
+use DateTime;
 
 class InboxController extends Controller
 {
@@ -202,7 +203,9 @@ class InboxController extends Controller
     public function addforward()
     {
         // return '1';
-        $currentday = Carbon::now()->format('Y-m-d');
+        // $currentday = Carbon::now()->format('Y-m-d H:i');
+        $now = new DateTime();
+        $currentday = $now->format('Y-m-d H:i');
         //
         $currenttime = date_default_timezone_set('Asia/Bangkok');
         $currenttime = Carbon::now()->format('H:i');
@@ -238,6 +241,7 @@ class InboxController extends Controller
         $edoc2->objective = $request->objective;
         $edoc2->created_by = $request->user_id;
         $edoc2->retirement = $request->retirement;
+        $edoc2->select_manager = $request->select_manager;
         $edoc2->document = 'เอกสารส่งต่อ';
         $edoc2->status = 'เอกสารรอดำเนินการ';
 
@@ -271,10 +275,10 @@ class InboxController extends Controller
         // end วนเก็บค่า
 
         $client = new \GuzzleHttp\Client();
-        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc2->id;
+        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc2->id; // api แปลง pdf เป็น รูป
         $pdf_to_img2 = $client->get($pdf_to_img);
 
-        $text_to_img = "http://127.0.0.1:3000/senddoc2/".$edoc2->id;
+        $text_to_img = "http://127.0.0.1:3000/senddoc2/".$edoc2->id; // api แปลง text เป็น รูป
         $text_to_img2 = $client->get($text_to_img);
 
         return redirect()->route('inboxmarkrunnumber',['id' => $edoc2->id]);
@@ -297,13 +301,13 @@ class InboxController extends Controller
         $edoc->save();
 
         $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://127.0.0.1:3000/mergedocsend2/".$edoc->id;
+        $text_to_img = "http://127.0.0.1:3000/mergedocsend2/".$edoc->id; // api รวมรูป 2 รูปเป็นรูปเดียว
         $text_to_img2 = $client->get($text_to_img);
 
-        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id;
+        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id; // api แปลง pdf เป็น รูป (เรียกรูป ที่แปลงแล้วและรวมรูปทั้ง 2 รูปแล้ว มาโชว์)
         $pdf_to_img2 = $client->get($pdf_to_img);
 
-        $text_to_img = "http://127.0.0.1:3000/senddoc/".$edoc->id;
+        $text_to_img = "http://127.0.0.1:3000/senddoc/".$edoc->id; // api แปลง text เป็น รูป
         $text_to_img2 = $client->get($text_to_img);
 
 
@@ -328,10 +332,10 @@ class InboxController extends Controller
         $edoc2->save();
 
         $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$edoc2->id;
+        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$edoc2->id; // api รวมรูป 2 รูปเป็นรูปเดียว
         $text_to_img2 = $client->get($text_to_img);
 
-        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc2->id;
+        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc2->id; // api แปลง pdf เป็น รูป (เรียกรูป ที่แปลงแล้วและรวมรูปทั้ง 2 รูปแล้ว มาโชว์)
         $pdf_to_img2 = $client->get($pdf_to_img);
 
 

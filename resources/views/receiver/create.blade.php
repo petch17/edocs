@@ -44,7 +44,7 @@
                         </div>
                     </div> --}}
                 <!--begin::Form-->
-                {!! Form::open(['route' => 'sentstore', 'method' => 'post', 'files'=>true, 'onsubmit'=>'return
+                {!! Form::open(['route' => 'receiverstore', 'method' => 'post', 'files'=>true, 'onsubmit'=>'return
                 validateForm()', 'class' => 'kt-form kt-form--label-right']) !!}
                 <div class="kt-portlet__body">
 

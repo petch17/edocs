@@ -103,7 +103,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">วันที่ :</label>
                         <div class="col-lg-3">
-                            {!! Form::date('date', $currentday, ['class' => 'form-control','id' =>
+                            {!! Form::dateTime('date', $currentday, ['class' => 'form-control','id' =>
                             '','placeholder' => '-- เลือกวันที่ --']) !!}
                         </div>
                     </div>
