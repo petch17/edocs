@@ -285,64 +285,64 @@ class InboxController extends Controller
 
     }
 
-    public function markrunnumber($id){
-        // return $id;
-        $edoc = Edoc::find($id);
-        // return '1';
-        return view('inbox.markrunnumber',['edoc' => $edoc]);
-    }
+    // public function markrunnumber($id){
+    //     // return $id;
+    //     $edoc = Edoc::find($id);
+    //     // return '1';
+    //     return view('inbox.markrunnumber',['edoc' => $edoc]);
+    // }
 
-    public function markrunnumberstore(Request $request, $id){
-        // return '1';
-        // return $request;
-        $edoc = Edoc::find($id);
-        $edoc->getx = $request->getx;
-        $edoc->gety = $request->gety;
-        $edoc->save();
+    // public function markrunnumberstore(Request $request, $id){
+    //     // return '1';
+    //     // return $request;
+    //     $edoc = Edoc::find($id);
+    //     $edoc->getx = $request->getx;
+    //     $edoc->gety = $request->gety;
+    //     $edoc->save();
 
-        $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://127.0.0.1:3000/mergedocsend2/".$edoc->id; // api รวมรูป 2 รูปเป็นรูปเดียว
-        $text_to_img2 = $client->get($text_to_img);
+    //     $client = new \GuzzleHttp\Client();
+    //     $text_to_img = "http://127.0.0.1:3000/mergedocsend2/".$edoc->id; // api รวมรูป 2 รูปเป็นรูปเดียว
+    //     $text_to_img2 = $client->get($text_to_img);
 
-        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id; // api แปลง pdf เป็น รูป (เรียกรูป ที่แปลงแล้วและรวมรูปทั้ง 2 รูปแล้ว มาโชว์)
-        $pdf_to_img2 = $client->get($pdf_to_img);
+    //     $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc->id; // api แปลง pdf เป็น รูป (เรียกรูป ที่แปลงแล้วและรวมรูปทั้ง 2 รูปแล้ว มาโชว์)
+    //     $pdf_to_img2 = $client->get($pdf_to_img);
 
-        $text_to_img = "http://127.0.0.1:3000/senddoc/".$edoc->id; // api แปลง text เป็น รูป
-        $text_to_img2 = $client->get($text_to_img);
-
-
-        $edoc = Edoc::find($id);
-        return view('inbox.markforward',['edoc2' => $edoc]);
-
-    }
-
-    public function markforward($id){
-        // return $id;
-        // return '1';
-        $edoc2 = Edoc::find($id);
-        return view('inbox.markforward',['edoc2' => $edoc2 ]);
-    }
-
-    public function markforwardstore(Request $request, $id){
-        // return '1';
-        // return $request;
-        $edoc2 = Edoc::find($id);
-        $edoc2->getx = $request->getx;
-        $edoc2->gety = $request->gety;
-        $edoc2->save();
-
-        $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$edoc2->id; // api รวมรูป 2 รูปเป็นรูปเดียว
-        $text_to_img2 = $client->get($text_to_img);
-
-        $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc2->id; // api แปลง pdf เป็น รูป (เรียกรูป ที่แปลงแล้วและรวมรูปทั้ง 2 รูปแล้ว มาโชว์)
-        $pdf_to_img2 = $client->get($pdf_to_img);
+    //     $text_to_img = "http://127.0.0.1:3000/senddoc/".$edoc->id; // api แปลง text เป็น รูป
+    //     $text_to_img2 = $client->get($text_to_img);
 
 
-        // $edoc2 = Receiver::find($id);
-        return view('inbox.marksignature',['edoc3' => $edoc2]);
+    //     $edoc = Edoc::find($id);
+    //     return view('inbox.markforward',['edoc2' => $edoc]);
 
-    }
+    // }
+
+    // public function markforward($id){
+    //     // return $id;
+    //     // return '1';
+    //     $edoc2 = Edoc::find($id);
+    //     return view('inbox.markforward',['edoc2' => $edoc2 ]);
+    // }
+
+    // public function markforwardstore(Request $request, $id){
+    //     // return '1';
+    //     // return $request;
+    //     $edoc2 = Edoc::find($id);
+    //     $edoc2->getx = $request->getx;
+    //     $edoc2->gety = $request->gety;
+    //     $edoc2->save();
+
+    //     $client = new \GuzzleHttp\Client();
+    //     $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$edoc2->id; // api รวมรูป 2 รูปเป็นรูปเดียว
+    //     $text_to_img2 = $client->get($text_to_img);
+
+    //     $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$edoc2->id; // api แปลง pdf เป็น รูป (เรียกรูป ที่แปลงแล้วและรวมรูปทั้ง 2 รูปแล้ว มาโชว์)
+    //     $pdf_to_img2 = $client->get($pdf_to_img);
+
+
+    //     // $edoc2 = Receiver::find($id);
+    //     return view('inbox.marksignature',['edoc3' => $edoc2]);
+
+    // }
 
     public function marksignature($id){
         $edoc3 = Edoc::find($id);
@@ -356,12 +356,12 @@ class InboxController extends Controller
         $edoc3->gety = $request->gety;
         $edoc3->save();
 
-        if($edoc3->document == 'เอกสารสร้างเอง'){
+        // if($edoc3->document == 'เอกสารสร้างเอง'){
             return redirect()->route('inbox.index');
-        }
-        else{
-            return redirect()->route('indexforward');
-        }
+        // }
+        // else{
+        //     return redirect()->route('indexforward');
+        // }
     }
 
     public function destroy($id) {

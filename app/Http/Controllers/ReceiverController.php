@@ -41,7 +41,6 @@ class ReceiverController extends Controller
         //
         $currenttime = date_default_timezone_set('Asia/Bangkok');
         $currenttime = Carbon::now()->format('H:i');
-        // $currenttime->addHours();
         //return $currenttime;;
         return view('receiver.create',['currentday' => $currentday , 'currenttime' => $currenttime]);
     }

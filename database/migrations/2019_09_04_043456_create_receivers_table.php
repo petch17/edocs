@@ -35,7 +35,7 @@ class CreateReceiversTable extends Migration
             $table->integer('getx')->nullable();
             $table->integer('gety')->nullable();
             $table->string('path')->nullable(); //path
-            $table->string('signnature')->nullable(); //ลายเซ็น
+            $table->string('signature')->nullable(); //ลายเซ็น
             $table->string('status')->nullable(); //สถานะเอกสาร
 
 
