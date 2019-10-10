@@ -147,7 +147,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลือกวัตถุประสงค์ :</label>
                         <div class="col-lg-9">
                             {!! Form::select('objective',
@@ -177,7 +177,7 @@
                                 '-- เลือกประเภทเอกสาร --',
                             ['class'=>'form-control' ] ); !!}
                         </div>
-                    </div>
+                    </div> --}}
 
                     {{-- <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลือกผู้รับ :</label>

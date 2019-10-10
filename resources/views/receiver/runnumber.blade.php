@@ -1,11 +1,11 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- <div style="border-style:solid;"> -->
-{!! Form::model($receive,['route' => ['runnumberstore',$receive->id], 'method' => 'post'] ) !!}
+{!! Form::model($receiver,['route' => ['runnumberstore',$receiver->id], 'method' => 'post'] ) !!}
 <input id="getx" name="getx" type="hidden" value="" />
 <input id="gety" name="gety" type="hidden" value="" />
 
-<img src="http://203.113.14.20:3000/output/{{$receive->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
+<img src="http://203.113.14.20:3000/send/{{$receiver->signature}}" style="border-style:groove;" onclick='clickHotspotImage(event)' />
 
     <button style="position: absolute; top: 20px; right: 180px;" type="submit" class="btn btn-outline-primary">ยืนยัน</button>
     <button style="position: absolute; top: 20px; right: 100px;" type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ยกเลิก</button>
@@ -56,7 +56,7 @@
             // alert(nu);
             // var circlelist = new Array();
             c1 = document.createElement("img");
-            c1.src = "http://203.113.14.20:3000/imagesend/{{$receive->path}}";
+            c1.src = "http://203.113.14.20:3000/send/html/{{$receiver->id}}.png";
             c1.style.position = "absolute";
             c1.style.left = x+"px";
             c1.style.top = y+"px";

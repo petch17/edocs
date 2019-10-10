@@ -40,7 +40,8 @@
             <table id="table1" class="table table-striped- table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>ลำดับ</th>
+                        <th>เลขที่รับ</th>
                         <th>เรียน</th>
                         <th>สถานะของเอกสาร</th>
                         <th><i class="fa fa-cog"></i></th>
@@ -51,10 +52,11 @@
                 @foreach($receivers as $index=>$item)
                     <tr>
                         <td>{{$index+1}}</td>
-                        <td>{{$item->retirement}}</td>
+                        <td>{{$item->part_num}}</td>
+                        <td> <a href="" class="alram" data-id="{{$item->retirement}}" > รายละเอียด </a> </td>
                         <td>{{$item->status}}</td>
                         <td>
-                            <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
+                            <a target="_blank" href="http://203.113.14.20:3000/pdfsendfile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                 <i class="fa fa-search"></i>
                             </a>
                             &nbsp; &nbsp;
@@ -137,6 +139,17 @@
                     swal("ยกเลิกการลบข้อมูล");
                 }
             });
+    });
+</script>
+
+<script>
+    $(document).on('click', '.alram', function (e) {
+        e.preventDefault();
+        var notallow = $(this).data('id');
+            alert(notallow);
+            // Swal.fire(
+            //     notallow,
+            // )
     });
 </script>
 @endsection

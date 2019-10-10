@@ -121,10 +121,10 @@
 $(document).on('click', '.alram', function (e) {
         e.preventDefault();
         var notallow = $(this).data('id');
-        // alert(notallow);
-            Swal.fire(
-                notallow,
-            )
+        alert(notallow);
+            // Swal.fire(
+            //     notallow,
+            // )
     });
 </script>
 

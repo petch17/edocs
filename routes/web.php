@@ -134,13 +134,13 @@ Route::resource('forwardstore', 'ReceiverController' , ['except' => 'forwardstor
 
 Route::get('receiver/marksignature/{id}', [
     'as' => 'receivermarksignature',
-    'uses' => 'ReceiverController@marksignature'
+    'uses' => 'ReceiverController@receivermarksignature'
 ]);
 Route::resource('marksignature', 'ReceiverController' , ['except' => 'marksignature']);
 
 Route::post('receiver/marksignaturestore/{id}', [
     'as' => 'receivermarksignaturestore',
-    'uses' => 'ReceiverController@marksignaturestore'
+    'uses' => 'ReceiverController@receivermarksignaturestore'
 ]);
 Route::resource('marksignaturestore', 'ReceiverController' , ['except' => 'marksignaturestore']);
 
