@@ -85,10 +85,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label">เลขที่รับส่วนงาน :</label>
+                        <label class="col-lg-3 col-form-label">เลขที่รับ :</label>
                         <div class="col-lg-9">
                             {!! Form::text('part_num',null,['class'=>'form-control', 'id'=>'text'
-                            ,'placeholder'=>'เลขที่รับส่วนงาน']);
+                            ,'placeholder'=>'เลขที่รับ']);
                             !!}
                             <div class="container-fluid" style="height:5px;">
                                 @if( $errors->has('part_num') )

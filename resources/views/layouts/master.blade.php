@@ -249,7 +249,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <li id="index2" class="kt-menu__item" aria-haspopup="true">
                                             <a href="{{ route('receiver.index') }}" class="kt-menu__link">
                                                 <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
-                                                <span class="kt-menu__link-text">เอกสารส่งต่อ (อยู่ระหว่างการพัฒนา)</span>
+                                                <span class="kt-menu__link-text">เอกสารส่งต่อ</span>
                                             </a>
                                         </li>
 
