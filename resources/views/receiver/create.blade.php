@@ -71,8 +71,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">ตัวย่อหน่วยงานของผู้รับ :</label>
                         <div class="col-lg-9">
-                            {!! Form::text('pos_abbr',null,['class'=>'form-control', 'id'=>'text'
-                            ,'placeholder'=>'ตัวย่อหน่วยงานของผู้รับ']);
+                            {!! Form::text('pos_abbr',null,['class'=>'form-control', 'id'=>'text', 'placeholder'=>'ตัวย่อหน่วยงานของผู้รับ']);
                             !!}
                             <div class="container-fluid" style="height:5px;">
                                 @if( $errors->has('pos_abbr') )
@@ -87,8 +86,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เลขที่รับ :</label>
                         <div class="col-lg-9">
-                            {!! Form::text('part_num',null,['class'=>'form-control', 'id'=>'text'
-                            ,'placeholder'=>'เลขที่รับ']);
+                            {!! Form::text('part_num',null,['class'=>'form-control', 'id'=>'text', 'placeholder'=>'เลขที่รับ']);
                             !!}
                             <div class="container-fluid" style="height:5px;">
                                 @if( $errors->has('part_num') )
@@ -103,8 +101,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">วันที่ :</label>
                         <div class="col-lg-3">
-                            {!! Form::date('date', $currentday, ['class' => 'form-control','id' =>
-                            '','placeholder' => '-- เลือกวันที่ --']) !!}
+                            {!! Form::date('date', $currentday, ['class' => 'form-control', 'placeholder' => '-- เลือกวันที่ --']) !!}
                         </div>
                     </div>
 
@@ -123,7 +120,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรียน :</label>
                         <div class="col-lg-9">
-                            {!! Form::textarea('retirement',null,['class'=>'form-control','placeholder'=>'เรียน']); !!}
+                            {!! Form::textarea('retirement',null,['class'=>'form-control', 'placeholder'=>'เรียน']); !!}
                             <div class="container-fluid" style="height:5px;">
                                 @if( $errors->has('retirement') )
                                     <span style="color:red;">
@@ -142,8 +139,7 @@
                                 'แจ้งเพื่อทราบ' => 'แจ้งเพื่อทราบ',
                                 'แจ้งเพื่อดำเนินการ' => 'แจ้งเพื่อดำเนินการ',
                                 'แจ้งอบรม/ประชุม/สัมมนา' => 'แจ้งอบรม/ประชุม/สัมมนา') ,
-                                '-- เลือกประเภทเอกสาร --',
-                            ['class'=>'form-control' ] ); !!}
+                                '-- เลือกประเภทเอกสาร --', ['class'=>'form-control' ] ); !!}
                         </div>
                     </div>
 
@@ -202,8 +198,7 @@
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
                         <button type="submit" class="btn btn-outline-primary">ยืนยัน</button>
-                        <button type="reset" class="btn btn-outline-danger"
-                            onclick="window.history.back();">ยกเลิก</button>
+                        <button type="reset" class="btn btn-outline-danger" onclick="window.history.back();">ยกเลิก</button>
                     </div>
                 </div>
             </div>

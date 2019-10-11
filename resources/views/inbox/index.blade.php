@@ -33,8 +33,8 @@
                         </a>
                         @else
                         <a href="{{ route('SCMNG') }}" class="btn btn-brand btn-elevate btn-icon-sm" onclick="myFunction()">
-                                <i class="la la-plus"></i> อัพโหลดเอกสาร
-                            </a>
+                            <i class="la la-plus"></i> อัพโหลดเอกสาร
+                        </a>
                         @endif
                     </div>
                 </div>

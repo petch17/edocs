@@ -28,7 +28,7 @@ class InboxController extends Controller
         $edocs = DB::table('edocs')
         ->select('edocs.*')
         // ->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )
-        ->where( 'document','เอกสารสร้างเอง' )
+        // ->where( 'document','เอกสารสร้างเอง' )
         ->where('created_by',Auth::user()->id)
         ->orderBy('id' , 'desc')
         ->get();

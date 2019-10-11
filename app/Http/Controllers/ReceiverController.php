@@ -105,6 +105,18 @@ class ReceiverController extends Controller
         // }
         // end วนเก็บค่า
 
+        // $client = new \GuzzleHttp\Client();
+        // $url = "http://203.113.14.20:3000/test";
+
+        // $myBody['name'] = "Demo";
+        // $myBody2['email'] = "Demo2";
+        // $request = $client->post($url,  ['body'=>$myBody , 'body2'=>$myBody2]);
+        // $resultss = $request->send();
+
+        // dd($resultss);
+
+        // return $resultss;
+
         $client = new \GuzzleHttp\Client();
         $pdf_to_img = "http://127.0.0.1:3000/senddoc/".$receiver->id; // api แปลง pdf เป็น รูป
         $pdf_to_img2 = $client->get($pdf_to_img);

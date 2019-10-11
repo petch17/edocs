@@ -27,9 +27,15 @@
             <div class="kt-portlet__head-toolbar">
                 <div class="kt-portlet__head-wrapper">
                     <div class="kt-portlet__head-actions">
+                        @if(Auth::user()->MANAGER_ID != null)
                         <a href="{{ route('receivercreate') }}" class="btn btn-brand btn-elevate btn-icon-sm">
                             <i class="la la-plus"></i> อัพโหลดเอกสาร
                         </a>
+                        @else
+                        <a href="{{ route('SCMNG') }}" class="btn btn-brand btn-elevate btn-icon-sm" onclick="myFunction()">
+                            <i class="la la-plus"></i> อัพโหลดเอกสาร
+                        </a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -93,6 +99,12 @@
 <script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/demo11/pages/crud/datatables/basic/basic.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/demo11/sweetalert.min.js') }}"></script>
+
+<script>
+    function myFunction() {
+        alert("กรุณาเลือกผู้บริหารก่อน").style.color = "red";
+    }
+</script>
 
 <script>
     $(document).ready(function() {
