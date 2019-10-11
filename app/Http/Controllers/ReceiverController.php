@@ -106,7 +106,7 @@ class ReceiverController extends Controller
         // end วนเก็บค่า
 
         // $client = new \GuzzleHttp\Client();
-        // $url = "http://203.113.14.20:3000/test";
+        // $url = "http://203.113.14.20:3000/test".$receiver->id;
 
         // $myBody['name'] = "Demo";
         // $myBody2['email'] = "Demo2";
