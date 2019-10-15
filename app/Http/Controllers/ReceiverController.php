@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Manager;
-use App\Edoc;
 use App\Receiver;
 use File;
 use DB;
@@ -108,10 +105,10 @@ class ReceiverController extends Controller
         // $client = new \GuzzleHttp\Client();
         // $url = "http://203.113.14.20:3000/test";
 
-        // $request = $client->post($url,  ['name'=>$request->MANAGER_ID , 'email'=>$request->edoc_type ]);
+        // $request = $client->post($url,  ['name'=>Auth::user()->email , 'email'=>Auth::user()->EMAILINTRA ]);
         // $response = $request->send();
-        // if($resultss != null || $resultss != ''){
-            // return $response;
+        // // if($resultss != null || $resultss != ''){
+        //     return $response;
         // }
         // else{
         //     return '2';
