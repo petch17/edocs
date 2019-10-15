@@ -106,16 +106,16 @@ class ReceiverController extends Controller
         // end วนเก็บค่า
 
         // $client = new \GuzzleHttp\Client();
-        // $url = "http://203.113.14.20:3000/test".$receiver->id;
+        // $url = "http://203.113.14.20:3000/test";
 
-        // $myBody['name'] = "Demo";
-        // $myBody2['email'] = "Demo2";
-        // $request = $client->post($url,  ['body'=>$myBody , 'body2'=>$myBody2]);
-        // $resultss = $request->send();
-
-        // dd($resultss);
-
-        // return $resultss;
+        // $request = $client->post($url,  ['name'=>$request->MANAGER_ID , 'email'=>$request->edoc_type ]);
+        // $response = $request->send();
+        // if($resultss != null || $resultss != ''){
+            // return $response;
+        // }
+        // else{
+        //     return '2';
+        // }
 
         $client = new \GuzzleHttp\Client();
         $pdf_to_img = "http://127.0.0.1:3000/senddoc/".$receiver->id; // api แปลง pdf เป็น รูป
