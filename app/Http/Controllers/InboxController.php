@@ -75,7 +75,7 @@ class InboxController extends Controller
         $edoc->edoc_type = $request->edoc_type;
         $edoc->created_by = $request->user_id;
         $edoc->select_manager = $request->select_manager;
-        $edoc->document = 'เอกสารสร้างเอง';
+        // $edoc->document = 'เอกสารสร้างเอง';
         $edoc->status = 'เอกสารรอดำเนินการ';
 
         if ($request->hasFile('file')){

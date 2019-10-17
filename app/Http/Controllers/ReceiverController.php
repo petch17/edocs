@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Receiver;
 use File;
@@ -102,17 +104,25 @@ class ReceiverController extends Controller
         // }
         // end วนเก็บค่า
 
-        // $client = new \GuzzleHttp\Client();
-        // $url = "http://203.113.14.20:3000/test";
+        // $client = new Client();
+        // $response = $client->post('http://203.113.14.20:3000/test', [
+        //     'form_params' => [
+        //         'name' => $request->part_num ,
+        //         'email'=>$request->id
+        //     ]
+        // ]);
+        // // $url = "http://203.113.14.20:3000/test";
 
-        // $request = $client->post($url,  ['name'=>Auth::user()->email , 'email'=>Auth::user()->EMAILINTRA ]);
-        // $response = $request->send();
+        // // $request = $client->post($url,  [ 'name'=>Auth::user()->email , 'email'=>Auth::user()->EMAILINTRA ] );
+        // // $response = $request->send();
         // // if($resultss != null || $resultss != ''){
+        //     dd($response);
         //     return $response;
-        // }
-        // else{
-        //     return '2';
-        // }
+        //     // return $request;
+        // // }
+        // // else{
+        // //     return '2';
+        // // }
 
         $client = new \GuzzleHttp\Client();
         $pdf_to_img = "http://127.0.0.1:3000/senddoc/".$receiver->id; // api แปลง pdf เป็น รูป
