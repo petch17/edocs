@@ -92,6 +92,7 @@ class ReceiverController extends Controller
         // return redirect()->route('receiver.index');
 
         // return $request;
+        // return $receiver;
 
         // วนเก็บค่า
         // foreach($request->select_manager as $mng_id){
@@ -105,7 +106,7 @@ class ReceiverController extends Controller
         // end วนเก็บค่า
 
         // $client = new Client();
-        // $response = $client->post('http://203.113.14.20:3000/test', [
+        // $request = $client->post('http://203.113.14.20:3000/test', [
         //     'form_params' => [
         //         'name' => $request->part_num ,
         //         'email'=>$request->id
@@ -114,29 +115,24 @@ class ReceiverController extends Controller
         // // $url = "http://203.113.14.20:3000/test";
 
         // // $request = $client->post($url,  [ 'name'=>Auth::user()->email , 'email'=>Auth::user()->EMAILINTRA ] );
-        // // $response = $request->send();
+        // $response = $request->send();
         // // if($resultss != null || $resultss != ''){
         //     dd($response);
         //     return $response;
         //     // return $request;
         // // }
         // // else{
-        // //     return '2';
+        //     // return '2';
         // // }
 
         $client = new \GuzzleHttp\Client();
         $pdf_to_img = "http://127.0.0.1:3000/senddoc/".$receiver->id; // api แปลง pdf เป็น รูป
         $pdf_to_img2 = $client->get($pdf_to_img);
 
-
-        // $text_to_img = "http://127.0.0.1:3000/mergedocsend3/".$receiver->id; // api รวมรูป 2 รูปเป็นรูปเดียว
-        // $text_to_img2 = $client->get($text_to_img);
+        // return '2';
 
         $pdf_to_img = "http://127.0.0.1:3000/senddoc3/".$receiver->id; // api แปลง pdf เป็น รูป
         $pdf_to_img2 = $client->get($pdf_to_img);
-
-        // $text_to_img = "http://127.0.0.1:3000/senddoc2/".$receiver->id; // api แปลง text เป็น รูป
-        // $text_to_img2 = $client->get($text_to_img);
 
         return redirect()->route('runnumber',['id' => $receiver->id ]);
 
@@ -173,9 +169,6 @@ class ReceiverController extends Controller
         $text_to_img = "http://127.0.0.1:3000/mergedocsend3/".$receiver->id; // api แปลง text เป็น รูป
         $text_to_img2 = $client->get($text_to_img);
 
-
-
-
         // $edoc = Receiver::find($id);
         $receiver->signature = $receiver->id.'/merge.png';
         $receiver->save();
@@ -184,35 +177,35 @@ class ReceiverController extends Controller
 
     }
 
-    public function forward($id){
-        // return $id;
-        // return '1';
-        $receiver2 = Receiver::find($id);
-        return view('receiver.forward',['receiver2' => $receiver2 ]);
-    }
+    // public function forward($id){
+    //     // return $id;
+    //     // return '1';
+    //     $receiver2 = Receiver::find($id);
+    //     return view('receiver.forward',['receiver2' => $receiver2 ]);
+    // }
 
-    public function forwardstore(Request $request, $id){
-        // return '1';
-        // return $request;
-        $receiver2 = Receiver::find($id);
-        $receiver2->signature = $receiver2->id.'/merge.png';
-        $receiver2->getx = $request->getx;
-        $receiver2->gety = $request->gety;
-        $receiver2->save();
-        // return $receiver2->signature ;
+    // public function forwardstore(Request $request, $id){
+    //     // return '1';
+    //     // return $request;
+    //     $receiver2 = Receiver::find($id);
+    //     $receiver2->signature = $receiver2->id.'/merge.png';
+    //     $receiver2->getx = $request->getx;
+    //     $receiver2->gety = $request->gety;
+    //     $receiver2->save();
+    //     // return $receiver2->signature ;
 
-        $client = new \GuzzleHttp\Client();
-        $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receiver2->id; // api รวมรูป 2 รูปเป็นรูปเดียว
-        $text_to_img2 = $client->get($text_to_img);
+    //     $client = new \GuzzleHttp\Client();
+    //     $text_to_img = "http://127.0.0.1:3000/mergedocsend/".$receiver2->id; // api รวมรูป 2 รูปเป็นรูปเดียว
+    //     $text_to_img2 = $client->get($text_to_img);
 
-        // $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$receiver2->id; // api แปลง pdf เป็น รูป (เรียกรูป ที่แปลงแล้วและรวมรูปทั้ง 2 รูปแล้ว มาโชว์)
-        // $pdf_to_img2 = $client->get($pdf_to_img);
+    //     // $pdf_to_img = "http://127.0.0.1:3000/pdftoimage/".$receiver2->id; // api แปลง pdf เป็น รูป (เรียกรูป ที่แปลงแล้วและรวมรูปทั้ง 2 รูปแล้ว มาโชว์)
+    //     // $pdf_to_img2 = $client->get($pdf_to_img);
 
 
-        // $receiver2 = Receiver::find($id);
-        return view('receiver.marksignature',['receiver3' => $receiver2]);
+    //     // $receiver2 = Receiver::find($id);
+    //     return view('receiver.marksignature',['receiver3' => $receiver2]);
 
-    }
+    // }
 
     public function receivermarksignature($id){
         $receiver3 = Receiver::find($id);
@@ -236,7 +229,7 @@ class ReceiverController extends Controller
         // return back();
        $result = Receiver::find($id);
 
-       File::delete(base_path().'http://127.0.0.1:3000/pdffile/'.$result->file);
+       File::delete(base_path().'http://127.0.0.1:3000/pdfsendfile/'.$result->file);
        $result->delete();
 
         if($result){

@@ -129,7 +129,7 @@
                 if (willDelete) {
                     $.ajax({
                         method: "DELETE",
-                        url: '{{ url('inbox')}}/' + id,
+                        url: '{{ url('receiver')}}/' + id,
                         data: { ids: id, _token: $('#_token').val(), },
                         success: function (data) {
                             if (data.success == "1") {
