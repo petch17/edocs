@@ -21,6 +21,7 @@ class CreateReceiversTable extends Migration
             $table->string('edoc_type')->nullable(); //ประเภทเอกสาร
             $table->string('objective')->nullable(); //วัตถุประสงค์
             $table->string('pos_abbr')->nullable(); //ตัวย่อหน่วยงานของผู้รับ
+            $table->string('topic')->nullable(); //เรื่อง
             $table->string('retirement')->nullable(); //เกษียณหนังสือ
             $table->string('file')->nullable(); //ชื่อไฟล์
             $table->string('real_filename')->nullable(); //ชื่อไฟล์ของจริง

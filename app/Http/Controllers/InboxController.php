@@ -27,13 +27,23 @@ class InboxController extends Controller
         // $edocs = Edoc::where('created_by',Auth::user()->id)->get();
         $edocs = DB::table('edocs')
         ->select('edocs.*')
-        // ->where( 'status','เอกสารที่ยังไม่ผ่านการอนุมัติ' )
-        // ->where( 'document','เอกสารสร้างเอง' )
+        ->where( 'trash','ใช้งาน' )
+        ->where( 'status','เอกสารรอดำเนินการ' )
         ->where('created_by',Auth::user()->id)
         ->orderBy('id' , 'desc')
         ->get();
 
         return view('inbox.index',['edocs' => $edocs]);
+    }
+
+    public function update(Request $request, $id )
+    {
+        return '1';
+        DB::table('edocs')
+            ->where('id', $id)
+            ->update(['trash' => 'ลบทิ้ง']);
+
+        return redirect()->route('inbox.index');
     }
 
     public function addcreate()
@@ -75,7 +85,7 @@ class InboxController extends Controller
         $edoc->edoc_type = $request->edoc_type;
         $edoc->created_by = $request->user_id;
         $edoc->select_manager = $request->select_manager;
-        // $edoc->document = 'เอกสารสร้างเอง';
+        $edoc->trash = 'ใช้งาน';
         $edoc->status = 'เอกสารรอดำเนินการ';
 
         if ($request->hasFile('file')){

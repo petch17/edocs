@@ -43,14 +43,13 @@
 
         <div class="kt-portlet__body">
             <!--begin: Datatable -->
-            <table id="table1" class="table table-striped- table-bordered table-hover">
+            <table id="table1" class="table table-striped- table-bordered table-hover" >
                 <thead>
                     <tr>
-                        <th>ลำดับ</th>
-                        <th>เลขที่รับ</th>
-                        <th>เรียน</th>
-                        <th>สถานะของเอกสาร</th>
-                        <th><i class="fa fa-cog"></i></th>
+                        <th width="5%">ลำดับ</th>
+                        <th width="15%">เลขที่รับ</th>
+                        <th width="10%">เรียน</th>
+                        <th width="15%"><i class="fa fa-cog"></i></th>
                     </tr>
                 </thead>
 
@@ -59,8 +58,7 @@
                     <tr>
                         <td>{{$index+1}}</td>
                         <td>{{$item->part_num}}</td>
-                        <td> <a href="" class="alram" data-id="{{$item->retirement}}" > รายละเอียด </a> </td>
-                        <td>{{$item->status}}</td>
+                        <td> <a href="" class="alram" data-id="{{$item->retirement}}" > {{$item->retirement}} </a> </td>
                         <td>
                             <a target="_blank" href="http://203.113.14.20:3000/pdfsendfile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                 <i class="fa fa-search"></i>
@@ -158,10 +156,10 @@
     $(document).on('click', '.alram', function (e) {
         e.preventDefault();
         var notallow = $(this).data('id');
-            alert(notallow);
-            // Swal.fire(
-            //     notallow,
-            // )
+            // alert(notallow);
+            Swal.fire(
+                notallow,
+            )
     });
 </script>
 @endsection

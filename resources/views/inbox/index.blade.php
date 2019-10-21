@@ -46,10 +46,8 @@
             <table id="table1" class="table table-striped- table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="10%">ลำดับ</th>
-                        <th width="25%">เรื่อง</th>
-                        <th width="25%">สถานะของเอกสาร</th>
-                        <th width="25%">หมายเหตุ</th>
+                        <th width="5%">ลำดับ</th>
+                        <th width="80%">เรื่อง</th>
                         <th width="15%"><i class="fa fa-cog"></i></th>
                     </tr>
                 </thead>
@@ -57,25 +55,68 @@
                 <tbody>
                 @foreach($edocs as $index=>$item)
                     <tr>
-                        <td>{{$index+1}}</td>
-                        <td>{{$item->topic}}</td>
-                        <td>{{$item->status}}</td>
-
-                        @if( $item->not_allowed == null || $item->not_allowed == '' )
-                            <td></td>
-                        @else
-                            <td> <a href="" class="alram" data-id="{{$item->not_allowed}}" > รายละเอียด </a> </td>
-                        @endif
-
+                        <td>
+                            @if( $item->secert == null && $item->speed == null )
+                                {{$index+1}}
+                                <span style=" height: 10px; width: 10px; background-color: green;
+                                border-radius: 50%; display: inline-block;">
+                                </span>
+                            @elseif( $item->secert == null && $item->speed != null )
+                                @if( $item->speed == 'ด่วน' )
+                                    {{$index+1}}&nbsp;
+                                    <span style=" height: 10px; width: 10px; background-color: yellow;
+                                    border-radius: 50%; display: inline-block;">
+                                    </span>
+                                @elseif( $item->speed == 'ด่วนมาก' )
+                                    {{$index+1}}&nbsp;
+                                    <span style=" height: 10px; width: 10px; background-color: orange;
+                                    border-radius: 50%; display: inline-block;">
+                                    </span>
+                                @else
+                                    {{$index+1}}&nbsp;
+                                    <span style=" height: 10px; width: 10px; background-color: red;
+                                    border-radius: 50%; display: inline-block;">
+                                    </span>
+                                @endif
+                            @elseif( $item->secert != null && $item->speed == null )
+                                {{$index+1}}&nbsp;
+                                <span style=" height: 10px; width: 10px; background-color: green;
+                                border-radius: 50%; display: inline-block;">
+                                </span>&nbsp;<a>ลับ</a>
+                            @else
+                                @if( $item->speed == 'ด่วน' )
+                                    {{$index+1}}&nbsp;
+                                    <span style=" height: 10px; width: 10px; background-color: yellow;
+                                    border-radius: 50%; display: inline-block;">
+                                    </span>&nbsp;<a>ลับ</a>
+                                @elseif( $item->speed == 'ด่วนมาก' )
+                                    {{$index+1}}&nbsp;
+                                    <span style=" height: 10px; width: 10px; background-color: orange;
+                                    border-radius: 50%; display: inline-block;">
+                                    </span>&nbsp;<a>ลับ</a>
+                                @else
+                                    {{$index+1}}&nbsp;
+                                    <span style=" height: 10px; width: 10px; background-color: red;
+                                    border-radius: 50%; display: inline-block;">
+                                    </span>&nbsp;<a>ลับ</a>
+                                @endif
+                            @endif
+                        </td>
+                        <td>
+                            <a href="" class="alram" data-id="{{$item->topic}}" > {{$item->topic}} </a>
+                        </td>
                         <td>
                             <a target="_blank" href="http://203.113.14.20:3000/pdffile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                 <i class="fa fa-search"></i>
                             </a>
                             &nbsp; &nbsp;
 
-                        <a href="" class="delBtn" data-id="{{$item->id}}" data-toggle="kt-tooltip" title="ลบ">
+                            <a href="" class="delBtn" data-id="{{$item->id}}" data-toggle="kt-tooltip" title="ลบ">
                                 <i class="fa fa-trash-alt"></i>
                             </a>
+                            {{-- <a href="{{ route('inbox.update' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ลบ">
+                                <i class="fa fa-trash-alt"></i>
+                            </a> --}}
                             <input type="hidden" name="_token" id="_token" value="{{ csrf_token()}}">
 
                             &nbsp; &nbsp;
@@ -120,11 +161,11 @@
 <script>
 $(document).on('click', '.alram', function (e) {
         e.preventDefault();
-        var notallow = $(this).data('id');
-        alert(notallow);
-            // Swal.fire(
-            //     notallow,
-            // )
+        var topic = $(this).data('id');
+        // alert(topic);
+            Swal.fire(
+                topic,
+            )
     });
 </script>
 

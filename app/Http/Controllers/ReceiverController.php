@@ -51,12 +51,14 @@ class ReceiverController extends Controller
             'pos_abbr' => 'required',
             'retirement' => 'required',
             'file' => 'required',
+            'topic' => 'required',
         ] ,
         [
             'part_num.required'    => 'กรุณากรอกเลขที่รับส่วนงาน',
             'pos_abbr.required'  => 'กรุณากรอกตัวย่อหน่วยงานของผู้รับ',
             'retirement.required'  => 'กรุณาเรียน',
             'file.required'  => 'กรุณาเลือกไฟล์',
+            'topic.required'  => 'กรุณาข้อมูล',
         ]
         );
         // return $request;
@@ -66,6 +68,7 @@ class ReceiverController extends Controller
         $receiver->pos_abbr = $request->pos_abbr;
         $receiver->edoc_type = $request->edoc_type;
         $receiver->date = $request->date;
+        $receiver->topic = $request->topic;
         $receiver->times = $request->times;
         $receiver->edoc_type = $request->edoc_type;
         $receiver->objective = $request->objective;
@@ -106,19 +109,19 @@ class ReceiverController extends Controller
         // end วนเก็บค่า
 
         // $client = new Client();
-        // $request = $client->post('http://203.113.14.20:3000/test', [
-        //     'form_params' => [
-        //         'name' => $request->part_num ,
-        //         'email'=>$request->id
-        //     ]
+        // $response = $client->post('http://203.113.14.20:3000/test', [
+            // 'form_params' => [
+            //     'name' => $request->part_num ,
+            //     'email'=>$request->id
+            // ]
         // ]);
         // // $url = "http://203.113.14.20:3000/test";
 
         // // $request = $client->post($url,  [ 'name'=>Auth::user()->email , 'email'=>Auth::user()->EMAILINTRA ] );
         // $response = $request->send();
         // // if($resultss != null || $resultss != ''){
-        //     dd($response);
-        //     return $response;
+            // dd($response);
+            // return $response;
         //     // return $request;
         // // }
         // // else{

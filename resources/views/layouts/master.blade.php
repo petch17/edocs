@@ -225,20 +225,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                     <ul class="kt-menu__nav ">
 
-                                        {{-- <li id="inbox" class="kt-menu__item " aria-haspopup="true">
-                                            <a href="{{ route('inbox.index') }}" class="kt-menu__link ">
-                                        <i class="kt-menu__link-icon flaticon-suitcase"></i>
-                                        <span class="kt-menu__link-text">เอกสารที่ยังไม่ผ่านการอนุมัติ</span>
-                                        </a>
-                                        </li> --}}
-
-                                        {{-- <li id="receiver" class="kt-menu__item" aria-haspopup="true">
-                                            <a href="{{ route('receiver.index') }}" class="kt-menu__link ">
-                                        <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
-                                        <span class="kt-menu__link-text">เอกสารที่อนุมัติแล้ว</span>
-                                        </a>
-                                        </li> --}}
-
                                         <li id="index1" class="kt-menu__item" aria-haspopup="true">
                                             <a href="{{ route('inbox.index') }}" class="kt-menu__link">
                                         <i class="kt-menu__link-icon flaticon2-list-3"></i>
@@ -251,6 +237,27 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
                                                 <span class="kt-menu__link-text">เอกสารส่งต่อ</span>
                                             </a>
+                                        </li>
+
+                                        <li id="index3" class="kt-menu__item " aria-haspopup="true">
+                                            <a href="{{ route('approve.index') }}" class="kt-menu__link ">
+                                        <i class="kt-menu__link-icon flaticon-suitcase"></i>
+                                        <span class="kt-menu__link-text">เอกสารที่อนุมัติแล้ว</span>
+                                        </a>
+                                        </li>
+
+                                        <li id="index4" class="kt-menu__item " aria-haspopup="true">
+                                            <a href="{{ route('notallowed.index') }}" class="kt-menu__link ">
+                                        <i class="kt-menu__link-icon flaticon-suitcase"></i>
+                                        <span class="kt-menu__link-text">เอกสารที่ไม่อนุมัติ</span>
+                                        </a>
+                                        </li>
+
+                                        <li id="trash" class="kt-menu__item" aria-haspopup="true">
+                                            <a href="{{ route('trash.index') }}" class="kt-menu__link ">
+                                        <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
+                                        <span class="kt-menu__link-text">ถังขยะ</span>
+                                        </a>
                                         </li>
 
                                         {{-- <li id="native" class="kt-menu__item  kt-menu__item--submenu"

@@ -22,7 +22,7 @@ class CreateEdocsTable extends Migration
 
         Schema::create('edocs', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('topic')->nullable(); //เรื่อง
+            $table->string('topic')->nullable(); //เรื่อง
             $table->string('edoc_type')->nullable(); //ประเภทเอกสาร
             // $table->string('objective')->nullable(); //วัตถุประสงค์
             $table->string('file')->nullable(); //ชื่อไฟล์
@@ -46,6 +46,7 @@ class CreateEdocsTable extends Migration
             // $table->string('document')->nullable(); //แยกสถานะเอกสาร ส่งต่อ กับ สร้างเอง
             // $table->string('retirement')->nullable(); //เกษียณหนังสือ
             $table->string('not_allowed')->nullable(); // หมายเหตุ
+            $table->string('trash')->nullable(); // ถังขยะ
 
             $table->timestamps();
         });

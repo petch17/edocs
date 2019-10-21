@@ -24,9 +24,11 @@ Route::post('view/SCMNGstore', [
 Route::resource('SCMNGstore', 'HomeController' , ['except' => 'SCMNGstore']);
 //  end add manager
 
-Route::resource('read','ReadController');
+Route::resource('trash','TrashController');
 
-Route::resource('sent','SentController');
+Route::resource('approve','ApproveController');
+
+Route::resource('notallowed','NotallowedController');
 
 Route::resource('receiver','ReceiverController');
 

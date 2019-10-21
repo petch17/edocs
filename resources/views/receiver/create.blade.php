@@ -69,6 +69,21 @@
                     </div>
 
                     <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">เรื่อง :</label>
+                        <div class="col-lg-9">
+                            {!! Form::text('topic',null,[ 'id'=>'topic','class'=>'form-control','placeholder'=>'กรุณากรอกชื่อเรื่อง']); !!}
+                            {{-- <input name="topic" id="topic" type="text" class="form-control @error('topic') is-invalid @enderror"> --}}
+                            <div class="container-fluid" style="height:5px;">
+                                @if( $errors->has('topic') )
+                                    <span style="color:red;">
+                                        {{($errors->first('topic') )}}
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label class="col-lg-3 col-form-label">ตัวย่อหน่วยงานของผู้รับ :</label>
                         <div class="col-lg-9">
                             {!! Form::text('pos_abbr',null,['class'=>'form-control', 'id'=>'text', 'placeholder'=>'ตัวย่อหน่วยงานของผู้รับ']);
@@ -119,8 +134,8 @@
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">เรียน :</label>
-                        <div class="col-lg-9">
-                            {!! Form::textarea('retirement',null,['class'=>'form-control', 'placeholder'=>'เรียน']); !!}
+                        <div class="col-lg-3">
+                            {!! Form::textarea('retirement',null,['class'=>'form-control']); !!}
                             <div class="container-fluid" style="height:5px;">
                                 @if( $errors->has('retirement') )
                                     <span style="color:red;">
