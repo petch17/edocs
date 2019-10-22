@@ -163,8 +163,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <!--begin: Head -->
                                     <div class="kt-user-card kt-user-card--skin-light kt-notification-item-padding-x">
                                         <div class="kt-user-card__avatar">
-                                            <img class="kt-hidden-" alt="Pic"
-                                                src="{{asset('img/user62.jpg')}}" />
+                                            <img class="kt-hidden-" alt="Pic" src="{{asset('img/user62.jpg')}}" />
                                         </div>
                                         <div class="kt-user-card__name">
                                             {{Auth::user()->email}}
@@ -209,6 +208,14 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                 </div>
                 <!-- end:: Header -->
+                <style>
+                .block {
+
+                    margin-left: 150px;
+                    position: absolute;
+                    /* float: right; */
+                }
+                </style>
                 <div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch"
                     id="kt_body">
                     <div class="kt-container  kt-container--fluid  kt-grid kt-grid--ver">
@@ -227,37 +234,57 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                         <li id="index1" class="kt-menu__item" aria-haspopup="true">
                                             <a href="{{ route('inbox.index') }}" class="kt-menu__link">
-                                        <i class="kt-menu__link-icon flaticon2-list-3"></i>
-                                        <span class="kt-menu__link-text">เอกสารสร้างเอง</span>
-                                        </a>
+                                                <i class="kt-menu__link-icon flaticon2-list-3"></i>
+                                                <span class="kt-menu__link-text">เอกสารสร้างเอง
+                                                    <div class="block">
+                                                        <span class="kt-badge kt-badge--info">23</span>
+                                                    </div>
+                                                </span>
+                                            </a>
                                         </li>
 
                                         <li id="index2" class="kt-menu__item" aria-haspopup="true">
                                             <a href="{{ route('receiver.index') }}" class="kt-menu__link">
                                                 <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
-                                                <span class="kt-menu__link-text">เอกสารส่งต่อ</span>
+                                                <span class="kt-menu__link-text">เอกสารส่งต่อ
+                                                    <div class="block">
+                                                        <span class="kt-badge kt-badge--info">23</span>
+                                                    </div>
+                                                </span>
                                             </a>
                                         </li>
 
                                         <li id="index3" class="kt-menu__item " aria-haspopup="true">
                                             <a href="{{ route('approve.index') }}" class="kt-menu__link ">
-                                        <i class="kt-menu__link-icon flaticon-suitcase"></i>
-                                        <span class="kt-menu__link-text">เอกสารที่อนุมัติแล้ว</span>
-                                        </a>
+                                                <i class="kt-menu__link-icon flaticon2-check-mark "></i>
+                                                <span class="kt-menu__link-text">เอกสารที่อนุมัติแล้ว
+                                                    <div class="block">
+                                                        <span class="kt-badge kt-badge--success">23</span>
+                                                    </div>
+                                                </span>
+                                            </a>
                                         </li>
 
                                         <li id="index4" class="kt-menu__item " aria-haspopup="true">
                                             <a href="{{ route('notallowed.index') }}" class="kt-menu__link ">
-                                        <i class="kt-menu__link-icon flaticon-suitcase"></i>
-                                        <span class="kt-menu__link-text">เอกสารที่ไม่อนุมัติ</span>
-                                        </a>
+                                                <i class="kt-menu__link-icon flaticon2-cancel"></i>
+                                                <span class="kt-menu__link-text">เอกสารที่ไม่อนุมัติ
+                                                    <div class="block">
+                                                        <span class="kt-badge kt-badge--danger">23</span>
+                                                    </div>
+                                                </span>
+                                            </a>
                                         </li>
 
                                         <li id="trash" class="kt-menu__item" aria-haspopup="true">
                                             <a href="{{ route('trash.index') }}" class="kt-menu__link ">
-                                        <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
-                                        <span class="kt-menu__link-text">ถังขยะ</span>
-                                        </a>
+                                                <i class="kt-menu__link-icon flaticon-delete"></i>
+                                                <span class="kt-menu__link-text">เอกสารที่ถูกลบ
+                                                    <div class="block">
+                                                        <span class="kt-badge kt-badge--danger">23</span>
+                                                    </div>
+                                                </span>
+                                            </a>
                                         </li>
 
                                         {{-- <li id="native" class="kt-menu__item  kt-menu__item--submenu"
@@ -272,40 +299,39 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <ul class="kt-menu__subnav">
                                                     <li id="adds" class="kt-menu__item " aria-haspopup="true">
                                                         <a href="{{ route('addcreate') }}" class="kt-menu__link ">
-                                                            <i class="kt-menu__link-icon flaticon-suitcase"></i>
-                                                            <span class="kt-menu__link-text">สร้างเอกสาร
-                                                                (อยู่ระหว่างการพัฒนา)</span>
-                                                        </a>
-                                                    </li>
+                                        <i class="kt-menu__link-icon flaticon-suitcase"></i>
+                                        <span class="kt-menu__link-text">สร้างเอกสาร
+                                            (อยู่ระหว่างการพัฒนา)</span>
+                                        </a>
+                                        </li>
 
-                                                    <li id="addsforward" class="kt-menu__item " aria-haspopup="true">
-                                                        <a href="{{ route('addforward') }}" class="kt-menu__link ">
-                                                            <i class="kt-menu__link-icon flaticon-suitcase"></i>
-                                                            <span class="kt-menu__link-text">ส่งต่อเอกสาร
-                                                                (อยู่ระหว่างการพัฒนา)</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-
-                                            </div>
-                                        </li> --}}
-
+                                        <li id="addsforward" class="kt-menu__item " aria-haspopup="true">
+                                            <a href="{{ route('addforward') }}" class="kt-menu__link ">
+                                                <i class="kt-menu__link-icon flaticon-suitcase"></i>
+                                                <span class="kt-menu__link-text">ส่งต่อเอกสาร
+                                                    (อยู่ระหว่างการพัฒนา)</span>
+                                            </a>
+                                        </li>
                                     </ul>
+
                                 </div>
+                                </li> --}}
+
+                                </ul>
                             </div>
-                            <!-- end:: Aside Menu -->
                         </div>
-                        <!-- end:: Aside -->
-                        <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
-                            id="kt_content">
+                        <!-- end:: Aside Menu -->
+                    </div>
+                    <!-- end:: Aside -->
+                    <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
-                            @yield('content')
+                        @yield('content')
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- end:: Page -->
 
