@@ -24,6 +24,22 @@ Route::post('view/SCMNGstore', [
 Route::resource('SCMNGstore', 'HomeController' , ['except' => 'SCMNGstore']);
 //  end add manager
 
+// update trash (inbox)
+Route::get('inbox/updatetrash/{id}', [
+    'as' => 'updatetrash',
+    'uses' => 'InboxController@updatetrash'
+]);
+Route::resource('updatetrash', 'InboxController' , ['except' => 'updatetrash']);
+// end update trash (inbox)
+
+// restore trash (trash)
+Route::get('trash/restoretrash/{id}', [
+    'as' => 'restoretrash',
+    'uses' => 'TrashController@restoretrash'
+]);
+Route::resource('restoretrash', 'TrashController' , ['except' => 'restoretrash']);
+// end restore trash (trash)
+
 Route::resource('trash','TrashController');
 
 Route::resource('approve','ApproveController');
@@ -33,8 +49,6 @@ Route::resource('notallowed','NotallowedController');
 Route::resource('receiver','ReceiverController');
 
 Route::resource('inbox','InboxController');
-
-Route::get('destroy/{id}','InboxController@destroy');
 
 Route::get('/', function () {
     return view('auth.login');
@@ -57,7 +71,7 @@ Route::resource('marksignaturestore', 'InboxController' , ['except' => 'marksign
 
 /*------------end_inbox marksignature-------------------*/
 
-/*------------receiver-------------------*/
+/*------------receiver create-------------------*/
 
 Route::get('receiver/create', [
     'as' => 'receivercreate',
@@ -70,6 +84,10 @@ Route::post('receiver/receiverstore', [
     'uses' => 'ReceiverController@receiverstore'
 ]);
 Route::resource('receiverstore', 'ReceiverController' , ['except' => 'receiverstore']);
+
+/*------------end_receiver create-------------------*/
+
+/*------------receiver marksignature-------------------*/
 
 Route::get('receiver/runnumber/{id}', [
     'as' => 'runnumber',
@@ -107,8 +125,7 @@ Route::post('receiver/marksignaturestore/{id}', [
 ]);
 Route::resource('marksignaturestore', 'ReceiverController' , ['except' => 'marksignaturestore']);
 
-
-/*------------end_receiver-------------------*/
+/*------------end_receiver marksignature-------------------*/
 
 Auth::routes();
 

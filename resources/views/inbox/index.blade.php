@@ -46,9 +46,9 @@
             <table id="table1" class="table table-striped- table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="5%">ลำดับ</th>
-                        <th width="80%">เรื่อง</th>
-                        <th width="15%"><i class="fa fa-cog"></i></th>
+                        <th width="10%">ลำดับ</th>
+                        <th width="70%">เรื่อง</th>
+                        <th width="20%"><i class="fa fa-cog"></i></th>
                     </tr>
                 </thead>
 
@@ -111,12 +111,12 @@
                             </a>
                             &nbsp; &nbsp;
 
-                            <a href="" class="delBtn" data-id="{{$item->id}}" data-toggle="kt-tooltip" title="ลบ">
-                                <i class="fa fa-trash-alt"></i>
-                            </a>
-                            {{-- <a href="{{ route('inbox.update' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ลบ">
+                            {{-- <a href="" class="delBtn" data-id="{{$item->id}}" data-toggle="kt-tooltip" title="ลบ">
                                 <i class="fa fa-trash-alt"></i>
                             </a> --}}
+                            <a href="{{ route('updatetrash' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="ลบ">
+                                <i class="fa fa-trash-alt"></i>
+                            </a>
                             <input type="hidden" name="_token" id="_token" value="{{ csrf_token()}}">
 
                             &nbsp; &nbsp;

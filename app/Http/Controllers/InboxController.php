@@ -36,9 +36,9 @@ class InboxController extends Controller
         return view('inbox.index',['edocs' => $edocs]);
     }
 
-    public function update(Request $request, $id )
+    public function updatetrash( $id )
     {
-        return '1';
+        // return '1';
         DB::table('edocs')
             ->where('id', $id)
             ->update(['trash' => 'ลบทิ้ง']);

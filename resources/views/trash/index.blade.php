@@ -9,7 +9,7 @@
 <div class="kt-subheader kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
         <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title">รายการเอกสารที่อนุมัติแล้ว</h3>
+            <h3 class="kt-subheader__title">รายการเอกสารที่ถูกลบ</h3>
             {{-- <span class="kt-subheader__separator kt-hidden"></span>
                 <div class="kt-subheader__breadcrumbs">
                     <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
@@ -56,13 +56,19 @@
                                 <i class="fa fa-search"></i>
                             </a>
                             &nbsp; &nbsp;
+
+                            <a href="{{ route('restoretrash' , ['id' => $item->id]) }}" data-toggle="kt-tooltip" title="กู้คืน">
+                                <i class="fa fa-redo"></i>
+                            </a>
+
+                            &nbsp; &nbsp;
+
+                            <a href="" class="delBtn" data-id="{{$item->id}}" data-toggle="kt-tooltip" title="ลบ">
+                                <i class="fa fa-trash-alt"></i>
+                            </a>
+                            <input type="hidden" name="_token" id="_token" value="{{ csrf_token()}}">
+
                         </td>
-                        {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
-                        {{-- @php
-                            $date_in = $item->date;
-                            $date1 = show_tdate($date_in) ;
-                            echo $date1 ;
-                        @endphp --}}
                     </tr>
                     @endforeach
                 </tbody>
@@ -80,33 +86,59 @@
 <script src="{{asset('assets/js/demo11/scripts.bundle.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/js/demo11/pages/crud/datatables/basic/basic.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/demo11/sweetalert.min.js') }}"></script>
 
 <script>
     $(document).ready(function() {
         document.getElementById('trash').classList.add('kt-menu__item--open');
-
         $('#table1').DataTable();
-
     });
 </script>
+
+<script>
+    $(document).on('click', '.delBtn', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        // alert(id);
+        swal({
+            title: "คุณต้องการลบ?",
+            text: "หากคุณทำการลบข้อมูล จะไม่สามารถทำการกู้คืนได้อีก",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        method: "DELETE",
+                        url: '{{ url('trash')}}/' + id,
+                        data: { ids: id, _token: $('#_token').val(), },
+                        success: function (data) {
+                            // alert(1)
+                            // alert(data.success)
+                            if (data.success == "1") {
+                                swal("ทำการลบข้อมูลสำเร็จ", {
+                                    icon: "success",
+                                }).then(() => {
+                                    // alert(1);
+                                    location.reload();
+                                });
+                            } else {
+                                swal({
+                                    title: "พบข้อผิดพลาด",
+                                    text: "กรุณาติดต่อผู้ดูแลระบบ",
+                                    icon: "warning",
+                                    dangerMode: true,
+
+                                });
+                            }
+                        }
+                    });
+                } else {
+                    swal("ยกเลิกการลบข้อมูล");
+                }
+            });
+        });
+</script>
+
 @endsection
-
-@php
-
-function show_tdate($date_in) {
-$month_arr = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
-
-$tok = strtok($date_in, "-");
-$year = $tok;
-
-$tok = strtok("-");
-$month = $tok;
-
-$tok = strtok("-");
-$day = $tok;
-
-$year_out = $year + 543;
-$cnt = $month - 1;
-$month_out = $month_arr[$cnt];
-
-if ($day < 10) $day_out="" . $day; else $day_out=$day; $t_date=$day_out . " " . $month_out . " " . $year_out; return $t_date; } @endphp

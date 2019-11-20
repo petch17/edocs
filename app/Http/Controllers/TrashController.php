@@ -26,7 +26,7 @@ class TrashController extends Controller
        return view('trash.index',['trashs' => $trash]);
     }
 
-    public function update(Request $request,$id)
+    public function restoretrash( $id )
     {
         // return $request;
         DB::table('edocs')
@@ -34,5 +34,22 @@ class TrashController extends Controller
             ->update(['trash' => 'ใช้งาน']);
 
         return redirect()->route('trash.index');
+    }
+
+    public function destroy($id) {
+
+
+        // return '1';
+        $result = Edoc::find($id);
+
+        File::delete(base_path().'http://127.0.0.1:3000/pdffile/'.$result->file);
+        $result->delete();
+
+        if($result){
+            return response()->json(['success' => '1']);
+        }else{
+            return response()->json(['success' => '0']);
+        }
+
     }
 }

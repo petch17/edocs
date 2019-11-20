@@ -9,7 +9,7 @@
 <div class="kt-subheader kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
         <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title">รายการเอกสารสร้างเอง</h3>
+            <h3 class="kt-subheader__title">รายการเอกสารที่อนุมัติแล้ว</h3>
             {{-- <span class="kt-subheader__separator kt-hidden"></span>
                 <div class="kt-subheader__breadcrumbs">
                     <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
@@ -71,9 +71,9 @@
                             </a>
                             &nbsp; &nbsp;
 
-                        <a href="" class="delBtn" data-id="{{$item->id}}" data-toggle="kt-tooltip" title="ลบ">
+                        {{-- <a href="" class="delBtn" data-id="{{$item->id}}" data-toggle="kt-tooltip" title="ลบ">
                                 <i class="fa fa-trash-alt"></i>
-                            </a>
+                            </a> --}}
                         </td>
                         {{-- วิธีเรียกใช้วันที่ภาษาไทย --}}
                         {{-- @php

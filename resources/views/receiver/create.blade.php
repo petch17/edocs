@@ -132,9 +132,9 @@
 
 
 
-                    <div class="form-group row">
+                    <div class="form-group row" >
                         <label class="col-lg-3 col-form-label">เรียน :</label>
-                        <div class="col-lg-3">
+                        <div style="width: 180px; height: 200px;">
                             {!! Form::textarea('retirement',null,['class'=>'form-control']); !!}
                             <div class="container-fluid" style="height:5px;">
                                 @if( $errors->has('retirement') )
@@ -146,7 +146,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row" style="margin-top:20px;">
                         <label class="col-lg-3 col-form-label">ประเภทเอกสาร :</label>
                         <div class="col-lg-9">
                             {!! Form::select('edoc_type',

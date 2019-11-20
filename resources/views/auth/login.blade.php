@@ -33,7 +33,7 @@
             @csrf
         <div >
             <div class="input-group">
-            <input id="email" type="text" placeholder="อีเมล์"
+            <input id="email" type="text" placeholder="username"
                 class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
                 required autocomplete="email" autofocus>
 
@@ -46,7 +46,7 @@
             </div>
 
             <div class="input-group">
-                <input id="password" type="password" placeholder="รหัสผ่าน"
+                <input id="password" type="password" placeholder="password"
                     class="form-control @error('password') is-invalid @enderror" name="password" required
                     autocomplete="current-password">
                 {{-- @error('password')

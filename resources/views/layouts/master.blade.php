@@ -237,7 +237,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <i class="kt-menu__link-icon flaticon2-list-3"></i>
                                                 <span class="kt-menu__link-text">เอกสารสร้างเอง
                                                     <div class="block">
-                                                        <span class="kt-badge kt-badge--info">23</span>
+                                                        @php
+                                                            $count_wait = App\Edoc::where('created_by','=',Auth::user()->id)
+                                                            ->where('status','=','เอกสารรอดำเนินการ')
+                                                            ->where('trash','=','ใช้งาน')
+                                                            ->count();
+                                                        @endphp
+                                                        <span class="kt-badge kt-badge--info">{{ $count_wait }}</span>
                                                     </div>
                                                 </span>
                                             </a>
@@ -248,7 +254,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <i class="kt-menu__link-icon flaticon2-telegram-logo"></i>
                                                 <span class="kt-menu__link-text">เอกสารส่งต่อ
                                                     <div class="block">
-                                                        <span class="kt-badge kt-badge--info">23</span>
+                                                        @php
+                                                            $count_forward = App\Receiver::where('created_by','=',Auth::user()->id)
+                                                            ->where('status','=','เอกสารรอดำเนินการ')
+                                                            ->count();
+                                                        @endphp
+                                                        <span class="kt-badge kt-badge--info">{{ $count_forward }}</span>
                                                     </div>
                                                 </span>
                                             </a>
@@ -259,7 +270,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <i class="kt-menu__link-icon flaticon2-check-mark "></i>
                                                 <span class="kt-menu__link-text">เอกสารที่อนุมัติแล้ว
                                                     <div class="block">
-                                                        <span class="kt-badge kt-badge--success">23</span>
+                                                        @php
+                                                            $count_finish = App\Edoc::where('created_by','=',Auth::user()->id)
+                                                            ->where('status','=','เอกสารที่อนุมัติแล้ว')
+                                                            ->where('trash','=','ใช้งาน')
+                                                            ->count();
+                                                        @endphp
+                                                        <span class="kt-badge kt-badge--success">{{ $count_finish }}</span>
                                                     </div>
                                                 </span>
                                             </a>
@@ -270,7 +287,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <i class="kt-menu__link-icon flaticon2-cancel"></i>
                                                 <span class="kt-menu__link-text">เอกสารที่ไม่อนุมัติ
                                                     <div class="block">
-                                                        <span class="kt-badge kt-badge--danger">23</span>
+                                                        @php
+                                                            $count_notallowed = App\Edoc::where('created_by','=',Auth::user()->id)
+                                                            ->where('status','=','เอกสารที่ไม่ผ่านการอนุมัติ')
+                                                            ->where('trash','=','ใช้งาน')
+                                                            ->count();
+                                                        @endphp
+                                                        <span class="kt-badge kt-badge--danger">{{ $count_notallowed }}</span>
                                                     </div>
                                                 </span>
                                             </a>
@@ -281,7 +304,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <i class="kt-menu__link-icon flaticon-delete"></i>
                                                 <span class="kt-menu__link-text">เอกสารที่ถูกลบ
                                                     <div class="block">
-                                                        <span class="kt-badge kt-badge--danger">23</span>
+                                                        @php
+                                                            $count_delete = App\Edoc::where('created_by','=',Auth::user()->id)
+                                                            ->where('trash','=','ลบทิ้ง')
+                                                            ->count();
+                                                        @endphp
+                                                        <span class="kt-badge kt-badge--danger">{{ $count_delete }}</span>
                                                     </div>
                                                 </span>
                                             </a>

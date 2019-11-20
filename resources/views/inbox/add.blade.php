@@ -126,6 +126,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label" >ชั้นความเร็ว :</label>
                         <div class="col-lg-6" >
+                                <input type="radio" /> ปกติ &nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="speed" value="ด่วน" /> ด่วน &nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="speed" value="ด่วนมาก" /> ด่วนมาก &nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="speed" value="ด่วนที่สุด" /> ด่วนที่สุด

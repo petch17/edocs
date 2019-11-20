@@ -46,10 +46,11 @@
             <table id="table1" class="table table-striped- table-bordered table-hover" >
                 <thead>
                     <tr>
-                        <th width="5%">ลำดับ</th>
-                        <th width="15%">เลขที่รับ</th>
-                        <th width="10%">เรียน</th>
-                        <th width="15%"><i class="fa fa-cog"></i></th>
+                        <th >ลำดับ</th>
+                        <th >เลขที่รับ</th>
+                        <th >เรื่อง</th>
+                        <th >เรียน</th>
+                        <th ><i class="fa fa-cog"></i></th>
                     </tr>
                 </thead>
 
@@ -58,7 +59,8 @@
                     <tr>
                         <td>{{$index+1}}</td>
                         <td>{{$item->part_num}}</td>
-                        <td> <a href="" class="alram" data-id="{{$item->retirement}}" > {{$item->retirement}} </a> </td>
+                        <td>{{$item->topic}}</td>
+                        <td> <a href="" class="alram" data-id="{{$item->retirement}}" > {{str_limit($item->retirement,25,'...')}} </a> </td>
                         <td>
                             <a target="_blank" href="http://203.113.14.20:3000/pdfsendfile/{{$item->file}}" data-toggle="kt-tooltip" title="ดูรายละเอียด">
                                 <i class="fa fa-search"></i>
