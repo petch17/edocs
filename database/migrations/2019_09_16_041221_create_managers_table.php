@@ -26,8 +26,8 @@ class CreateManagersTable extends Migration
             $table->string('POS_FULL')->nullable(); //ตำแหน่งเต็ม
             $table->string('DEP_ABBR')->nullable(); //แผนก ย่อ
             $table->string('DEP_FULL')->nullable(); //แผนก เต็ม
-            $table->integer('HIERACHY_CODE')->nullable(); //รหัสลำดับขั้น
-            $table->integer('ID4DIGIT')->nullable(); //เลขท้าย6ตัว ปชช.
+            $table->string('HIERACHY_CODE')->nullable(); //รหัสลำดับขั้น
+            $table->string('ID4DIGIT')->nullable(); //เลขท้าย6ตัว ปชช.
             $table->string('EMAILINTRA')->nullable(); //อีเมล์
             $table->string('PHONENUMER')->nullable(); //หมายเลขโทรศัพท์
             $table->boolean('VERIFY_STATUS')->default(false); //อีเมล์
