@@ -14,13 +14,13 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('empcode', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('EMPCODE')->unsigned()->nullable();
             $table->timestamps();
         });
 
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('EMPCODE')->nullable(); //รหัสพนักงงาน
             $table->string('TITLE_TH')->nullable(); //คำนำหน้าชื่อ ไทย
             $table->string('FIRST_NAME_TH')->nullable(); //ชื่อ ไทย
